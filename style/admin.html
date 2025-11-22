@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Flores</title>
+  
+  <!-- Font & Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="admin.css">
+  
+</head>
+<body>
+
+  <!-- Navbar (giữ nguyên như các trang khác) -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="New.html">New</a>
+      <a href="gioithieu.html">Giới thiệu</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+    <div class="nav-actions" id="navActions">
+    </div>
+  </header>
+
+  <div class="admin-container">
+
+    <div class="admin-header">
+      <div class="crown">Bảng điều khiển quản trị</div>
+      <p>Chào mừng các vị chúa tể trở lại vương quốc hoa yêu thương</p>
+    </div>
+
+    <!-- Thống kê nhanh -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">Người tham gia</div>
+        <div class="stat-number" id="totalUsers">0</div>
+        <div class="stat-label">Tổng thành viên</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">Đơn hàng</div>
+        <div class="stat-number" id="totalOrders">0</div>
+        <div class="stat-label">Đơn hàng (sắp có)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">Đánh giá</div>
+        <div class="stat-number">10/10</div>
+        <div class="stat-label">Yêu thương từ khách</div>
+      </div>
+    </div>
+
+    <!-- Các nút hành động -->
+    <div class="admin-actions">
+      <div class="action-btn" onclick="alert('Chức năng thêm sản phẩm mới - Sắp ra mắt!')">
+        <i class="fas fa-plus-circle"></i>
+        Thêm sản phẩm mới
+      </div>
+      <div class="action-btn" onclick="alert('Quản lý đơn hàng - Đang phát triển!')">
+        <i class="fas fa-truck"></i>
+        Quản lý đơn hàng
+      </div>
+      <div class="action-btn" onclick="alert('Chỉnh sửa banner, khuyến mãi...')">
+        <i class="fas fa-sliders-h"></i>
+        Cấu hình website
+      </div>
+      <div class="action-btn" onclick="alert('Bạn đã là Chúa tể rồi còn gì!')">
+        <i class="fas fa-crown"></i>
+        Cấp quyền Admin mới
+      </div>
+    </div>
+
+    <!-- Danh sách người dùng -->
+    <div class="user-list">
+      <h3>Danh sách thành viên đã đăng ký</h3>
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>SĐT</th>
+            <th>Ngày đăng ký</th>
+            <th>Loại TK</th>
+          </tr>
+        </thead>
+        <tbody id="usersTableBody">
+          <!-- JS sẽ tự động đổ dữ liệu vào đây -->
+        </tbody>
+      </table>
+    </div>
+
+    <a href="index.html" class="back-to-site">
+      ← Quay lại trang chủ
+    </a>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Kiểm tra quyền truy cập
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser || !currentUser.isAdmin) {
+      alert("Access Denied: Chỉ Admin mới được vào khu vực này!");
+      window.location.href = "index.html";
+    }
+
+    // Hiển thị danh sách người dùng
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    document.getElementById("totalUsers").textContent = users.length;
+
+    const tbody = document.getElementById("usersTableBody");
+    users.forEach(user => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${user.firstName} ${user.lastName}</td>
+        <td>${user.email}</td>
+        <td>${user.phone || '—'}</td>
+        <td>${new Date(user.registeredAt).toLocaleDateString('vi-VN')}</td>
+        <td>${user.isAdmin ? '<span style="color:#ff6b6b;">Admin</span>' : 'Khách'}</td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    // Hàm đăng xuất
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "signup.html";
+    }
+    window.logout = logout;
+  </script>
+  <script src="auth.js"></script>
+
+  <!-- Footer (copy nguyên từ signup.html) -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <!-- Giữ nguyên footer như cũ -->
+      <div class="footer-col">
+        <h2 class="footer-logo">Flores</h2>
+        <p class="footer-desc">Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc...</p>
+      </div>
+      <!-- ... các cột khác ... -->
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm.</p>
+    </div>
+    <div class="stars" id="stars-container"></div>
+  </footer>
+</body>
+</html>

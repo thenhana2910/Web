@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <!-- Giữ nguyên phần head của bạn -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký / Đăng nhập - Flores</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- GIỮ NGUYÊN TOÀN BỘ HEADER + PROMO + FOOTER CỦA BẠN -->
+
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="New.html">New</a>
+      <a href="gioithieu.html">Giới thiệu</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+    <div class="nav-actions" id="navActions">
+      <!-- JS sẽ tự động thay đổi phần này khi đăng nhập -->
+      <a href="signup.html">
+        <button class="signup-btn">Sign Up</button>
+      </a>
+      <div class="cart" onclick="toggleGioHang()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Giữ nguyên promo-header và footer của bạn -->
+
+  <div class="promo-header">
+    Nhằm khuyến khích mọi người quen sử dụng website trong việc giao dịch thương mại điện tử, chúng tôi sẽ giảm thêm
+    <strong>3% cho đơn hàng mua lần thứ 2</strong>, <strong>5% cho đơn hàng ONLINE lần thứ 6</strong> và
+    <strong>10% cho đơn hàng ONLINE lần thứ 12</strong><br>
+    Để biết thêm thông tin chi tiết, vui lòng truy cập trang <a href="#">Các câu hỏi thường gặp</a> hoặc <a
+      href="#">Thắc mắc và khiếu nại</a>.
+  </div>
+
+  <div class="signup-wrapper">
+    <!-- CỘT TRÁI: ĐĂNG KÝ -->
+    <div class="left-column">
+      <h2 class="section-title">CHƯA CÓ TÀI KHOẢN?</h2>
+      <p class="section-desc">
+        Khi tạo tài khoản tại cửa hàng chúng tôi, đơn hàng của bạn sẽ được xử lý nhanh hơn, bạn sẽ có thể lưu lại các
+        địa chỉ giao hàng, xem và theo dõi các đơn hàng trong tài khoản.
+      </p>
+
+      <form id="signupForm" class="signup-form">
+        <div class="form-group">
+          <label>Email của bạn <span class="required">*</span></label>
+          <input type="email" id="regEmail" required placeholder="Nhập email của bạn">
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu <span class="required">*</span></label>
+          <input type="password" id="regPassword" required placeholder="Tạo mật khẩu mạnh (tối thiểu 6 ký tự)"
+            minlength="6">
+        </div>
+        <div class="form-group">
+          <label>Tên <span class="required">*</span></label>
+          <input type="text" id="regFirstName" required placeholder="Tên của bạn">
+        </div>
+        <div class="form-group">
+          <label>Họ <span class="required">*</span></label>
+          <input type="text" id="regLastName" required placeholder="Họ và tên lót">
+        </div>
+        <div class="form-group">
+          <label>Điện thoại <span class="required">*</span></label>
+          <input type="tel" id="regPhone" required placeholder="0xxxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label>Địa chỉ</label>
+          <input type="text" id="regAddress" placeholder="Địa chỉ nơi ở hiện tại">
+        </div>
+
+        <button type="submit" class="btn-primary">Tạo tài khoản mới</button>
+        <p class="message" id="signupMessage"></p>
+      </form>
+    </div>
+
+    <!-- CỘT PHẢI: ĐĂNG NHẬP -->
+    <div class="right-column">
+      <h2 class="section-title">ĐÃ CÓ TÀI KHOẢN</h2>
+      <p class="section-desc">
+        Nếu bạn đã có tài khoản tại Flores, xin hãy đăng nhập.
+      </p>
+
+      <button class="btn-google">
+        <i class="fab fa-google"></i> Đăng nhập bằng Google (sắp có)
+      </button>
+
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label>Email của bạn <span class="required">*</span></label>
+          <input type="email" id="loginEmail" required placeholder="Email đã đăng ký">
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu <span class="required">*</span></label>
+          <input type="password" id="loginPassword" required placeholder="Nhập mật khẩu">
+        </div>
+
+        <a href="#" class="forgot-link" onclick="openForgotPasswordModal(); return false;">
+          Quên mật khẩu?
+        </a>
+
+        <button type="submit" class="btn-login">
+          <i class="fas fa-lock"></i> ĐĂNG NHẬP
+        </button>
+        <p class="message" id="loginMessage"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER GIỮ NGUYÊN -->
+
+  <!-- THÊM JAVASCRIPT VÀO ĐÂY -->
+  <script>
+    // Danh sách email admin (chỉ 2 bạn được vào trang admin)
+    const ADMIN_EMAILS = ["admin1@flores.com", "admin2@flores.com", "thenhan29102006@gmail.com", "dangkhoa2002tran@gmail.com"]; // ← thay 2 email thật của 2 bạn vào đây
+
+    // Kiểm tra trạng thái đăng nhập khi load trang
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) {
+        updateNavAfterLogin(currentUser);
+      }
+    });
+
+    // Xử lý ĐĂNG KÝ
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("regEmail").value.trim();
+      const password = document.getElementById("regPassword").value;
+      const firstName = document.getElementById("regFirstName").value.trim();
+      const lastName = document.getElementById("regLastName").value.trim();
+      const phone = document.getElementById("regPhone").value.trim();
+      const address = document.getElementById("regAddress").value.trim();
+
+      // Kiểm tra email đã tồn tại chưa
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      if (users.find(user => user.email === email)) {
+        document.getElementById("signupMessage").textContent = "Email này đã được đăng ký!";
+        document.getElementById("signupMessage").style.color = "#ff6b6b";
+        return;
+      }
+
+      // Tạo user mới
+      const newUser = {
+        email,
+        password,
+        firstName,
+        lastName,
+        phone,
+        address,
+        isAdmin: ADMIN_EMAILS.includes(email),  // ← tự động thành admin nếu email nằm trong danh sách
+        registeredAt: new Date().toISOString()
+      };
+
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+
+      document.getElementById("signupMessage").textContent = "Đăng ký thành công! Đang chuyển sang đăng nhập...";
+      document.getElementById("signupMessage").style.color = "#fbbf24";
+
+      // Tự động điền form đăng nhập
+      setTimeout(() => {
+        document.getElementById("loginEmail").value = email;
+        document.getElementById("loginPassword").value = password;
+        document.getElementById("loginPassword").focus();
+      }, 1000);
+    });
+
+    // Xử lý ĐĂNG NHẬP
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if (!user) {
+        document.getElementById("loginMessage").textContent = "Email hoặc mật khẩu không đúng!";
+        document.getElementById("loginMessage").style.color = "#ff6b6b";
+        return;
+      }
+
+      // Đăng nhập thành công
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      document.getElementById("loginMessage").textContent = "Đăng nhập thành công! Đang chuyển...";
+      document.getElementById("loginMessage").style.color = "#fbbf24";
+
+      updateNavAfterLogin(user);
+
+      setTimeout(() => {
+        if (user.isAdmin) {
+          window.location.href = "admin.html"; // ← trang admin chỉ 2 bạn vào được
+        } else {
+          window.location.href = "index.html";
+        }
+      }, 1200);
+    });
+
+    // Cập nhật navbar khi đã đăng nhập
+    function updateNavAfterLogin(user) {
+      const navActions = document.getElementById("navActions");
+      navActions.innerHTML = `
+        <div class="user-menu">
+          <span style="color: #fbbf24; font-weight: 600;">Xin chào, ${user.firstName}!</span>
+          ${user.isAdmin ? '<a href="admin.html" style="color:#ff6b6b; margin-left:15px;">⚡ Admin Panel</a>' : ''}
+          <button onclick="logout()" style="margin-left:15px; background:none; border:none; color:#ff6b6b; cursor:pointer; text-decoration:underline;">Đăng xuất</button>
+        </div Lord of the Rings
+        <div class="cart" onclick="toggleGioHang()">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span id="cart-count" class="cart-count">0</span>
+        </div>
+      `;
+    }
+
+    // Hàm đăng xuất (dùng chung tất cả các trang)
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "signup.html";
+    }
+
+    // Để dùng logout() ở các trang khác, thêm hàm toàn cục
+    window.logout = logout;
+  </script>
+
+  <!-- MODAL QUÊN MẬT KHẨU -->
+  <div id="forgotPasswordModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-key"></i>Khôi phục mật khẩu</h3>
+        <span class="modal-close" onclick="closeForgotPasswordModal()">×</span>
+      </div>
+      <div class="modal-body">
+        <p>Nhập email bạn đã dùng để đăng ký. Chúng tôi sẽ tạo mật khẩu mới cho bạn.</p>
+
+        <div class="form-group">
+          <label>Email của bạn <span class="required">*</span></label>
+          <input type="email" id="forgotEmail" placeholder="nhapemail@viduu.com" required>
+        </div>
+
+        <button class="btn-primary" onclick="resetPassword()">
+          <i class="fas fa-paper-plane"></i> Gửi mật khẩu mới
+        </button>
+
+        <div id="resetResult" style="margin-top: 15px; font-weight: 600;"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="luxury-footer">
+    <div class="footer-container">
+
+      <!-- Cột 1: Logo + Mô tả -->
+      <div class="footer-col">
+        <h2 class="footer-logo">Flores</h2>
+        <p class="footer-desc">
+          Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện, mỗi cánh hoa là một lời thì thầm
+          của thiên nhiên.
+        </p>
+        <div class="footer-links">
+          <a href="#">Terms and Conditions</a>
+          <span class="separator">•</span>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+
+      <!-- Cột 2: Thông tin liên hệ + MXH -->
+      <div class="footer-col">
+        <h4>Thông tin liên hệ</h4>
+        <p class="contact-item">
+          <i class="fas fa-envelope"></i> Flores@stgmail.com
+        </p>
+        <p class="contact-item">
+          <i class="fas fa-phone-alt"></i> +84 909 888 777
+        </p>
+
+        <div class="social-links">
+          <p>Theo dõi chúng tôi</p>
+          <div class="social-icons-modern">
+            <a href="https://twitter.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột 3: Newsletter -->
+      <div class="footer-col">
+        <h4>Gia nhập hội viên</h4>
+        <p>Đăng ký thành viên để nhận ưu đãi độc quyền & bộ sưu tập mới nhất</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Nhập email" required>
+          <button type="submit">ĐĂNG KÝ</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bản quyền -->
+    <div class="footer-bottom">
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm. </p>
+    </div>
+
+    <!-- Hiệu ứng chấm sao lấp lánh -->
+    <div class="stars" id="stars-container"></div>
+  </footer>
+  <script src="password.js"></script>
+</body>
+
+</html>

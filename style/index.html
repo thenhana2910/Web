@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flores et Picturae</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
 <body>
 
   <!-- ==================== NAVBAR ==================== -->
-  <header class="navbar">
+    <header class="navbar">
     <a href="index.html" class="logo">Flores</a>
+
     <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
       <a href="shop.html">Cửa hàng</a>
       <a href="New.html">New</a>
       <a href="gioithieu.html">Giới thiệu</a>
       <a href="khampha.html">Khám phá</a>
     </nav>
-    <div class="cart" onclick="toggleGioHang()">Giỏ hàng (0)</div>
+
+    <div class="nav-actions" id="navActions">
+      <a href="signup.html">
+        <button class="signup-btn">Sign Up</button>
+      </a>
+
+
+      <div class="cart" onclick="toggleGioHang()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </div>
+    </div>
   </header>
 
   <!-- ==================== HERO TRANG CHỦ ==================== -->
@@ -31,8 +51,8 @@
       </a>
     </div>
     <!-- Ảnh nền hoa đỏ đen huyền bí -->
-    <img src="https://images.unsplash.com/photo-1609322094691-4f77f180d887?auto=format&fit=crop&q=80&w=1600" 
-         alt="Hoa nghệ thuật" class="hero-image" loading="lazy"/>
+    <img src="https://images.unsplash.com/photo-1609322094691-4f77f180d887?auto=format&fit=crop&q=80&w=1600"
+      alt="Hoa nghệ thuật" class="hero-image" loading="lazy" />
   </main>
 
   <!-- ==================== MODAL GIỎ HÀNG ==================== -->
@@ -53,5 +73,7 @@
     }
     window.onclick = e => { if (e.target.id === "gio-hang-modal") e.target.style.display = "none"; }
   </script>
+  <script src="auth.js"></script>
 </body>
+
 </html>

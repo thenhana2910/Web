@@ -1,0 +1,404 @@
+/* profile-edit.css */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.4s ease-out;
+    display: none;
+    /* ← quan trọng: mặc định ẩn */
+    flex-direction: column;
+}
+
+.modal-overlay.active {
+    display: flex !important;
+}
+
+/* JS sẽ thêm class active */
+
+.modal-content.edit-modal {
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+    border: 1px solid #444;
+    width: 92%;
+    max-width: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6), 0 0 60px rgba(251, 191, 36, 0.15);
+    animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Re-use style modal quên mật khẩu (giữ nguyên phần còn lại như mình gửi lần trước) */
+.modal-header {
+    background: linear-gradient(130deg, #fbbf24, #f59e0b, #d97706);
+    padding: 24px 20px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.modal-close {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 32px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    opacity: 0.8;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.modal-body {
+    padding: 35px 30px;
+    color: #e2e8f0;
+}
+
+.modal-body .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.modal-body label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fbbf24;
+    font-weight: 600;
+}
+
+.modal-body input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #444;
+    border-radius: 12px;
+    background: #1e1e1e;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.modal-body input:focus {
+    outline: none;
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.2);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.btn-cancel {
+    background: #334155;
+    color: #cbd5e1;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: #475569;
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn-save:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(34, 197, 94, 0.5);
+}
+
+#editMessage.success {
+    background: rgba(34, 197, 94, 0.2);
+    color: #86efac;
+    border: 1px solid #22c55e;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Nút chỉnh sửa trên trang tổng quan */
+.btn-edit-profile {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #000;
+    font-weight: 700;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+    transition: all .3s;
+}
+
+.btn-edit-profile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(251, 191, 36, 0.5);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.95)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+    }
+}
+
+/* FIX 1: Nút "Chỉnh sửa thông tin" không bị dính nữa */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 5px; /* thêm khoảng cách 2 bên */
+}
+
+/* FIX 2: Modal hiện đúng giữa màn hình, không bị dính khung */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(15px);
+  display: none;                    /* mặc định ẩn */
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;                   /* rất cao để đè lên hết */
+  padding: 20px;                    /* thêm padding tránh dính viền điện thoại */
+  box-sizing: border-box;
+}
+
+.modal-overlay.active {
+  display: flex !important;         /* JS bật bằng class active */
+}
+
+/* FIX 3: Modal content không bị cắt, có khoảng thở */
+.modal-content.edit-modal {
+  width: 92%;
+  max-width: 520px;
+  margin: 20px auto;                /* thêm margin tránh dính cạnh */
+  border-radius: 24px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.7), 0 0 80px rgba(251,191,36,0.2);
+}
+
+
+/* Phân cách 2 phần trong modal */
+.form-section {
+  margin-bottom: 30px;
+}
+.form-section h4 {
+  color: #fbbf24;
+  margin: 0 0 20px 0;
+  font-size: 1.25rem;
+  font-family: 'Playfair Display', serif;
+}
+.separator {
+  border: none;
+  border-top: 1px dashed rgba(251,191,36,0.3);
+  margin: 30px 0;
+}
+
+/* Thông báo */
+#editMessage {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+#editMessage.success { background: rgba(34,197,94,0.2); color: #86efac; border: 1px solid #22c55e; }
+#editMessage.error   { background: rgba(239,68,68,0.2); color: #fca5a5; border: 1px solid #ef4444; }
+
+/* ==================== FIX HOÀN HẢO CHO 2 VẤN ĐỀ BẠN GẶP ==================== */
+
+/* 1. Modal không bị navbar che + có thể scroll thoải mái */
+.modal-overlay {
+    position: fixed;
+    top: 0;               /* bắt đầu từ đỉnh màn hình */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(15px);
+    display: none;
+    align-items: flex-start;      /* ĐẨM BẢO không bị center dọc nữa */
+    justify-content: center;
+    z-index: 99999;
+    padding: 90px 15px 30px;      /* 90px để chừa chỗ cho navbar cố định ở trên */
+    overflow-y: auto;             /* cho phép scroll cả modal nếu quá dài */
+    scroll-behavior: smooth;
+}
+
+.modal-overlay.active {
+    display: flex !important;
+}
+
+/* 2. Nội dung modal không bị cắt, có khoảng thở */
+.modal-content.edit-modal {
+    width: 92%;
+    max-width: 540px;
+    margin: 0 auto 40px;          /* margin-bottom để có chỗ thở khi scroll tới cuối */
+    border-radius: 24px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7), 0 0 80px rgba(251, 191, 36, 0.2);
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+    overflow: hidden;
+}
+
+/* 3. Chỉ phần thân modal được scroll (nếu nội dung dài) */
+.modal-body {
+    max-height: calc(100vh - 200px);  /* trừ đi header + padding + nút cố định */
+    overflow-y: auto;
+    padding: 35px 32px 100px 32px;     /* padding-bottom lớn để nhường chỗ cho nút cố định */
+    padding-right: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #fbbf24 #1e1e1e;
+}
+
+/* Thanh scroll đẹp */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-body::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 10px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background: #fbbf24;
+    border-radius: 10px;
+}
+
+/* ==================== QUAN TRỌNG NHẤT: NÚT HỦY + LƯU CỐ ĐỊNH DƯỚI CÙNG ==================== */
+.modal-actions {
+    position: fixed;          /* hoặc sticky nếu muốn */
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f0f0f;
+    padding: 14px 20px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 40px rgba(251, 191, 36, 0.2);
+    z-index: 100;
+    display: flex;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid #333;
+}
+
+/* Đảm bảo nút luôn hiển thị đẹp trên mọi kích thước màn hình */
+@media (max-width: 480px) {
+    .modal-actions {
+        width: 90%;
+        justify-content: center;
+    }
+    .btn-cancel, .btn-save {
+        flex: 1;
+        padding: 14px 20px !important;
+    }
+}
+
+/* ==================== TOAST NOTIFICATION ĐẸP NHƯ APP ==================== */
+#toastNotification {
+  position: fixed;
+  top: 90px;                    /* cách navbar ~80-90px */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 15, 15, 0.95);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 40px rgba(251, 191, 36, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid #333;
+  z-index: 999999;
+  min-width: 320px;
+  max-width: 90%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: inherit;
+}
+
+#toastNotification.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toast-icon {
+  font-size: 24px;
+}
+
+.toast-success .toast-icon {
+  color: #22c55e;
+}
+
+.toast-error .toast-icon {
+  color: #ef4444;
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: #fbbf24;
+  width: 100%;
+  border-radius: 0 0 16px 16px;
+  animation: progressShrink 4s linear forwards;
+}
+
+@keyframes progressShrink {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 480px) {
+  #toastNotification {
+    top: 80px;
+    min-width: 90%;
+    font-size: 15px;
+  }
+}

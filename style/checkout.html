@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán - Flores et Picturae</title>
+  
+  <!-- CSS CHUNG -->
+   <link rel="stylesheet" href="checkout.css">
+  <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="shop-page">
+
+  <!-- NAVBAR ĐẸP Y CHANG INDEX.HTML -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="New.html">New</a>
+      <a href="gioithieu.html">Giới thiệu</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+
+    <div class="nav-actions" id="navActions">
+      <a href="signup.html">
+        <button class="signup-btn">Sign Up</button>
+      </a>
+
+      <div class="cart" id="cart-icon">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG CHECKOUT SIÊU ĐẸP -->
+  <div class="checkout-wrapper">
+    <div class="checkout-container">
+      <h1>Thanh toán đơn hàng</h1>
+      <div id="checkout-items"></div>
+      
+      <div class="final-total">
+        Tổng tiền: <span id="total-amount">0 VNĐ</span>
+      </div>
+
+      <button class="confirm-btn" onclick="alert('Cảm ơn bạn đã tin tưởng Flores! Đơn hàng đang được xử lý')">XÁC NHẬN THANH TOÁN</button>
+    </div>
+  </div>
+
+  <script>
+    // LẤY GIỎ HÀNG VÀ HIỂN THỊ
+    const cart = JSON.parse(localStorage.getItem("floresCart")) || [];
+    const container = document.getElementById("checkout-items");
+    let total = 0;
+
+    // Cập nhật số trên icon giỏ hàng
+    const countEl = document.getElementById("cart-count");
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    countEl.textContent = totalItems;
+    countEl.style.display = totalItems > 0 ? "flex" : "none";
+
+    if (cart.length === 0) {
+      container.innerHTML = "<p class='empty-message'>Giỏ hàng đang trống. Hãy quay lại cửa hàng chọn bó hoa bạn yêu thích nào</p>";
+    } else {
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
+        container.innerHTML += `
+          <div class="checkout-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div>
+              <h3>${item.name}</h3>
+              <p>Giá: ${item.price.toLocaleString()} VNĐ × ${item.quantity}</p>
+            </div>
+            <div class="item-total">${itemTotal.toLocaleString()} VNĐ</div>
+          </div>
+        `;
+      });
+    }
+
+    document.getElementById("total-amount").textContent = total.toLocaleString() + " VNĐ";
+
+    // Bấm vào giỏ hàng ở checkout vẫn quay lại shop
+    document.getElementById("cart-icon").addEventListener("click", () => {
+      window.location.href = "shop.html";
+    });
+  </script>
+</body>
+</html>
