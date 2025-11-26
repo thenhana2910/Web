@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New - Flores et Picturae</title>
   <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="stylesukien.css" />
+  <link rel="stylesheet" href="components.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap"
     rel="stylesheet">
@@ -22,7 +23,7 @@
     <nav class="nav-menu">
       <a href="index.html">Trang chủ</a>
       <a href="shop.html">Cửa hàng</a>
-      <a href="New.html">New</a>
+      <a href="sukien.html">Sự kiện</a>
       <a href="gioithieu.html">Giới thiệu</a>
       <a href="khampha.html">Khám phá</a>
     </nav>
@@ -40,28 +41,71 @@
     </div>
   </header>
 
-  <!-- ==================== NỘI DUNG NEW ==================== -->
+   <!-- NỘI DUNG NEW -->
   <main class="content-main">
     <div class="container">
-      <h1 class="page-heading">New</h1>
-      <p class="page-subtitle">Tin tức mới • Bộ sưu tập • Sự kiện • Câu chuyện hoa</p>
+      <p class="page-subtitle">Tin tức mới • Bộ sưu tập</p>
 
-      <!-- Thêm tin mới bằng cách copy-paste khối <article> dưới đây -->
-      <div class="news-grid">
-        <article class="news-item">
-          <div class="news-image">
-            <img src="https://images.unsplash.com/photo-1604085572500-9f4218695698?auto=format&fit=crop&w=800&q=80"
-              alt="Golden Hour">
+      <!-- ==== Danh sách bài (3 bài, xen kẽ ảnh trái — phải) ==== -->
+      <section class="articles-list">
+
+        <article class="article-row">
+          <div class="article-image">
+            <!-- Sử dụng ảnh upload sẵn (nếu server không cho truy cập, đổi thành đường dẫn ảnh trực tuyến) -->
+            <img
+              src="https://images.unsplash.com/photo-1710629357740-546115c6f75b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGIlQzMlQjMlMjBob2ElMjBuZ2glRTElQkIlODclMjB0aHUlRTElQkElQUR0fGVufDB8fDB8fHww"
+              alt="Bài 1">
           </div>
-          <div class="news-content">
-            <span class="news-date">18 tháng 11, 2025</span>
-            <h3>Bộ sưu tập “Golden Hour” chính thức ra mắt</h3>
-            <p>Ánh hoàng hôn Boston được gói trọn trong từng cánh hoa – chỉ 50 bó limited.</p>
+          <div class="article-text">
+            <span class="news-date">Lời tri ân Ngày Nhà giáo Việt Nam 20/11</span>
+            <h3 class="article-title">Sắc hoa buổi sớm</h3>
+            <p>Ngày 20/11 là dịp để chúng ta bày tỏ lòng biết ơn sâu sắc đến những người thầy, người cô đã tận tâm dìu
+              dắt bao thế hệ học trò. Với tình yêu nghề và sự hi sinh thầm lặng, thầy cô không chỉ truyền đạt kiến thức
+              mà còn vun đắp nhân cách, mở ra tương lai cho mỗi người. Xin gửi đến tất cả thầy cô lời tri ân chân thành
+              và kính chúc sức khỏe, hạnh phúc, tiếp tục đồng hành cùng bao ước mơ của học trò.
+            </p>
             <a href="#" class="news-readmore">Xem chi tiết →</a>
           </div>
         </article>
-        <!-- Copy khối này để thêm tin mới -->
-      </div>
+
+        <article class="article-row reverse">
+          <div class="article-image">
+            <img
+              src="https://images.unsplash.com/photo-1745176593885-c1d466a6dff5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGIlQzMlQjMlMjBob2ElMjBuZ2glRTElQkIlODclMjB0aHUlRTElQkElQUR0fGVufDB8fDB8fHww"
+              alt="Bài 2">
+          </div>
+          <div class="article-text">
+            <span class="news-date">Da Lat Flower Exhibition</span>
+            <h3 class="article-title">Hương và màu</h3>
+            <p>Triển lãm Hoa Đà Lạt năm nay thu hút hàng chục nghìn lượt khách tham quan nhờ không gian trưng bày rực rỡ
+              và đa dạng. Bên cạnh khu triển lãm chính, các tuyến phố trung tâm được trang hoàng bằng sắc hoa đặc trưng
+              của Đà Lạt, tạo nên một “thành phố hoa” sống động suốt nhiều ngày liền. Sự kiện không chỉ tôn vinh vẻ đẹp
+              của các loài hoa mà còn đem lại trải nghiệm văn hóa – du lịch độc đáo cho du khách trong nước và quốc tế.
+            </p>
+            <a href="#" class="news-readmore">Xem chi tiết →</a>
+          </div>
+        </article>
+
+        <article class="article-row">
+          <div class="article-image">
+            <!-- Dùng lại ảnh 1 nếu bạn chưa cung cấp ảnh thứ 3 -->
+            <img
+              src="https://images.unsplash.com/photo-1710068145569-5e6785b53bf5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGIlQzMlQjMlMjBob2ElMjBuZ2glRTElQkIlODclMjB0aHUlRTElQkElQUR0fGVufDB8fDB8fHww"
+              alt="Bài 3">
+          </div>
+          <div class="article-text">
+            <span class="news-date">Hội triển lãm Hoa lan nghệ thuật tại TP. Hồ Chí Minh</span>
+            <h3 class="article-title">Vẽ đẹp của hoa</h3>
+            <p>Triển lãm Hoa Lan Nghệ Thuật tại TP. Hồ Chí Minh năm nay mang đến không gian trưng bày đầy ấn tượng với
+              hàng loạt tác phẩm lan Phalaenopsis độc đáo. Sự kiện do Hiệp hội Hoa Đà Lạt tổ chức, quy tụ nhiều nghệ
+              nhân và nhà vườn, giới thiệu những bố cục lan được thiết kế tinh xảo và mang giá trị thẩm mỹ cao. Đây là
+              điểm nhấn nổi bật dành cho những ai yêu thích hoa lan và nghệ thuật sắp đặt, góp phần lan tỏa vẻ đẹp của
+              loài hoa thanh lịch này đến công chúng.</p>
+            <a href="#" class="news-readmore">Xem chi tiết →</a>
+          </div>
+        </article>
+
+      </section>
     </div>
   </main>
 
