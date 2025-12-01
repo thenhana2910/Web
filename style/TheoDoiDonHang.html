@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theo dõi đơn hàng • Flores</title>
+
+  <!-- Icon + Font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="theodoidonhang.css">
+</head>
+
+<body class="tracking-vip-page">
+
+  <!-- HEADER -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="sukien.html">Sự kiện</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+    <div class="nav-actions" id="navActions">
+      <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
+      <div class="cart" onclick="toggleGioHang()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG CHÍNH -->
+  <div class="container">
+    <div class="page-header">
+      <h1>Theo dõi đơn hàng</h1>
+      <p>Mỗi bó hoa là một hành trình được Flores chăm chút từng giây</p>
+    </div>
+
+    <div id="ordersContainer" class="orders-container">
+      <!-- JS sẽ tự động render đơn hàng -->
+    </div>
+
+    <!-- NÚT QUAY LẠI – SIÊU ĐẸP & ĐỒNG BỘ -->
+<div class="back-btn-container">
+  <button onclick="history.back()" class="back-btn">
+    <i class="fas fa-arrow-left"></i>
+    Quay lại
+  </button>
+</div>
+  </div>
+
+  <!-- FOOTER LUXURY ĐEN-VÀNG – GIỮ NGUYÊN ĐẸP NHƯ BẠN MUỐN -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <!-- Cột 1: Logo + Mô tả -->
+      <div class="footer-col">
+        <h2 class="footer-logo">Flores</h2>
+        <p class="footer-desc">
+          Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện, mỗi cánh hoa là một lời thì thầm
+          của thiên nhiên.
+        </p>
+        <div class="footer-links">
+          <a href="#">Terms and Conditions</a>
+          <span class="separator">•</span>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+
+      <!-- Cột 2: Thông tin liên hệ + MXH -->
+      <div class="footer-col">
+        <h4>Thông tin liên hệ</h4>
+        <p class="contact-item">
+          <i class="fas fa-envelope"></i> Flores@stgmail.com
+        </p>
+        <p class="contact-item">
+          <i class="fas fa-phone-alt"></i> +84 909 888 777
+        </p>
+
+        <div class="social-links">
+          <p>Theo dõi chúng tôi</p>
+          <div class="social-icons-modern">
+            <a href="https://twitter.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột 3: Newsletter -->
+      <div class="footer-col">
+        <h4>Gia nhập hội viên</h4>
+        <p>Đăng ký thành viên để nhận ưu đãi độc quyền & bộ sưu tập mới nhất</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Nhập email" required>
+          <button type="submit">ĐĂNG KÝ</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bản quyền -->
+    <div class="footer-bottom">
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm.</p>
+    </div>
+
+    <!-- Hiệu ứng chấm sao lấp lánh -->
+    <div class="stars" id="stars-container"></div>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toastNotification" class="toast-hidden">
+    <div class="toast-content">
+      <i class="toast-icon"></i>
+      <span class="toast-message">Thông báo sẽ hiện ở đây</span>
+    </div>
+    <div class="toast-progress"></div>
+  </div>
+
+  <!-- JS RENDER ĐƠN HÀNG – 4 TRẠNG THÁI SIÊU RÕ RÀNG -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const orders = JSON.parse(localStorage.getItem("orders")) || [];
+      const container = document.getElementById("ordersContainer");
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div class="empty-vip">
+            <i class="fas fa-gift fa-3x"></i>
+            <h3>Chưa có đơn hàng nào</h3>
+            <p>Hãy để Flores mang đến cho bạn những bó hoa tuyệt vời nhất</p>
+            <a href="shop.html" class="vip-btn">Khám phá ngay</a>
+          </div>`;
+        return;
+      }
+
+      orders.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      orders.forEach(order => {
+        // 4 trạng thái đúng như bạn yêu cầu
+        const steps = [
+          { label: "Đã đặt hàng", icon: "fa-receipt", done: true },
+          { label: "Đang chuẩn bị hoa", icon: "fa-seedling", done: order.status !== "Chờ xác nhận" },
+          { label: "Đã xuất phát", icon: "fa-truck", done: order.status === "Đã xuất phát" || order.status === "Đã giao" },
+          { label: "Đã giao thành công", icon: "fa-gift", done: order.status === "Đã giao" }
+        ];
+
+        const progress = steps.filter(s => s.done).length * 25;
+
+        const timeline = steps.map(step => `
+          <div class="step ${step.done ? 'active' : ''}">
+            <div class="step-circle"><i class="fas ${step.icon}"></i></div>
+            <span class="step-label">${step.label}</span>
+          </div>
+        `).join('');
+
+        const itemsHTML = (order.items || []).map(item => `
+          <div class="order-item">
+            <span>${item.name || item}</span>
+            <span>x${item.quantity || 1}</span>
+          </div>
+        `).join('');
+
+        const statusClass = order.status?.replace(/ /g, '-').toLowerCase() || 'cho-xac-nhan';
+
+        const card = document.createElement("div");
+        card.className = "order-card-vip";
+        card.innerHTML = `
+          <div class="order-header-vip">
+            <div>
+              <h3>Đơn hàng #${order.id || 'FL' + Date.now().toString().slice(-6)}</h3>
+              <p>${new Date(order.date).toLocaleString('vi-VN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+            </div>
+            <div class="status-badge ${statusClass}">${order.status || 'Chờ xác nhận'}</div>
+          </div>
+
+          <div class="progress-container">
+            <div class="progress-bar" style="width: ${progress}%"></div>
+            <div class="timeline">${timeline}</div>
+          </div>
+
+          <div class="order-content">
+            <div class="order-items-list">${itemsHTML}</div>
+            <div class="order-total-vip">
+              Tổng tiền: <strong>${(order.total || 0).toLocaleString('vi-VN')}₫</strong>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    });
+  </script>
+
+  <script src="auth.js"></script>
+</body>
+
+</html>

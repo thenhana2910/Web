@@ -1,0 +1,147 @@
+/* dieukhoan.css – giống hệt phong cách theodoidonhang.css */
+.dieukhoan-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e17 0%, #111827 40%, #1e293b 100%);
+  color: #e2e8f0;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 4%;
+}
+
+/* Header trang */
+.page-header {
+  text-align: center;
+  padding: 5rem 0 3rem;
+}
+
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.8rem;
+  color: #fbbf24;
+  text-shadow: 0 0 50px rgba(251,191,36,0.4);
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.page-header p {
+  color: #94a3b8;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Nội dung điều khoản */
+.terms-content {
+  background: linear-gradient(145deg, rgba(20,25,40,0.98), rgba(15,20,35,0.98));
+  border: 1px solid rgba(251,191,36,0.2);
+  border-radius: 28px;
+  padding: 3.5rem 4rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.7), 0 0 60px rgba(251,191,36,0.12);
+  backdrop-filter: blur(10px);
+}
+
+.term-section {
+  margin-bottom: 3rem;
+}
+
+.term-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #fbbf24;
+  margin: 2.5rem 0 1.5rem;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.term-section h2::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #fbbf24;
+}
+
+.term-section p,
+.term-section li {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+.term-section ul {
+  padding-left: 2rem;
+  margin: 1.5rem 0;
+}
+
+.term-section li {
+  position: relative;
+  margin-bottom: 0.8rem;
+}
+
+.term-section li::before {
+  content: "•";
+  color: #fbbf24;
+  position: absolute;
+  left: -1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header h1 { font-size: 3.2rem; }
+  .terms-content { padding: 2.5rem; border-radius: 20px; }
+  .term-section h2 { font-size: 1.7rem; }
+}
+
+/* NÚT QUAY LẠI – ĐẸP NHƯ TRANG THEO DÕI ĐƠN HÀNG */
+.back-btn-container {
+  text-align: left;
+  margin: 2rem 0 1rem;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: 2px solid rgba(251,191,36,0.4);
+  color: #fbbf24;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.back-btn i {
+  font-size: 1.1rem;
+  transition: transform 0.4s;
+}
+
+.back-btn:hover {
+  background: rgba(251,191,36,0.15);
+  border-color: #fbbf24;
+  transform: translateX(-8px);
+  box-shadow: 0 15px 40px rgba(251,191,36,0.25);
+}
+
+.back-btn:hover i {
+  transform: translateX(-6px);
+}
+
+.back-btn:active {
+  transform: translateY(1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .back-btn-container { text-align: center; margin: 1.5rem 0; }
+  .back-btn { padding: 0.8rem 1.8rem; font-size: 1rem; }
+}

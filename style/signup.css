@@ -12,7 +12,7 @@ body {
   overflow-x: hidden;
   background: linear-gradient(135deg, #0a0e17 0%, #0f172a 50%, #1a1f2e 100%);
   color: #fbbf24;
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   position: relative;
 }
 
@@ -98,7 +98,7 @@ body::before {
   border: 1.6px solid #fbbf24;
   padding: 0.6rem 1.6rem;
   color: #fbbf24;
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Playfair Display', serif;
   cursor: pointer;
   border-radius: 6px;
   transition: 0.4s;
@@ -633,7 +633,7 @@ body::before {
   color: #fbbf24;
   padding: 0.65rem 1.8rem;
   border-radius: 50px;
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -858,7 +858,7 @@ body::before {
   background: #0f172a;
   padding: 12px 18px;
   border-radius: 10px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Playfair Display', serif;
   font-size: 1.35rem;
   letter-spacing: 2px;
   margin: 12px 0;

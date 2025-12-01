@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Điều khoản sử dụng • Flores</title>
+
+  <!-- Icon + Font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="dieukhoan.css">
+</head>
+
+<body class="dieukhoan-page">
+
+  <!-- HEADER – GIỐNG HỆT TRANG THEO DÕI ĐƠN HÀNG -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="sukien.html">Sự kiện</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+    <div class="nav-actions" id="navActions">
+      <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
+      <div class="cart" onclick="toggleGioHang()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG CHÍNH -->
+  <div class="container">
+    <div class="page-header">
+      <h1>Điều khoản sử dụng</h1>
+      <p>Cập nhật lần cuối: 01 tháng 01 năm 2025</p>
+    </div>
+
+    <div class="terms-content">
+      <section class="term-section">
+        <h2>1. Chấp nhận điều khoản</h2>
+        <p>Khi truy cập và sử dụng website Flores, quý khách xác nhận đã đọc, hiểu và đồng ý bị ràng buộc bởi toàn bộ Điều khoản sử dụng này. Nếu không đồng ý, vui lòng ngừng sử dụng dịch vụ ngay lập tức.</p>
+      </section>
+
+      <section class="term-section">
+        <h2>2. Thông tin cá nhân</h2>
+        <p>Chúng tôi chỉ thu thập thông tin cần thiết để xử lý đơn hàng và chăm sóc khách hàng. Mọi dữ liệu đều được bảo mật theo Luật An ninh mạng Việt Nam.</p>
+      </section>
+
+      <section class="term-section">
+        <h2>3. Đặt hàng & Thanh toán</h2>
+        <ul>
+          <li>Đơn hàng chỉ được xác nhận khi thanh toán thành công.</li>
+          <li>Giá sản phẩm đã bao gồm VAT. Phí vận chuyển tính riêng theo khu vực.</li>
+          <li>Flores có quyền từ chối hoặc hủy đơn hàng nếu phát hiện hành vi gian lận.</li>
+        </ul>
+      </section>
+
+      <section class="term-section">
+        <h2>4. Giao hàng</h2>
+        <ul>
+          <li>Nội thành TP.HCM & Hà Nội: 2–4 giờ (đơn trước 16h).</li>
+          <li>Các tỉnh thành khác: 1–3 ngày làm việc.</li>
+          <li>Miễn phí giao hàng với đơn từ 2.000.000₫ (nội thành).</li>
+        </ul>
+      </section>
+
+      <section class="term-section">
+        <h2>5. Đổi trả & Hoàn tiền</h2>
+        <ul>
+          <li>Chấp nhận đổi trong 24 giờ nếu hoa bị héo, dập hoặc sai mẫu do Flores.</li>
+          <li>Không hoàn tiền với hoa tươi đã giao đúng yêu cầu và còn tươi đẹp.</li>
+        </ul>
+      </section>
+
+      <section class="term-section">
+        <h2>6. Sở hữu trí tuệ</h2>
+        <p>Toàn bộ nội dung, hình ảnh, thương hiệu “Flores” đều thuộc quyền sở hữu độc quyền. Mọi hành vi sao chép thương mại đều bị xử lý theo pháp luật.</p>
+      </section>
+
+      <section class="term-section">
+        <h2>7. Sửa đổi điều khoản</h2>
+        <p>Flores có quyền cập nhật Điều khoản bất kỳ lúc nào. Phiên bản mới nhất luôn được đăng tải tại trang này.</p>
+      </section>
+
+      <!-- NÚT QUAY LẠI -->
+<div class="back-btn-container">
+  <button onclick="history.back()" class="back-btn">
+    <i class="fas fa-arrow-left"></i>
+    Quay lại
+  </button>
+</div>
+    </div>
+  </div>
+
+  <!-- FOOTER LUXURY ĐEN-VÀNG – GIỮ NGUYÊN ĐẸP NHƯ BẠN MUỐN -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <!-- Cột 1: Logo + Mô tả -->
+      <div class="footer-col">
+        <h2 class="footer-logo">Flores</h2>
+        <p class="footer-desc">
+          Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện, mỗi cánh hoa là một lời thì thầm
+          của thiên nhiên.
+        </p>
+        <div class="footer-links">
+          <a href="#">Terms and Conditions</a>
+          <span class="separator">•</span>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+
+      <!-- Cột 2: Thông tin liên hệ + MXH -->
+      <div class="footer-col">
+        <h4>Thông tin liên hệ</h4>
+        <p class="contact-item">
+          <i class="fas fa-envelope"></i> Flores@stgmail.com
+        </p>
+        <p class="contact-item">
+          <i class="fas fa-phone-alt"></i> +84 909 888 777
+        </p>
+
+        <div class="social-links">
+          <p>Theo dõi chúng tôi</p>
+          <div class="social-icons-modern">
+            <a href="https://twitter.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột 3: Newsletter -->
+      <div class="footer-col">
+        <h4>Gia nhập hội viên</h4>
+        <p>Đăng ký thành viên để nhận ưu đãi độc quyền & bộ sưu tập mới nhất</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Nhập email" required>
+          <button type="submit">ĐĂNG KÝ</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bản quyền -->
+    <div class="footer-bottom">
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm.</p>
+    </div>
+
+    <!-- Hiệu ứng chấm sao lấp lánh -->
+    <div class="stars" id="stars-container"></div>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toastNotification" class="toast-hidden">
+    <div class="toast-content">
+      <i class="toast-icon"></i>
+      <span class="toast-message"></span>
+    </div>
+    <div class="toast-progress"></div>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+
+</html>

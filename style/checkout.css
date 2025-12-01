@@ -85,7 +85,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: all 0.4s;
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Playfair Display', serif;
     }
     .confirm-btn:hover {
       background: transparent;

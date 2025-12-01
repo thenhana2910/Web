@@ -12,7 +12,7 @@ body {
   /* NỀN ĐEN HUYỀN BÍ - GRADIENT + TEXTURE NHUNG */
   background: linear-gradient(135deg, #0a0e17 0%, #0f172a 50%, #1a1f2e 100%);
   color: #fbbf24;
-  font-family: 'Libre Baskerville', 'Times New Roman', 'Noto Serif', serif;
+  font-family: 'Playfair Display', serif;
   position: relative;
 }
 
@@ -46,7 +46,7 @@ body::before {
 }
 
 .logo {
-  font-family: 'Libre Baskerville', 'Times New Roman', 'Noto Serif', serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 1.2rem;
   color: #fbbf24;
@@ -173,7 +173,7 @@ body::before {
 }
 
 .title {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 6rem;
   line-height: 1.02;
@@ -202,7 +202,7 @@ body::before {
   border: 1.8px solid #fbbf24;
   color: #fbbf24;
   padding: 1rem 2.6rem;
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -297,7 +297,7 @@ body::before {
 }
 
 .page-heading {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 4rem;
   margin-bottom: 1rem;
 }
@@ -317,7 +317,7 @@ body::before {
 }
 
 .shop-heading {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   margin-bottom: 1rem;
 }
@@ -370,7 +370,7 @@ body::before {
 }
 
 .shop-title {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
   margin: 2rem 0 0.8rem;
 }
@@ -522,7 +522,7 @@ body::before {
   border: 1.6px solid #fbbf24;
   padding: 0.6rem 1.5rem;
   color: #fbbf24;
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   cursor: pointer;
   border-radius: 6px;
   transition: 0.3s;
@@ -624,7 +624,7 @@ body::before {
 }
 
 .footer-col h2.footer-logo {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -633,7 +633,7 @@ body::before {
 }
 
 .footer-col h4 {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
   margin-bottom: 1.2rem;
   color: #fbbf24;
@@ -808,14 +808,14 @@ body::before {
 }
 
 .footer-col h2.footer-logo {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.8rem;
   margin-bottom: 1.2rem;
   text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
 }
 
 .footer-col h4 {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
   margin-bottom: 1.2rem;
 }
@@ -1025,7 +1025,7 @@ body::before {
 }
 
 .slide-caption h2 {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 5.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -1235,7 +1235,7 @@ body.shop-page .shop-slider .slide-caption {
 }
 
 body.shop-page .shop-slider .slide-caption h1 {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: clamp(3rem, 8vw, 6rem);
   color: #fbbf24;
   font-weight: 800;
