@@ -41,7 +41,7 @@
 
 .modal-header h3 {
     margin: 0;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville', Georgia, serif;
     font-size: 1.75rem;
     font-weight: 700;
 }
@@ -226,7 +226,7 @@
   color: #fbbf24;
   margin: 0 0 20px 0;
   font-size: 1.25rem;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Libre Baskerville', Georgia, serif;
 }
 .separator {
   border: none;
@@ -351,7 +351,7 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  font-family: inherit;
+  font-family: 'Libre Baskerville', Georgia, serif;
 }
 
 #toastNotification.show {
