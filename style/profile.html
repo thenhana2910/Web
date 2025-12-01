@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thông tin cá nhân - Flores</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="profile-edit.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="components.css">
+
+</head>
+
+<body class="profile-page">
+
+  <!-- HEADER FLORES -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="New.html">New</a>
+      <a href="gioithieu.html">Giới thiệu</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+
+    <div class="nav-actions" id="navActions">
+      <a href="signup.html">
+        <button class="signup-btn">Sign Up</button>
+      </a>
+
+
+      <div class="cart" onclick="toggleGioHang()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="profile-wrapper">
+    <div class="profile-container">
+
+      <!-- CỘT TRÁI - MENU DỌC NHƯ CELLPHONES -->
+      <aside class="profile-menu">
+        <div class="menu-item active">
+          <i class="fas fa-user-circle"></i> Tổng quan
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-history"></i> Lịch sử mua hàng
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-solid fa-credit-card"></i>Phương thức thanh toán
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-trophy"></i> Hạng thành viên và ưu đãi
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-solid fa-truck-fast"></i> Trạng thái vận chuyển
+        </div>
+        <div class="menu-item">
+          <i class="fas fa-file-alt"></i> Điều khoản sử dụng
+        </div>
+        <div class="menu-item logout">
+          <i class="fas fa-sign-out-alt"></i> Đăng xuất
+        </div>
+      </aside>
+
+      <!-- CỘT PHẢI - NỘI DUNG CHÍNH -->
+      <main class="profile-content">
+
+        <!-- PHẦN TỔNG QUAN -->
+        <div id="overviewSection">
+          <div class="profile-header">
+            <h1>Thông tin tài khoản</h1>
+            <button class="btn-edit-profile" onclick="openEditModal()">
+              Chỉnh sửa thông tin
+            </button>
+          </div>
+
+          <div class="info-grid">
+            <div><strong>Họ tên:</strong> <span id="fullName">-</span></div>
+            <div><strong>Email:</strong> <span id="email">-</span></div>
+            <div><strong>Số điện thoại:</strong> <span id="phone">-</span></div>
+            <div><strong>Địa chỉ:</strong> <span id="address">-</span></div>
+            <div><strong>Loại tài khoản:</strong> <span id="role">-</span></div>
+            <div><strong>Ngày tham gia:</strong> <span id="joined">-</span></div>
+          </div>
+        </div>
+
+        <!-- Các phần khác giữ nguyên -->
+        <div class="section">
+          <h2>Đơn hàng gần đây</h2>
+          <div class="empty">Bạn chưa có đơn hàng nào gần đây</div>
+        </div>
+
+        <div class="section">
+          <h2>Ưu đãi của bạn</h2>
+          <div class="empty">Bạn chưa có ưu đãi nào</div>
+        </div>
+
+        <div class="section">
+          <h2>Sản phẩm yêu thích</h2>
+          <div class="empty">Bạn chưa có sản phẩm yêu thích</div>
+        </div>
+      </main>
+
+     <!-- MODAL CHỈNH SỬA THÔNG TIN + ĐỔI MẬT KHẨU (gộp chung) -->
+<div id="editProfileModal" class="modal-overlay">
+  <div class="modal-content edit-modal">
+    <div class="modal-header">
+      <h3>Chỉnh sửa thông tin cá nhân</h3>
+      <span class="modal-close" onclick="closeEditModal()">×</span>
+    </div>
+    <div class="modal-body">
+
+      <!-- PHẦN 1: Thông tin cơ bản -->
+      <div class="form-section">
+        <h4>Thông tin cá nhân</h4>
+        <div class="form-group">
+          <label>Họ và tên lót <span class="required">*</span></label>
+          <input type="text" id="editFirstName" required>
+        </div>
+        <div class="form-group">
+          <label>Tên <span class="required">*</span></label>
+          <input type="text" id="editLastName" required>
+        </div>
+        <div class="form-group">
+          <label>Số điện thoại <span class="required">*</span></label>
+          <input type="tel" id="editPhone" required placeholder="0xxxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label>Địa chỉ nhận hàng</label>
+          <input type="text" id="editAddress" placeholder="Ví dụ: 123 Đường Hoa, Quận 1, TP.HCM">
+        </div>
+      </div>
+
+      <hr class="separator">
+
+      <!-- PHẦN 2: Đổi mật khẩu (có thể bỏ trống) -->
+      <div class="form-section">
+        <h4>Đổi mật khẩu <small style="color:#94a3b8;">(Để trống nếu không muốn đổi)</small></h4>
+        <div class="form-group">
+          <label>Mật khẩu hiện tại</label>
+          <input type="password" id="oldPassword" placeholder="Chỉ nhập nếu muốn đổi mật khẩu">
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu mới</label>
+          <input type="password" id="newPassword" placeholder="Tối thiểu 6 ký tự">
+        </div>
+        <div class="form-group">
+          <label>Xác nhận mật khẩu mới</label>
+          <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu mới">
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" onclick="closeEditModal()" class="btn-cancel">Hủy</button>
+        <button type="button" class="btn-save" onclick="saveProfileChanges()">
+  Lưu tất cả thay đổi
+</button>
+      </div>
+      <div id="editMessage" class="message"></div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <script src="profile.js"></script>
+  <script>
+    // Tự động load thông tin người dùng + cập nhật navbar khi vào trang
+    document.addEventListener("DOMContentLoaded", function () {
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+      if (!user) {
+        alert("Vui lòng đăng nhập để xem thông tin cá nhân!");
+        location.href = "signup.html";
+        return;
+      }
+      loadUserInfo(user);
+      updateNavbar(user); // nếu bạn dùng chung hàm updateNavAfterLogin
+    });
+  </script>
+  <script src="auth.js"></script>
+  <script>
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (!user) {
+      alert("Vui lòng đăng nhập!");
+      location.href = "signup.html";
+    } else {
+      document.getElementById("fullName").textContent = `${user.firstName} ${user.lastName}`;
+      document.getElementById("email").textContent = user.email;
+      document.getElementById("phone").textContent = user.phone || "Chưa cập nhật";
+      document.getElementById("address").textContent = user.address || "Chưa cập nhật";
+      document.getElementById("role").textContent = user.isAdmin ? "Quản trị viên" : "Khách hàng";
+      document.getElementById("joined").textContent = new Date(user.registeredAt).toLocaleDateString('vi-VN');
+    }
+
+    // Đăng xuất
+    document.querySelector('.logout').addEventListener('click', () => {
+      localStorage.removeItem('currentUser');
+      location.href = 'signup.html';
+    });
+  </script>
+
+  <!-- ==================== FOOTER LUXURY ĐEN-VÀNG ==================== -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+
+      <!-- Cột 1: Logo + Mô tả -->
+      <div class="footer-col">
+        <h2 class="footer-logo">Flores</h2>
+        <p class="footer-desc">
+          Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện, mỗi cánh hoa là một lời thì thầm
+          của thiên nhiên.
+        </p>
+        <div class="footer-links">
+          <a href="#">Terms and Conditions</a>
+          <span class="separator">•</span>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+
+      <!-- Cột 2: Thông tin liên hệ + MXH -->
+      <div class="footer-col">
+        <h4>Thông tin liên hệ</h4>
+        <p class="contact-item">
+          <i class="fas fa-envelope"></i> Flores@stgmail.com
+        </p>
+        <p class="contact-item">
+          <i class="fas fa-phone-alt"></i> +84 909 888 777
+        </p>
+
+        <div class="social-links">
+          <p>Theo dõi chúng tôi</p>
+          <div class="social-icons-modern">
+            <a href="https://twitter.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột 3: Newsletter -->
+      <div class="footer-col">
+        <h4>Gia nhập hội viên</h4>
+        <p>Đăng ký thành viên để nhận ưu đãi độc quyền & bộ sưu tập mới nhất</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Nhập email" required>
+          <button type="submit">ĐĂNG KÝ</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bản quyền -->
+    <div class="footer-bottom">
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm. </p>
+    </div>
+
+    <!-- Hiệu ứng chấm sao lấp lánh -->
+    <div class="stars" id="stars-container"></div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION - HIỆN TRÊN CÙNG DƯỚI NAVBAR -->
+<div id="toastNotification" class="toast-hidden">
+  <div class="toast-content">
+    <i class="toast-icon"></i>
+    <span class="toast-message">Thông báo sẽ hiện ở đây</span>
+  </div>
+  <div class="toast-progress"></div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+/* ==================== NAVBAR MỚI SIÊU ĐẸP 2025 ==================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.3rem 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 14, 23, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(251, 191, 36, 0.15);
+  transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+  padding: 1rem 6%;
+  background: rgba(10, 14, 23, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fbbf24;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+  letter-spacing: -0.5px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 3.8rem;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: #fbbf24;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.02rem;
+  position: relative;
+  transition: all 0.35s ease;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 0;
+  height: 1.8px;
+  background: #fbbf24;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.nav-menu a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+}
+
+/* Nút dropdown tài khoản - đẹp lung linh */
+.account-wrapper {
+  position: relative;
+}
+
+.account-btn {
+  background: transparent;
+  border: 2px solid #fbbf24;
+  color: #fbbf24;
+  padding: 0.75rem 2.1rem;
+  border-radius: 50px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.account-btn:hover {
+  background: #fbbf24;
+  color: #0f172a;
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px rgba(251, 191, 36, 0.6);
+}
+
+.account-btn i {
+  transition: transform 0.3s ease;
+}
+
+.account-wrapper:hover .account-btn i {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.account-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 15px;
+  background: #0f172a;
+  border: 1.5px solid rgba(251, 191, 36, 0.3);
+  border-radius: 18px;
+  min-width: 240px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.account-wrapper:hover .account-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.account-dropdown a {
+  display: block;
+  padding: 1rem 1.8rem;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.98rem;
+  transition: 0.3s;
+}
+
+.account-dropdown a:hover {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  padding-left: 2.4rem;
+}
+
+/* Giỏ hàng icon */
+.cart {
+  position: relative;
+  margin-left: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  transition: 0.3s;
+}
+
+.cart:hover {
+  transform: scale(1.15);
+}
+
+.cart i {
+  font-size: 1.8rem;
+  color: #fbbf24;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #fbbf24;
+  color: #0f172a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.9);
+}

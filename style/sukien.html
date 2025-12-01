@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New - Flores et Picturae</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="stylesukien.css" />
+  <link rel="stylesheet" href="components.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="content-page">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="sukien.html">Sự kiện</a>
+      <a href="gioithieu.html">Giới thiệu</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+
+    <div class="nav-actions" id="navActions">
+      <a href="signup.html">
+        <button class="signup-btn">Sign Up</button>
+      </a>
+
+
+      <div class="cart" onclick="toggleGioHang()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+   <!-- NỘI DUNG NEW -->
+  <main class="content-main">
+    <div class="container">
+      <p class="page-subtitle">Tin tức mới • Bộ sưu tập</p>
+
+      <!-- ==== Danh sách bài (3 bài, xen kẽ ảnh trái — phải) ==== -->
+      <section class="articles-list">
+
+        <article class="article-row">
+          <div class="article-image">
+            <!-- Sử dụng ảnh upload sẵn (nếu server không cho truy cập, đổi thành đường dẫn ảnh trực tuyến) -->
+            <img
+              src="https://images.unsplash.com/photo-1710629357740-546115c6f75b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGIlQzMlQjMlMjBob2ElMjBuZ2glRTElQkIlODclMjB0aHUlRTElQkElQUR0fGVufDB8fDB8fHww"
+              alt="Bài 1">
+          </div>
+          <div class="article-text">
+            <span class="news-date">Lời tri ân Ngày Nhà giáo Việt Nam 20/11</span>
+            <h3 class="article-title">Sắc hoa buổi sớm</h3>
+            <p>Ngày 20/11 là dịp để chúng ta bày tỏ lòng biết ơn sâu sắc đến những người thầy, người cô đã tận tâm dìu
+              dắt bao thế hệ học trò. Với tình yêu nghề và sự hi sinh thầm lặng, thầy cô không chỉ truyền đạt kiến thức
+              mà còn vun đắp nhân cách, mở ra tương lai cho mỗi người. Xin gửi đến tất cả thầy cô lời tri ân chân thành
+              và kính chúc sức khỏe, hạnh phúc, tiếp tục đồng hành cùng bao ước mơ của học trò.
+            </p>
+            <a href="#" class="news-readmore">Xem chi tiết →</a>
+          </div>
+        </article>
+
+        <article class="article-row reverse">
+          <div class="article-image">
+            <img
+              src="https://images.unsplash.com/photo-1745176593885-c1d466a6dff5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGIlQzMlQjMlMjBob2ElMjBuZ2glRTElQkIlODclMjB0aHUlRTElQkElQUR0fGVufDB8fDB8fHww"
+              alt="Bài 2">
+          </div>
+          <div class="article-text">
+            <span class="news-date">Da Lat Flower Exhibition</span>
+            <h3 class="article-title">Hương và màu</h3>
+            <p>Triển lãm Hoa Đà Lạt năm nay thu hút hàng chục nghìn lượt khách tham quan nhờ không gian trưng bày rực rỡ
+              và đa dạng. Bên cạnh khu triển lãm chính, các tuyến phố trung tâm được trang hoàng bằng sắc hoa đặc trưng
+              của Đà Lạt, tạo nên một “thành phố hoa” sống động suốt nhiều ngày liền. Sự kiện không chỉ tôn vinh vẻ đẹp
+              của các loài hoa mà còn đem lại trải nghiệm văn hóa – du lịch độc đáo cho du khách trong nước và quốc tế.
+            </p>
+            <a href="#" class="news-readmore">Xem chi tiết →</a>
+          </div>
+        </article>
+
+        <article class="article-row">
+          <div class="article-image">
+            <!-- Dùng lại ảnh 1 nếu bạn chưa cung cấp ảnh thứ 3 -->
+            <img
+              src="https://images.unsplash.com/photo-1710068145569-5e6785b53bf5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGIlQzMlQjMlMjBob2ElMjBuZ2glRTElQkIlODclMjB0aHUlRTElQkElQUR0fGVufDB8fDB8fHww"
+              alt="Bài 3">
+          </div>
+          <div class="article-text">
+            <span class="news-date">Hội triển lãm Hoa lan nghệ thuật tại TP. Hồ Chí Minh</span>
+            <h3 class="article-title">Vẽ đẹp của hoa</h3>
+            <p>Triển lãm Hoa Lan Nghệ Thuật tại TP. Hồ Chí Minh năm nay mang đến không gian trưng bày đầy ấn tượng với
+              hàng loạt tác phẩm lan Phalaenopsis độc đáo. Sự kiện do Hiệp hội Hoa Đà Lạt tổ chức, quy tụ nhiều nghệ
+              nhân và nhà vườn, giới thiệu những bố cục lan được thiết kế tinh xảo và mang giá trị thẩm mỹ cao. Đây là
+              điểm nhấn nổi bật dành cho những ai yêu thích hoa lan và nghệ thuật sắp đặt, góp phần lan tỏa vẻ đẹp của
+              loài hoa thanh lịch này đến công chúng.</p>
+            <a href="#" class="news-readmore">Xem chi tiết →</a>
+          </div>
+        </article>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- ==================== MODAL GIỎ HÀNG ==================== -->
+  <div id="gio-hang-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="toggleGioHang()">&times;</span>
+      <h2>Giỏ hàng</h2>
+      <button class="cta-button">Thanh toán</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleGioHang() {
+      const m = document.getElementById("gio-hang-modal");
+      m.style.display = m.style.display === "block" ? "none" : "block";
+    }
+    window.onclick = e => { if (e.target.id === "gio-hang-modal") e.target.style.display = "none"; }
+  </script>
+    <!-- ==================== FOOTER LUXURY ĐEN-VÀNG ==================== -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+
+      <!-- Cột 1: Logo + Mô tả -->
+      <div class="footer-col">
+        <h2 class="footer-logo">Flores</h2>
+        <p class="footer-desc">
+          Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện, mỗi cánh hoa là một lời thì thầm
+          của thiên nhiên.
+        </p>
+        <div class="footer-links">
+          <a href="#">Terms and Conditions</a>
+          <span class="separator">•</span>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+
+      <!-- Cột 2: Thông tin liên hệ + MXH -->
+            <div class="footer-col">
+                <h4>Thông tin liên hệ</h4>
+                <p class="contact-item">
+                    <i class="fas fa-envelope"></i> Flores@stgmail.com
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-phone-alt"></i> +84 909 888 777
+                </p>
+
+                <div class="social-links">
+                    <p>Theo dõi chúng tôi</p>
+                    <div class="social-icons-modern">
+                        <a href="https://twitter.com" target="_blank" class="social-icon-modern">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="social-icon-modern">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="social-icon-modern">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+      <!-- Cột 3: Newsletter -->
+      <div class="footer-col">
+        <h4>Gia nhập hội viên</h4>
+        <p>Đăng ký thành viên để nhận ưu đãi độc quyền & bộ sưu tập mới nhất</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Nhập email" required>
+          <button type="submit">ĐĂNG KÝ</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bản quyền -->
+    <div class="footer-bottom">
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm. </p>
+    </div>
+
+    <!-- Hiệu ứng chấm sao lấp lánh -->
+    <div class="stars" id="stars-container"></div>
+  </footer>
+  <script src="auth.js"></script>
+</body>
+
+</html>

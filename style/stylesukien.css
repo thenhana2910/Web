@@ -1,0 +1,191 @@
+/* ===== Thiết kế layout cho Thongtinmoi - bài xen kẽ ảnh/trái-phải ===== */
+.articles-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* Hàng bài — KHÔNG khung, hòa hoàn toàn vào nền */
+.article-row {
+  display: flex;
+  align-items: center;
+  gap: 5rem;                    /* tăng khoảng cách cho thoáng đãng hơn */
+  padding: 4rem 2rem;           /* chỉ giữ padding dọc + lề nhẹ, không background */
+  margin: 0 auto;
+  max-width: 1300px;
+  position: relative;
+}
+
+/* Khi đảo chiều (ảnh bên phải) */
+.article-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Thêm một chút hiệu ứng nhẹ khi hover toàn bộ hàng (tùy chọn, rất đẹp) */
+.article-row:hover .article-image img {
+  transform: scale(1.04);
+}
+
+.article-row:hover .article-text {
+  transform: translateY(-4px);
+  transition: transform 0.4s ease;
+}
+
+/* Ảnh — thêm chút nổi bật mà không cần khung */
+.article-image {
+  flex: 0 0 420px;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 20px;                    /* bo góc mềm mại hơn */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6); /* bóng đậm hơn, tạo cảm giác floating */
+  transition: all 0.6s ease;
+}
+
+.article-image:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(251, 191, 36, 0.15);
+}
+
+/* Text — trong suốt hơn, sang hơn */
+.article-text {
+  flex: 1;
+  padding: 1rem 0;
+  color: #e8d9b8;
+}
+
+.article-title {
+  font-size: 2.1rem;       /* to hơn một chút */
+  line-height: 1.3;
+  margin: 0.5rem 0 1rem;
+  color: #fffef0;
+}
+
+.news-date {
+  color: #fbbf24 !important;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Link xem chi tiết — tinh tế hơn */
+.news-readmore {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: #fbbf24;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.news-readmore::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #fbbf24;
+  transition: width 0.4s ease;
+}
+
+.news-readmore:hover::after {
+  width: 100%;
+}
+
+.news-readmore:hover {
+  color: #ffffff;
+}
+
+/* Khi thêm class .reverse => ảnh sẽ ở bên phải */
+.article-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Ảnh bài */
+.article-image {
+  flex: 0 0 380px; /* cố định tỉ lệ ảnh rộng hơn text theo mẫu */
+  height: 420px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+}
+
+.article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.article-image img:hover {
+  transform: scale(1.03);
+}
+
+/* Nội dung text */
+.article-text {
+  flex: 1 1 auto;
+  text-align: left;
+  color: #f3e6c4;
+  font-family: 'Libre Baskerville', serif;
+  padding-right: 0.5rem;
+}
+
+.article-text .news-date {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  color: #f7e6b3;
+}
+
+.article-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin: 0.3rem 0 0.9rem;
+  color: #fff8dc;
+}
+
+.article-text p {
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+/* Link xem chi tiết */
+.news-readmore {
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid transparent;
+  transition: all 0.25s ease;
+  color: #fbbf24;
+}
+.news-readmore:hover {
+  color: #fff;
+  border-bottom-color: #fbbf24;
+}
+
+/* RESPONSIVE: nhỏ hơn 900px => thu nhỏ chiều ảnh */
+@media (max-width: 1000px) {
+  .article-image {
+    flex: 0 0 320px;
+    height: 360px;
+  }
+}
+
+/* RESPONSIVE: mobile - stack cột (ảnh trên, text dưới) */
+@media (max-width: 768px) {
+  .article-row, .article-row.reverse {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .article-image {
+    width: 100%;
+    height: 52vw; /* giữ tỉ lệ đẹp */
+    flex: none;
+  }
+  .article-text {
+    padding-top: 1rem;
+  }
+}
