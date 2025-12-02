@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Giỏ hàng • Flores</title>
 
   <!-- Font + Icon -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- CSS chung + CSS riêng giỏ hàng -->
@@ -14,6 +17,7 @@
   <link rel="stylesheet" href="components.css">
   <link rel="stylesheet" href="giohang.css">
 </head>
+
 <body>
 
   <!-- NAVBAR giống hệt các trang khác -->
@@ -26,10 +30,10 @@
       <a href="khampha.html">Khám phá</a>
     </nav>
     <div class="nav-actions">
-      <a href="giohang.html" class="cart">
+      <div class="cart" id="cartIcon">
         <i class="fa-solid fa-bag-shopping"></i>
         <span id="cart-count" class="cart-count">0</span>
-      </a>
+      </div>
     </div>
   </header>
 
@@ -41,13 +45,6 @@
       <p id="cart-subtitle">Đang có <strong id="item-count">0</strong> sản phẩm tuyệt đẹp</p>
     </div>
 
-    <!-- Giỏ hàng trống -->
-    <div id="empty-cart" class="empty-cart">
-      <i class="fa-solid fa-basket-shopping"></i>
-      <h2>Giỏ hàng đang trống</h2>
-      <p>Thêm những bó hoa yêu thích để cảm nhận vẻ đẹp của thiên nhiên</p>
-      <a href="shop.html" class="continue-shopping-btn">Tiếp tục mua sắm</a>
-    </div>
 
     <!-- Khi có sản phẩm -->
     <div id="cart-content" style="display:none;">
@@ -115,4 +112,5 @@
   <!-- JS xử lý giỏ hàng -->
   <script src="giohang.js"></script>
 </body>
+
 </html>

@@ -11,7 +11,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body class="content-page">
@@ -33,14 +33,14 @@
       </a>
 
 
-      <div class="cart" onclick="toggleGioHang()">
+      <div class="cart" id="cart-icon">
         <i class="fa-solid fa-bag-shopping"></i>
         <span id="cart-count" class="cart-count">0</span>
       </div>
     </div>
   </header>
 
-   <!-- NỘI DUNG NEW -->
+  <!-- NỘI DUNG NEW -->
   <main class="content-main">
     <div class="container">
       <p class="page-subtitle">Tin tức mới • Bộ sưu tập</p>
@@ -108,14 +108,6 @@
     </div>
   </main>
 
-  <!-- ==================== MODAL GIỎ HÀNG ==================== -->
-  <div id="gio-hang-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="toggleGioHang()">&times;</span>
-      <h2>Giỏ hàng</h2>
-      <button class="cta-button">Thanh toán</button>
-    </div>
-  </div>
 
   <script>
     function toggleGioHang() {
@@ -124,8 +116,8 @@
     }
     window.onclick = e => { if (e.target.id === "gio-hang-modal") e.target.style.display = "none"; }
   </script>
-  
-    <!-- ==================== FOOTER LUXURY ĐEN-VÀNG ==================== -->
+
+  <!-- ==================== FOOTER LUXURY ĐEN-VÀNG ==================== -->
   <footer class="luxury-footer">
     <div class="footer-container">
 
@@ -144,33 +136,33 @@
       </div>
 
       <!-- Cột 2: Thông tin liên hệ + MXH -->
-            <div class="footer-col">
-                <h4>Thông tin liên hệ</h4>
-                <p class="contact-item">
-                    <i class="fas fa-envelope"></i> Flores@stgmail.com
-                </p>
-                <p class="contact-item">
-                    <i class="fas fa-phone-alt"></i> +84 909 888 777
-                </p>
+      <div class="footer-col">
+        <h4>Thông tin liên hệ</h4>
+        <p class="contact-item">
+          <i class="fas fa-envelope"></i> Flores@stgmail.com
+        </p>
+        <p class="contact-item">
+          <i class="fas fa-phone-alt"></i> +84 909 888 777
+        </p>
 
-                <div class="social-links">
-                    <p>Theo dõi chúng tôi</p>
-                    <div class="social-icons-modern">
-                        <a href="https://twitter.com" target="_blank" class="social-icon-modern">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://facebook.com" target="_blank" class="social-icon-modern">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" class="social-icon-modern">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="social-links">
+          <p>Theo dõi chúng tôi</p>
+          <div class="social-icons-modern">
+            <a href="https://twitter.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
 
       <!-- Cột 3: Newsletter -->
       <div class="footer-col">
@@ -193,6 +185,68 @@
     <div class="stars" id="stars-container"></div>
   </footer>
   <script src="auth.js"></script>
+  <script>
+    /* PHƯƠNG ÁN B - Đồng bộ localStorage key và thêm toggleGioHang() */
+    (function () {
+      const STORAGE_KEY = 'cart'; // chuẩn: 'cart'. Nếu muốn khác, đổi ở đây.
+
+      // Thêm/hợp nhất item vào localStorage (gọi từ nút "Thêm vào giỏ")
+      window.addToCart = function (name, price, image, variant = '') {
+        let cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const found = cart.find(i => i.name === name && (i.variant || '') === variant);
+        if (found) found.quantity = (found.quantity || 1) + 1;
+        else cart.push({ name, price: Number(price), image: image || '', variant, quantity: 1 });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+
+        // backward-compat: update floresCart nếu có mã cũ
+        try { localStorage.setItem('floresCart', JSON.stringify(cart)); } catch (e) { }
+
+        updateCartCount();
+        // toast đơn giản — nếu bạn có hàm showToast thì dùng, else alert
+        if (typeof showToast === 'function') showToast(`${name} đã thêm vào giỏ!`);
+        else console.log(`${name} added to cart`);
+      }
+
+      // Cập nhật badge hiển thị số lượng
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const total = cart.reduce((s, i) => s + (i.quantity || 1), 0);
+        document.querySelectorAll('#cart-count').forEach(el => {
+          el.textContent = total;
+          el.style.display = total > 0 ? 'flex' : 'none';
+        });
+        const itemCountEl = document.getElementById('item-count');
+        if (itemCountEl) itemCountEl.textContent = cart.length;
+      }
+
+      // Định nghĩa toggleGioHang được gọi từ header
+      window.toggleGioHang = function (e) {
+        // Nếu có hàm openCart (sidebar inject), ưu tiên gọi
+        if (typeof openCart === 'function') {
+          if (e && e.preventDefault) e.preventDefault();
+          return openCart();
+        }
+        // Mặc định: chuyển tới trang giỏ hàng
+        if (e && e.preventDefault) e.preventDefault();
+        window.location.href = 'giohang.html';
+      }
+
+      // Gắn listener cho icon nếu dùng event delegation (nếu chưa gắn)
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.cart, .cart-btn, [data-role="open-cart"]').forEach(el => {
+          el.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            toggleGioHang(ev);
+          });
+        });
+        // cập nhật badge khi load trang
+        updateCartCount();
+      });
+
+      // Expose updateCartCount để có thể gọi thủ công sau khi load dữ liệu
+      window.updateCartCount = updateCartCount;
+    })();
+  </script>
 </body>
 
 </html>

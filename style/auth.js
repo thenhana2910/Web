@@ -94,4 +94,31 @@ document.querySelector('.slider-prev').addEventListener('click', () => {
   currentSlide(slideIndex + 1);
 });
 
+// Hàm cập nhật số lượng giỏ hàng (đã có sẵn ở một số trang, nhưng làm chung)
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("floresCart")) || [];
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const countEl = document.getElementById("cart-count");
+  if (countEl) {
+    countEl.textContent = totalItems;
+    countEl.style.display = totalItems > 0 ? "flex" : "none";
+  }
+}
 
+// Xử lý click icon giỏ hàng: chuyển đến checkout nếu có hàng
+document.addEventListener("DOMContentLoaded", function () {
+  const cartIcon = document.getElementById("cart-icon");
+  if (cartIcon) {
+    cartIcon.addEventListener("click", () => {
+      const cart = JSON.parse(localStorage.getItem("floresCart")) || [];
+      if (cart.length === 0) {
+        alert("Giỏ hàng đang trống! Hãy thêm ít nhất một bó hoa nhé");
+      } else {
+        window.location.href = "checkout.html";
+      }
+    });
+  }
+
+  // Cập nhật số lượng giỏ hàng khi load trang
+  updateCartCount();
+});

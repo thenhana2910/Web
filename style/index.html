@@ -32,11 +32,6 @@
       <a href="signup.html">
         <button class="signup-btn">Sign Up</button>
       </a>
-
-      <a href="giohang.html" class="cart">
-        <i class="fa-solid fa-bag-shopping"></i>
-        <span id="cart-count" class="cart-count">0</span>
-      </a>
     </div>
   </header>
 
@@ -46,7 +41,7 @@
       <h1 class="title">Flores et Picturae</h1>
       <p class="subtitle">BOSTON</p>
       <a href="shop.html">
-        <button class="cta-button">Mua bó hoa</button>
+        <button class="cta-button">Mua hoa</button>
       </a>
     </div>
     <!-- Ảnh nền hoa đỏ đen huyền bí -->
@@ -54,39 +49,9 @@
       alt="Hoa nghệ thuật" class="hero-image" loading="lazy" />
   </main>
 
-  <!-- ==================== MODAL GIỎ HÀNG ==================== -->
-  <div id="gio-hang-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="toggleGioHang()">&times;</span>
-      <h2>Giỏ hàng</h2>
-      <div id="cart-items"></div>
-      <button class="cta-button">Thanh toán</button>
-    </div>
-  </div>
-
   <!-- ==================== SCRIPT GIỎ HÀNG ==================== -->
   <script src="auth.js"></script>
-  <script src="giohang.js"></script>
 
-  <script>
-    // Cập nhật số lượng giỏ hàng ở góc phải
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-      const countEl = document.getElementById("cart-count");
-      if (countEl) {
-        countEl.textContent = cart.length;
-        countEl.style.display = cart.length > 0 ? "flex" : "none";
-      }
-    }
-
-    // Chạy khi load trang
-    document.addEventListener("DOMContentLoaded", updateCartCount);
-
-    // Cập nhật khi có thay đổi từ trang khác (shop thêm sản phẩm...)
-    window.addEventListener("storage", (e) => {
-      if (e.key === "cart") updateCartCount();
-    });
-  </script>
 </body>
 
 </html>

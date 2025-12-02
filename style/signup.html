@@ -32,7 +32,7 @@
       <a href="signup.html">
         <button class="signup-btn">Sign Up</button>
       </a>
-      <div class="cart" onclick="toggleGioHang()">
+      <div class="cart" id="cart-icon">
         <i class="fa-solid fa-bag-shopping"></i>
         <span id="cart-count" class="cart-count">0</span>
       </div>
@@ -223,7 +223,8 @@
           <span style="color: #fbbf24; font-weight: 600;">Xin chào, ${user.firstName}!</span>
           ${user.isAdmin ? '<a href="admin.html" style="color:#ff6b6b; margin-left:15px;">⚡ Admin Panel</a>' : ''}
           <button onclick="logout()" style="margin-left:15px; background:none; border:none; color:#ff6b6b; cursor:pointer; text-decoration:underline;">Đăng xuất</button>
-        </div Lord of the Rings
+        </div Lord of the Rings>
+
         <div class="cart" onclick="toggleGioHang()">
           <i class="fa-solid fa-bag-shopping"></i>
           <span id="cart-count" class="cart-count">0</span>

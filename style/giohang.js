@@ -69,3 +69,77 @@ function removeItem(index) {
     location.reload();
   }
 }
+// Lấy giỏ hàng từ localStorage
+let cart = JSON.parse(localStorage.getItem("floresCart") || "[]");
+
+function updateCartCount() {
+  const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.querySelectorAll("#cart-count").forEach(el => {
+    el.textContent = total;
+    el.style.display = total > 0 ? "flex" : "none";
+  });
+}
+
+// Render giỏ hàng trong sidebar
+function renderCart() {
+  const container = document.getElementById("floresCartItems");
+  container.innerHTML = "";
+  let subtotal = 0;
+  cart.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "flores-cart-item";
+    row.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
+      <div class="meta">
+        <div class="name">${item.name}</div>
+        <div class="meta-sub">${item.quantity} × ${item.price.toLocaleString()} ₫</div>
+      </div>
+      <div class="controls">
+        <div class="qty-controls">
+          <button onclick="changeQty(${index},-1)">−</button>
+          <span class="qty">${item.quantity}</span>
+          <button onclick="changeQty(${index},1)">+</button>
+        </div>
+        <button onclick="removeItem(${index})">🗑</button>
+      </div>
+    `;
+    container.appendChild(row);
+    subtotal += item.price * item.quantity;
+  });
+  document.getElementById("cartSubtotal").textContent = subtotal.toLocaleString() + " ₫";
+  document.getElementById("cartTotal").textContent = subtotal.toLocaleString() + " ₫";
+}
+
+function changeQty(index, delta) {
+  cart[index].quantity += delta;
+  if (cart[index].quantity <= 0) cart.splice(index, 1);
+  localStorage.setItem("floresCart", JSON.stringify(cart));
+  renderCart();
+  updateCartCount();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("floresCart", JSON.stringify(cart));
+  renderCart();
+  updateCartCount();
+}
+
+// Mở/đóng sidebar
+function toggleCart() {
+  document.getElementById("floresCartPanel").classList.toggle("open");
+  document.getElementById("floresCartOverlay").classList.toggle("show");
+}
+
+document.getElementById("closeCart").addEventListener("click", toggleCart);
+document.getElementById("floresCartOverlay").addEventListener("click", toggleCart);
+
+// Mở giỏ hàng khi click icon trên navbar
+document.querySelectorAll(".cart").forEach(el => {
+  el.addEventListener("click", toggleCart);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+  renderCart();
+});

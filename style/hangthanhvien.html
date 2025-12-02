@@ -8,7 +8,9 @@
 
   <!-- Icon + Font -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
@@ -29,14 +31,14 @@
     </nav>
     <div class="nav-actions" id="navActions">
       <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
-      <div class="cart" onclick="toggleGioHang()">
+      <div class="cart" id="cart-icon">
         <i class="fa-solid fa-bag-shopping"></i>
         <span id="cart-count" class="cart-count">0</span>
       </div>
     </div>
   </header>
 
-      <!-- NỘI DUNG CHÍNH -->
+  <!-- NỘI DUNG CHÍNH -->
   <div class="container">
     <div class="page-header">
       <h1>Phương thức thanh toán</h1>
@@ -134,33 +136,33 @@
       </div>
 
       <!-- Cột 2: Thông tin liên hệ + MXH -->
-            <div class="footer-col">
-                <h4>Thông tin liên hệ</h4>
-                <p class="contact-item">
-                    <i class="fas fa-envelope"></i> Flores@stgmail.com
-                </p>
-                <p class="contact-item">
-                    <i class="fas fa-phone-alt"></i> +84 909 888 777
-                </p>
+      <div class="footer-col">
+        <h4>Thông tin liên hệ</h4>
+        <p class="contact-item">
+          <i class="fas fa-envelope"></i> Flores@stgmail.com
+        </p>
+        <p class="contact-item">
+          <i class="fas fa-phone-alt"></i> +84 909 888 777
+        </p>
 
-                <div class="social-links">
-                    <p>Theo dõi chúng tôi</p>
-                    <div class="social-icons-modern">
-                        <a href="https://twitter.com" target="_blank" class="social-icon-modern">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://facebook.com" target="_blank" class="social-icon-modern">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" class="social-icon-modern">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="social-links">
+          <p>Theo dõi chúng tôi</p>
+          <div class="social-icons-modern">
+            <a href="https://twitter.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
 
       <!-- Cột 3: Newsletter -->
       <div class="footer-col">
@@ -194,4 +196,5 @@
 
   <script src="auth.js"></script>
 </body>
+
 </html>
