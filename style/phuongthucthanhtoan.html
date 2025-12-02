@@ -1,145 +1,161 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phương thức thanh toán • Flores</title>
 
-  <!-- Icon + Font -->
+  <!-- Font & Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="components.css">
   <link rel="stylesheet" href="phuongthucthanhtoan.css">
 </head>
+<body>
 
-<body class="tracking-vip-page">
-
-  <!-- HEADER – GIỐNG HỆT CÁC TRANG KHÁC -->
+  <!-- NAVBAR -->
   <header class="navbar">
     <a href="index.html" class="logo">Flores</a>
     <nav class="nav-menu">
-      <a href="index.html">Trang chủ</a>
+      <a href="index""
+      >Trang chủ</a>
       <a href="shop.html">Cửa hàng</a>
       <a href="sukien.html">Sự kiện</a>
       <a href="khampha.html">Khám phá</a>
     </nav>
-    <div class="nav-actions" id="navActions">
-      <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
-      <div class="cart" onclick="toggleGioHang()">
-        <i class="fa-solid fa-bag-shopping"></i>
-        <span id="cart-count" class="cart-count">0</span>
-      </div>
-    </div>
+    <div class="nav-actions" id="navActions"></div>
   </header>
 
-  <!-- NỘI DUNG CHÍNH -->
-  <div class="container">
-    <div class="page-header">
+  <div class="payment-container">
+
+    <div class="payment-header">
+      <div class="wallet-icon">Wallet</div>
       <h1>Phương thức thanh toán</h1>
-      <p>Flores hỗ trợ mọi hình thức thanh toán phổ biến và an toàn nhất tại Việt Nam</p>
+      <p>Test mode – Bấm nút là thêm ngay, không cần nhập thật!</p>
     </div>
 
-    <!-- NÚT QUAY LẠI -->
-    <div class="back-btn-container">
-      <button onclick="history.back()" class="back-btn">
-        <i class="fas fa-arrow-left"></i> Quay lại
-      </button>
-    </div>
+    <!-- GRID CHÍNH -->
+    <div class="payment-grid">
 
-    <!-- CARD THANH TOÁN SIÊU VIP -->
-    <div class="payment-main-card">
-      <div class="payment-grid">
+      <!-- CỘT 1: THẺ NGÂN HÀNG + TEST NHANH -->
+      <div class="payment-card">
+        <i class="fas fa-credit-card payment-icon"></i>
+        <h2 class="payment-title">Thẻ ngân hàng</h2>
+        <p class="payment-desc">Bấm nút dưới để thêm thẻ test siêu nhanh!</p>
 
-        <!-- 1. Thẻ quốc tế & PayPal -->
-        <div class="payment-category">
-          <h3><i class="fas fa-credit-card"></i> Thẻ quốc tế và PayPal</h3>
-          <div class="payment-icons">
-            <img src="https://img.icons8.com/color/96/visa.png" alt="Visa">
-            <img src="https://img.icons8.com/color/96/mastercard.png" alt="Mastercard">
-            <img src="https://img.icons8.com/color/96/jcb.png" alt="JCB">
-            <img src="https://img.icons8.com/color/96/paypal.png" alt="PayPal">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;">
+          <button type="button" onclick="addTestCard('visa')"    class="test-btn visa">Visa 4111</button>
+          <button type="button" onclick="addTestCard('master')"  class="test-btn master">Master 5555</button>
+          <button type="button" onclick="addTestCard('vcb')"     class="test-btn vcb">Vietcombank</button>
+          <button type="button" onclick="addTestCard('bidv')"    class="test-btn bidv">BIDV</button>
+        </div>
+
+        <!-- Form thật (giữ cho đẹp, vẫn dùng được nếu muốn nhập tay) -->
+        <form id="addCardForm" class="add-card-form" style="margin-top:1rem;">
+          <div class="form-group">
+            <label>Số thẻ</label>
+            <div style="position:relative;">
+              <input type="text" placeholder="Nhập số thẻ" id="cardNumber" maxlength="23" style="padding-left:50px;">
+              <i id="cardBrandIcon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1.6rem;color:#fbbf24;opacity:0.7;"></i>
+            </div>
           </div>
-        </div>
-
-        <!-- 2. Ví điện tử Việt Nam -->
-        <div class="payment-category">
-          <h3><i class="fas fa-mobile-alt"></i> Ví điện tử</h3>
-          <div class="payment-icons">
-            <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-MoMo-Square.png" alt="MoMo">
-            <img src="https://tse2.mm.bing.net/th/id/OIP.E9FXiJfW7KqAFbCchArqZwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="ZaloPay">
-            <img src="https://th.bing.com/th/id/OIP.zsHE4ELaw12_LsdfAuSZMQHaHa?w=200&h=200&c=10&o=6&pid=genserp&rm=2" alt="VNPAY" style="border-radius:8px;">
-            <img src="https://tse3.mm.bing.net/th/id/OIP.W3ul3rXFW7cC_beaO37ncgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="ShopeePay">
+          <div class="form-group"><label>Tên chủ thẻ</label><input type="text" placeholder="Tên chủ thẻ" id="cardName"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="form-group"><label>Hết hạn</label><input type="text" placeholder="mm/dd" id="cardExpiry"></div>
+            <div class="form-group"><label>CVV</label><input type="text" placeholder="xxx" id="cardCVV"></div>
           </div>
-        </div>
-
-        <!-- 3. Internet Banking & Chuyển khoản -->
-        <div class="payment-category">
-          <h3><i class="fas fa-university"></i> Internet Banking và Chuyển khoản</h3>
-          <div class="payment-icons bank-icons">
-            <img src="https://tse4.mm.bing.net/th/id/OIP.r1fEE75vwals6IQhm1-tsgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vietcombank">
-            <img src="https://play-lh.googleusercontent.com/g9KCglN_UhMUgccQxVg112tz3AAa0-ZqrgOkoKLtPe34-a6ZiOdzyW26hSWcqa-1sQ" alt="BIDV">
-            <img src="https://www.theofficialboard.com/img/twitterCompanyBigImages/47296.png" alt="Techcombank">
-            <img src="https://mbbank.com.vn/img/logo-mb.svg" alt="MB Bank">
-            <img src="https://viettinbank.vn/static/img/logo-viettinbank.svg" alt="VietinBank">
-            <img src="https://acb.com.vn/img/logo-acb.png" alt="ACB">
-            <img src="https://sacombank.com.vn/images/logo-sacombank.png" alt="Sacombank">
-            <span class="more-banks">+ 35 ngân hàng khác</span>
-          </div>
-        </div>
-
-        <!-- 4. Thanh toán khi nhận hàng -->
-        <div class="payment-category cod">
-          <h3><i class="fas fa-hand-holding-heart"></i> Thanh toán khi nhận hàng (COD)</h3>
-          <p>Thanh toán trực tiếp thông qua người giao hàng</p>
-        </div>
-
+          <button type="submit" class="add-card-btn">Thêm thẻ</button>
+        </form>
       </div>
 
-      <!-- BẢO MẬT -->
-      <div class="security-badge">
-        <i class="fas fa-shield-alt"></i>
-        <div>
-          <strong>An toàn tuyệt đối</strong><br>
-          Mọi giao dịch được mã hóa SSL 256-bit • Xác thực 3D-Secure • Không lưu thông tin thẻ
+      <!-- CỘT 2: VÍ ĐIỆN TỬ + NẠP TIỀN -->
+      <div class="payment-card">
+        <i class="fas fa-mobile-alt payment-icon"></i>
+        <h2 class="payment-title">Ví điện tử & Ví Flores</h2>
+        <p class="payment-desc">Số dư ví: <strong id="currentBalance">0 ₫</strong></p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;">
+          <button type="button" onclick="addWallet('momo')"   class="test-btn momo">MoMo 090xxx</button>
+          <button type="button" onclick="addWallet('vnpay')"  class="test-btn vnpay">VNPay 091xxx</button>
+          <button type="button" onclick="quickTopup(500000)"  class="test-btn topup">+500k</button>
+          <button type="button" onclick="quickTopup(2000000)" class="test-btn topup">+2 triệu</button>
+        </div>
+
+        <div class="topup-form">
+          <div class="topup-amounts">
+            <div class="amount-btn" data-amount="100000">100k</div>
+            <div class="amount-btn" data-amount="500000">500k</div>
+            <div class="amount-btn" data-amount="1000000">1 triệu</div>
+            <div class="amount-btn" data-amount="5000000">5 triệu</div>
+          </div>
+          <button type="button" class="topup-btn" onclick="topupWallet()">Nạp tiền thủ công</button>
         </div>
       </div>
+
     </div>
+
+    <!-- DANH SÁCH PHƯƠNG THỨC -->
+    <div class="cards-list">
+      <h3>Phương thức đã liên kết</h3>
+      <table id="cardsTable">
+        <thead><tr><th>Loại</th><th>Thông tin</th><th>Tên</th><th>Thao tác</th></tr></thead>
+        <tbody id="cardsTableBody"></tbody>
+      </table>
+      <p id="noMethodMsg" style="text-align:center;color:#94a3b8;margin-top:1.5rem;">Chưa có phương thức nào</p>
+    </div>
+
+    <a href="profile.html" class="back-to-profile">Quay lại hồ sơ</a>
   </div>
-
-  <!-- FOOTER – GIỐNG HỆT 100% -->
+<!-- FOOTER LUXURY ĐEN-VÀNG – GIỮ NGUYÊN ĐẸP NHƯ BẠN MUỐN -->
   <footer class="luxury-footer">
     <div class="footer-container">
+      <!-- Cột 1: Logo + Mô tả -->
       <div class="footer-col">
         <h2 class="footer-logo">Flores</h2>
         <p class="footer-desc">
-          Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện, mỗi cánh hoa là một lời thì thầm của thiên nhiên.
+          Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện, mỗi cánh hoa là một lời thì thầm
+          của thiên nhiên.
         </p>
         <div class="footer-links">
-          <a href="dieukhoan.html">Điều khoản sử dụng</a>
+          <a href="#">Terms and Conditions</a>
           <span class="separator">•</span>
-          <a href="#">Chính sách bảo mật</a>
+          <a href="#">Privacy Policy</a>
         </div>
       </div>
 
+      <!-- Cột 2: Thông tin liên hệ + MXH -->
       <div class="footer-col">
         <h4>Thông tin liên hệ</h4>
-        <p class="contact-item"><i class="fas fa-envelope"></i> Flores@stgmail.com</p>
-        <p class="contact-item"><i class="fas fa-phone-alt"></i> +84 909 888 777</p>
+        <p class="contact-item">
+          <i class="fas fa-envelope"></i> Flores@stgmail.com
+        </p>
+        <p class="contact-item">
+          <i class="fas fa-phone-alt"></i> +84 909 888 777
+        </p>
+
         <div class="social-links">
           <p>Theo dõi chúng tôi</p>
           <div class="social-icons-modern">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon-modern">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
           </div>
         </div>
       </div>
 
+      <!-- Cột 3: Newsletter -->
       <div class="footer-col">
         <h4>Gia nhập hội viên</h4>
         <p>Đăng ký thành viên để nhận ưu đãi độc quyền & bộ sưu tập mới nhất</p>
@@ -149,21 +165,184 @@
         </form>
       </div>
     </div>
+
+    <!-- Bản quyền -->
     <div class="footer-bottom">
       <p>© 2025 Flores. Thuộc bản quyền về nhóm.</p>
     </div>
+
+    <!-- Hiệu ứng chấm sao lấp lánh -->
     <div class="stars" id="stars-container"></div>
   </footer>
-
   <!-- TOAST -->
-  <div id="toastNotification" class="toast-hidden">
-    <div class="toast-content">
-      <i class="toast-icon"></i>
-      <span class="toast-message">Thông báo sẽ hiện ở đây</span>
-    </div>
-    <div class="toast-progress"></div>
-  </div>
+  <div id="toast">Thông báo</div>
 
   <script src="auth.js"></script>
+  <script>
+    // ==================== TOÀN BỘ JS HOÀN CHỈNH + TEST MODE ====================
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
+    if (!currentUser.email) { alert("Vui lòng đăng nhập!"); location.href = "signup.html"; }
+
+    document.getElementById("currentBalance").textContent = 
+      (currentUser.balance || 0).toLocaleString("vi-VN") + " ₫";
+
+    let paymentMethods = JSON.parse(localStorage.getItem("floresPayments") || "[]");
+    const tbody = document.getElementById("cardsTableBody");
+    const noMsg = document.getElementById("noMethodMsg");
+
+    // Nhận diện thẻ
+    const cardBrands = [
+      { pattern: /^4/, name: "Visa", icon: "fab fa-cc-visa" },
+      { pattern: /^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[0-1]|2720)/, name: "MasterCard", icon: "fab fa-cc-mastercard" },
+      { pattern: /^3[47]/, name: "Amex", icon: "fab fa-cc-amex" },
+      { pattern: /^9704/, name: "Vietcombank", icon: "fas fa-university" },
+      { pattern: /^970422/, name: "BIDV", icon: "fas fa-building-columns" }
+    ];
+
+    function detectCardBrand(num) {
+      const clean = num.replace(/\s/g, "");
+      for (const b of cardBrands) if (b.pattern.test(clean)) return b;
+      return { name: "Thẻ", icon: "fas fa-credit-card" };
+    }
+
+    // Format số thẻ khi nhập tay
+    document.getElementById("cardNumber").addEventListener("input", e => {
+      let v = e.target.value.replace(/\D/g, "").match(/.{1,4}/g)?.join(" ") || "";
+      e.target.value = v;
+      const brand = detectCardBrand(v);
+      document.getElementById("cardBrandIcon").className = brand.icon;
+    });
+
+    // Render danh sách
+    function renderMethods() {
+      tbody.innerHTML = "";
+      if (paymentMethods.length === 0) { noMsg.style.display = "block"; return; }
+      noMsg.style.display = "none";
+
+      paymentMethods.forEach((item, i) => {
+        let typeName = "", iconClass = "", info = "";
+        if (item.type === "card") {
+          const b = detectCardBrand(item.number);
+          typeName = b.name; iconClass = b.icon;
+          info = `•••• •••• •••• ${item.number.slice(-4)}`;
+        } else if (item.type === "momo") { typeName = "MoMo"; iconClass = "fas fa-mobile-alt"; info = item.phone || "090xxxxxxx"; }
+        else if (item.type === "vnpay") { typeName = "VNPay"; iconClass = "fas fa-qrcode"; info = item.phone || "091xxxxxxx"; }
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><i class="${iconClass}" style="color:#fbbf24;margin-right:8px;"></i> ${typeName}</td>
+          <td>${info}</td>
+          <td>${item.name || "-"}</td>
+          <td><button onclick="removeMethod(${i})" style="background:none;border:none;color:#ff4757;cursor:pointer;">Xóa</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+    renderMethods();
+
+    // Thêm thẻ thủ công (test mode – chấp nhận mọi input)
+    document.getElementById("addCardForm").onsubmit = function(e) {
+      e.preventDefault();
+      const num = document.getElementById("cardNumber").value.replace(/\s/g,"") || "4111111111111111";
+      const name = document.getElementById("cardName").value.trim() || "TEST USER";
+      paymentMethods.push({ type: "card", number: num, name, expiry: "12/28", cvv: "123" });
+      localStorage.setItem("floresPayments", JSON.stringify(paymentMethods));
+      toast("Thêm thẻ thành công!");
+      renderMethods(); this.reset();
+    };
+
+    // NÚT TEST SIÊU NHANH
+    function addTestCard(type) {
+      const cards = {
+        visa:   { number: "4111111111111111", name: "NGUYEN VAN VISA",   expiry: "12/28", cvv: "123" },
+        master: { number: "5555555555554444", name: "TRAN THI MASTER",  expiry: "09/27", cvv: "456" },
+        vcb:    { number: "9704151234567890", name: "LE VAN VCB",       expiry: "11/29", cvv: "789" },
+        bidv:   { number: "9704229876543210", name: "PHAM THI BIDV",    expiry: "06/28", cvv: "321" }
+      };
+      paymentMethods.push({ type: "card", ...cards[type] });
+      localStorage.setItem("floresPayments", JSON.stringify(paymentMethods));
+      renderMethods();
+      toast(`Thêm thẻ ${type.toUpperCase()} test thành công!`);
+    }
+
+    function addWallet(type) {
+      const phone = type === "momo" ? "0901234567" : "0919876543";
+      paymentMethods.push({ type, phone, name: currentUser.firstName + " " + currentUser.lastName });
+      localStorage.setItem("floresPayments", JSON.stringify(paymentMethods));
+      renderMethods();
+      toast(`Liên kết ${type.toUpperCase()} thành công!`);
+    }
+
+    window.removeMethod = function(i) {
+      if (confirm("Xóa phương thức này?")) {
+        paymentMethods.splice(i, 1);
+        localStorage.setItem("floresPayments", JSON.stringify(paymentMethods));
+        renderMethods();
+        toast("Đã xóa");
+      }
+    };
+
+    // Nạp tiền nhanh
+    function quickTopup(amount) {
+      if (!confirm(`Nạp ngay ${amount.toLocaleString()}đ ?`)) return;
+      currentUser.balance = (currentUser.balance || 0) + amount;
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      let users = JSON.parse(localStorage.getItem("users") || "[]");
+      const idx = users.findIndex(u => u.email === currentUser.email);
+      if (idx !== -1) users[idx] = currentUser;
+      localStorage.setItem("users", JSON.stringify(users));
+      document.getElementById("currentBalance").textContent = currentUser.balance.toLocaleString("vi-VN") + " ₫";
+      toast(`+${amount.toLocaleString()}đ thành công!`);
+    }
+
+    // Nạp thủ công
+    function topupWallet() {
+      let amount = 0;
+      document.querySelectorAll(".amount-btn.selected").forEach(b => amount = parseInt(b.dataset.amount));
+      if (amount < 10000) return toast("Chọn số tiền hợp lệ!", "error");
+      if (!confirm(`Nạp ${amount.toLocaleString()}đ ?`)) return;
+      quickTopup(amount);
+    }
+
+    document.querySelectorAll(".amount-btn").forEach(b => {
+      b.onclick = () => {
+        document.querySelectorAll(".amount-btn").forEach(x => x.classList.remove("selected"));
+        b.classList.add("selected");
+      };
+    });
+
+    // Toast đẹp
+    function toast(msg, type="success") {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.style.background = type==="error" ? "#ff4757" : "#fbbf24";
+      t.style.transform = "translateX(0)";
+      clearTimeout(t.timer);
+      t.timer = setTimeout(() => t.style.transform = "translateX(120%)", 3000);
+    }
+  </script>
+
+  <style>
+    /* NÚT TEST ĐẸP (copy vào đây luôn cho tiện) */
+    .test-btn {
+      padding: 1rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    .test-btn:hover { transform: translateY(-6px) scale(1.05); }
+    .test-btn.visa    { background: linear-gradient(135deg, #1a1f71, #003087); }
+    .test-btn.master  { background: linear-gradient(135deg, #eb001b, #ff5a00); }
+    .test-btn.vcb     { background: linear-gradient(135deg, #006a4e, #00a86b); }
+    .test-btn.bidv    { background: linear-gradient(135deg, #0033a0, #0055ff); }
+    .test-btn.momo    { background: #de0073; }
+    .test-btn.vnpay   { background: linear-gradient(135deg, #003087, #005670); }
+    .test-btn.topup   { background: linear-gradient(135deg, #f59e0b, #fbbf24); color:#0f172a; font-weight:800; }
+  </style>
 </body>
 </html>

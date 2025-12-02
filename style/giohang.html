@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng • Flores</title>
+
+  <!-- Font + Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS chung + CSS riêng giỏ hàng -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="giohang.css">
+</head>
+<body>
+
+  <!-- NAVBAR giống hệt các trang khác -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="sukien.html">Sự kiện</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="giohang.html" class="cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG GIỎ HÀNG -->
+  <div class="cart-container">
+
+    <div class="cart-header">
+      <h1>Giỏ hàng của bạn</h1>
+      <p id="cart-subtitle">Đang có <strong id="item-count">0</strong> sản phẩm tuyệt đẹp</p>
+    </div>
+
+    <!-- Giỏ hàng trống -->
+    <div id="empty-cart" class="empty-cart">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <h2>Giỏ hàng đang trống</h2>
+      <p>Thêm những bó hoa yêu thích để cảm nhận vẻ đẹp của thiên nhiên</p>
+      <a href="shop.html" class="continue-shopping-btn">Tiếp tục mua sắm</a>
+    </div>
+
+    <!-- Khi có sản phẩm -->
+    <div id="cart-content" style="display:none;">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cart-items">
+          <!-- JS sẽ tự động thêm sản phẩm vào đây -->
+        </tbody>
+      </table>
+
+      <div class="cart-summary">
+        <div class="summary-row"><span>Tạm tính</span><span id="subtotal">0 ₫</span></div>
+        <div class="summary-row"><span>Phí vận chuyển</span><span>Miễn phí</span></div>
+        <div class="summary-row total-row"><span>Tổng cộng</span><span id="total">0 ₫</span></div>
+        <button class="checkout-btn" onclick="location.href='thanhtoan.html'">
+          Tiến hành thanh toán
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER (copy từ trang VIP của bạn) -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h2 class="footer-logo">Flores</h2>
+        <p class="footer-desc">Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Thông tin liên hệ</h4>
+        <p><i class="fas fa-envelope"></i> Flores@stgmail.com</p>
+        <p><i class="fas fa-phone-alt"></i> +84 909 888 777</p>
+      </div>
+      <div class="footer-col">
+        <h4>Gia nhập hội viên</h4>
+        <p>Đăng ký để nhận ưu đãi độc quyền</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Nhập email" required>
+          <button type="submit">ĐĂNG KÝ</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm.</p>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toastNotification" class="toast-hidden">
+    <div class="toast-content">
+      <i class="toast-icon"></i>
+      <span class="toast-message"></span>
+    </div>
+    <div class="toast-progress"></div>
+  </div>
+
+  <!-- JS xử lý giỏ hàng -->
+  <script src="giohang.js"></script>
+</body>
+</html>

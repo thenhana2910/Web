@@ -1,0 +1,225 @@
+/* =============== GIOHANG.CSS – TRANG GIỎ HÀNG FLORES 2025 =============== */
+
+.cart-container {
+  max-width: 1300px;
+  margin: 120px auto 100px;
+  padding: 0 4%;
+}
+
+.cart-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.cart-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.8rem;
+  color: #fbbf24;
+  text-shadow: 0 0 40px rgba(251,191,36,0.4);
+  margin-bottom: 1rem;
+}
+
+#cart-subtitle {
+  font-size: 1.4rem;
+  color: #94a3b8;
+}
+
+/* Giỏ hàng trống */
+.empty-cart {
+  text-align: center;
+  padding: 8rem 2rem;
+  display: none;
+}
+
+.empty-cart i {
+  font-size: 7rem;
+  color: #fbbf24;
+  opacity: 0.6;
+  margin-bottom: 2rem;
+}
+
+.empty-cart h2 {
+  font-size: 2.5rem;
+  color: #fbbf24;
+  margin-bottom: 1rem;
+}
+
+.continue-shopping-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1.2rem 3.5rem;
+  background: #fbbf24;
+  color: #0f172a;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.continue-shopping-btn:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(251,191,36,0.4);
+}
+
+/* Bảng sản phẩm */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(251,191,36,0.07);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  margin-bottom: 3rem;
+}
+
+.cart-table th {
+  background: rgba(251,191,36,0.18);
+  color: #fbbf24;
+  padding: 1.8rem 1.5rem;
+  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.cart-table td {
+  padding: 1.8rem 1.5rem;
+  border-bottom: 1px dashed rgba(251,191,36,0.2);
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.product-info img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid rgba(251,191,36,0.4);
+}
+
+.product-name {
+  font-size: 1.35rem;
+  color: #fbbf24;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  color: #e0e0e0;
+  font-weight: 600;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(251,191,36,0.12);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  width: fit-content;
+}
+
+.quantity-controls button {
+  background: none;
+  border: none;
+  color: #fbbf24;
+  font-size: 1.6rem;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.quantity-controls button:hover {
+  background: rgba(251,191,36,0.3);
+}
+
+.quantity-controls span {
+  min-width: 50px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.remove-item {
+  color: #ff4757;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.remove-item:hover {
+  color: #ff6b6b;
+  transform: scale(1.2);
+}
+
+/* Tổng tiền */
+.cart-summary {
+  background: rgba(251,191,36,0.1);
+  border: 2px solid rgba(251,191,36,0.35);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  font-size: 1.3rem;
+}
+
+.total-row {
+  font-size: 2rem !important;
+  font-weight: 700;
+  color: #fbbf24;
+  border-top: 2px dashed #fbbf24;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.6rem;
+  background: #fbbf24;
+  color: #0f172a;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(251,191,36,0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cart-table, .cart-table thead, .cart-table tbody, .cart-table tr, .cart-table td {
+    display: block;
+    width: 100%;
+  }
+  .cart-table th { display: none; }
+  .cart-table td {
+    padding: 1rem 0;
+    border: none;
+    position: relative;
+  }
+  .cart-table td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #fbbf24;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}

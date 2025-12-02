@@ -1,152 +1,325 @@
-/* phuongthucthanhtoan.css – giống hệt theodoidonhang.css */
-
-.tracking-vip-page {
+/* ============== PHƯƠNG THỨC THANH TOÁN - FLORES 2025 ============== */
+body {
+  background: linear-gradient(135deg, #0a0e17 0%, #0f172a 50%, #1a1f2e 100%);
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0e17 0%, #111827 40%, #1e293b 100%);
+  font-family: 'Playfair Display', serif;
+  color: #e0e0e0;
 }
 
-.container {
-  max-width: 1300px;
+.payment-container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 4%;
+  padding: 120px 6% 100px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Header */
-.page-header {
+.payment-header {
   text-align: center;
-  padding: 5rem 0 3rem;
+  margin-bottom: 4.5rem;
 }
-.page-header h1 {
+
+.payment-header .wallet-icon {
+  font-size: 4rem;
+  color: #fbbf24;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+  text-shadow: 0 0 30px rgba(251,191,36,0.4);
+}
+
+.payment-header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 4.8rem;
   color: #fbbf24;
-  text-shadow: 0 0 50px rgba(251,191,36,0.4);
-  margin: 0;
-  letter-spacing: -1px;
-}
-.page-header p {
-  color: #94a3b8;
-  font-size: 1.25rem;
-  margin-top: 1rem;
-  font-style: italic;
-}
-
-/* Nút quay lại */
-.back-btn-container { text-align: left; margin: 2rem 0 3rem; }
-.back-btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  background: transparent; border: 2px solid rgba(251,191,36,0.4);
-  color: #fbbf24; padding: 0.9rem 2rem; border-radius: 50px;
-  font-family: 'Libre Baskerville', serif; font-weight: 600; font-size: 1.05rem;
-  cursor: pointer; transition: all 0.5s;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
-.back-btn:hover {
-  background: rgba(251,191,36,0.15); border-color: #fbbf24;
-  transform: translateX(-8px); box-shadow: 0 15px 40px rgba(251,191,36,0.25);
-}
-
-/* Card chính */
-.payment-main-card {
-  background: linear-gradient(145deg, rgba(20,25,40,0.98), rgba(15,20,35,0.98));
-  border: 1px solid rgba(251,191,36,0.2);
-  border-radius: 28px;
-  padding: 4rem;
-  margin-bottom: 4rem;
-  box-shadow: 0 25px 80px rgba(0,0,0,0.7), 0 0 60px rgba(251,191,36,0.12);
-  position: relative;
-  overflow: hidden;
-}
-.payment-main-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(120deg, transparent 30%, rgba(251,191,36,0.08) 50%, transparent 70%);
-  transform: translateX(-100%); transition: transform 1.4s;
-}
-.payment-main-card:hover::before { transform: translateX(100%); }
-
-.payment-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 2.5rem;
-  margin-top: 2rem;
-}
-
-.payment-category {
-  background: rgba(251,191,36,0.05);
-  border: 1px solid rgba(251,191,36,0.2);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.6s;
-  text-align: center;
-}
-.payment-category:hover {
-  transform: translateY(-15px);
-  border-color: #fbbf24;
-  background: rgba(251,191,36,0.12);
-  box-shadow: 0 20px 50px rgba(251,191,36,0.2);
-}
-
-.payment-category h3 {
-  color: #fbbf24;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.payment-icons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.8rem;
-}
-.payment-icons img {
-  height: 56px;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
-.payment-icons img:hover { transform: scale(1.2); }
-
-.bank-icons img { height: 48px; }
-.more-banks {
-  background: rgba(251,191,36,0.2);
-  color: #fbbf24;
-  padding: 0.6rem 1.2rem;
-  border-radius: 30px;
-  font-weight: 700;
-  margin-top: 1rem;
-  display: inline-block;
-}
-
-.payment-category.cod {
-  background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(20,184,166,0.06));
-  border-color: #34d399;
-}
-.payment-category.cod h3 { color: #34d399; }
-
-/* Bảo mật */
-.security-badge {
-  margin-top: 3.5rem;
-  text-align: center;
-  padding: 2.5rem;
-  background: rgba(251,191,36,0.08);
-  border: 1px dashed rgba(251,191,36,0.4);
-  border-radius: 24px;
-  font-size: 1.2rem;
-  color: #e2e8f0;
-}
-.security-badge i {
-  font-size: 3.5rem;
-  color: #fbbf24;
+  text-shadow: 0 0 40px rgba(251,191,36,0.5);
   margin-bottom: 1rem;
 }
 
+.payment-header p {
+  font-size: 1.4rem;
+  color: #cbd5e1;
+  opacity: 0.9;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+/* Grid chính */
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 5rem;
+}
+
+/* Card chung */
+.payment-card {
+  background: rgba(251,191,36,0.07);
+  border: 1.5px solid rgba(251,191,36,0.25);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.6s ease;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(251,191,36,0.03) 100%);
+  pointer-events: none;
+}
+
+.payment-card:hover {
+  transform: translateY(-15px);
+  border-color: #fbbf24;
+  box-shadow: 0 25px 60px rgba(251,191,36,0.25);
+}
+
+.payment-icon {
+  font-size: 4rem;
+  color: #fbbf24;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(251,191,36,0.4);
+}
+
+.payment-title {
+  font-size: 2.2rem;
+  color: #fbbf24;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.payment-desc {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Form thêm thẻ */
+.add-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  color: #fbbf24;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.form-group input {
+  width: 100%;
+  background: rgba(251,191,36,0.06);
+  border: 1.5px solid rgba(251,191,36,0.3);
+  color: #e0e0e0;
+  padding: 1.1rem 1.2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  transition: all 0.4s ease;
+}
+
+.form-group input:focus {
+  border-color: #fbbf24;
+  box-shadow: 0 0 20px rgba(251,191,36,0.3);
+  outline: none;
+}
+
+/* Nút thêm thẻ */
+.add-card-btn,
+.topup-btn {
+  background: rgba(251,191,36,0.12);
+  border: 2px solid #fbbf24;
+  color: #fbbf24;
+  padding: 1.6rem;
+  border-radius: 16px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.add-card-btn i,
+.topup-btn i {
+  margin-right: 12px;
+  font-size: 1.6rem;
+}
+
+.add-card-btn:hover,
+.topup-btn:hover {
+  background: #fbbf24;
+  color: #0f172a;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(251,191,36,0.4);
+}
+
+.add-card-btn::before,
+.topup-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.7s ease;
+}
+
+.add-card-btn:hover::before,
+.topup-btn:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+/* Nút ví nhanh MoMo & VNPay */
+.wallet-quick-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(251,191,36,0.08);
+  border: 1.5px solid rgba(251,191,36,0.3);
+  color: #fbbf24;
+  padding: 1.2rem;
+  border-radius: 14px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.wallet-quick-btn:hover {
+  background: rgba(251,191,36,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(251,191,36,0.2);
+}
+
+/* Nạp tiền */
+.topup-amounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.amount-btn {
+  background: rgba(251,191,36,0.06);
+  border: 1.5px solid rgba(251,191,36,0.3);
+  color: #fbbf24;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.amount-btn:hover,
+.amount-btn.selected {
+  background: #fbbf24;
+  color: #0f172a;
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(251,191,36,0.4);
+}
+
+/* Danh sách phương thức */
+.cards-list {
+  background: rgba(251,191,36,0.05);
+  border: 1px solid rgba(251,191,36,0.2);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-top: 2rem;
+}
+
+.cards-list h3 {
+  color: #fbbf24;
+  font-size: 2.3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Playfair Display', serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e0e0e0;
+}
+
+th, td {
+  padding: 1.4rem 1rem;
+  text-align: left;
+  border-bottom: 1px dashed rgba(251,191,36,0.2);
+}
+
+th {
+  color: #fbbf24;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+tr:hover {
+  background: rgba(251,191,36,0.12);
+  transition: 0.3s;
+}
+
+td button {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Nút quay lại */
+.back-to-profile {
+  display: block;
+  width: fit-content;
+  margin: 4rem auto 2rem;
+  color: #fbbf24;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 1rem 3rem;
+  border: 2px solid #fbbf24;
+  border-radius: 50px;
+  transition: 0.5s;
+  font-weight: 600;
+}
+
+.back-to-profile:hover {
+  background: #fbbf24;
+  color: #0f172a;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(251,191,36,0.4);
+}
+
 /* Responsive */
-@media (max-width: 768px) {
-  .page-header h1 { font-size: 3.4rem; }
-  .payment-main-card { padding: 2.5rem; }
-  .payment-grid { grid-template-columns: 1fr; }
-  .back-btn-container { text-align: center; }
+@media (max-width: 992px) {
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+  .payment-header h1 { font-size: 3.8rem; }
+  .topup-amounts { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .payment-container { padding: 100px 5% 80px; }
+  .payment-header h1 { font-size: 3.2rem; }
+  .payment-card { padding: 2rem; }
+  .topup-amounts { grid-template-columns: 1fr 1fr; }
 }

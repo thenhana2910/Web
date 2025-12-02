@@ -1,0 +1,224 @@
+/* phuongthucthanhtoan.css - PHIÊN BẢN MỚI THEO YÊU CẦU */
+.tracking-vip-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e17 0%, #111827 40%, #1e293b 100%);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 4%;
+}
+
+.page-header {
+  text-align: center;
+  padding: 5rem 0 3rem;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.8rem;
+  color: #fbbf24;
+  text-shadow: 0 0 50px rgba(251,191,36,0.4);
+  margin: 0;
+  letter-spacing: -1px;
+}
+.page-header p {
+  color: #94a3b8;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.back-btn-container { text-align: left; margin: 2rem 0 3rem; }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: transparent; border: 2px solid rgba(251,191,36,0.4);
+  color: #fbbf24; padding: 0.9rem 2rem; border-radius: 50px;
+  font-family: 'Libre Baskerville', serif; font-weight: 600; font-size: 1.05rem;
+  cursor: pointer; transition: all 0.5s;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+.back-btn:hover {
+  background: rgba(251,191,36,0.15); border-color: #fbbf24;
+  transform: translateX(-8px); box-shadow: 0 15px 40px rgba(251,191,36,0.25);
+}
+
+.payment-main-card {
+  background: linear-gradient(145deg, rgba(20,25,40,0.98), rgba(15,20,35,0.98));
+  border: 1px solid rgba(251,191,36,0.2);
+  border-radius: 28px;
+  padding: 4rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.7), 0 0 60px rgba(251,191,36,0.12);
+  position: relative;
+  overflow: hidden;
+}
+.payment-main-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(251,191,36,0.08) 50%, transparent 70%);
+  transform: translateX(-100%); transition: transform 1.4s;
+}
+.payment-main-card:hover::before { transform: translateX(100%); }
+
+/* Phần đăng nhập */
+.login-box {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(251,191,36,0.08);
+  border-radius: 24px;
+  border: 1px dashed rgba(251,191,36,0.4);
+}
+.login-box h3 {
+  color: #fbbf24;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.login-btn {
+  margin-top: 1.5rem;
+  background: #fbbf24;
+  color: #0f172a;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.login-btn:hover {
+  background: #f59e0b;
+  transform: scale(1.05);
+}
+
+/* Phần thẻ VIP */
+.section-title {
+  text-align: center;
+  color: #fbbf24;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.vip-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.vip-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 24px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.6s;
+  border: 1px solid rgba(251,191,36,0.2);
+  position: relative;
+  overflow: hidden;
+}
+.vip-card:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 25px 60px rgba(251,191,36,0.25);
+}
+
+.vip-card.silver { border-color: #94a3b8; }
+.vip-card.gold { border-color: #fbbf24; }
+.vip-card.platinum { border-color: #e879f9; }
+
+.card-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin: 0;
+}
+.card-header .price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin: 1rem 0;
+}
+.card-header .price span { font-size: 1rem; color: #94a3b8; }
+
+.popular-badge {
+  position: absolute;
+  top: 15px;
+  right: -35px;
+  background: #ef4444;
+  color: white;
+  padding: 0.5rem 2.5rem;
+  font-size: 0.9rem;
+  transform: rotate(45deg);
+}
+
+.benefits {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+.benefits li {
+  color: #e2e8f0;
+  margin: 0.8rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+.benefits li::before {
+  content: '✓';
+  color: #34d399;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.nap-btn {
+  background: #fbbf24;
+  color: #0f172a;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.4s;
+}
+.nap-btn:hover { background: #f59e0b; transform: scale(1.03); }
+.nap-btn.small { width: auto; padding: 0.8rem 1.8rem; font-size: 0.95rem; }
+
+/* Số dư */
+.balance-box {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(34,197,94,0.15);
+  border-radius: 24px;
+  border: 1px solid #34d399;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 3rem 0;
+}
+.balance-box i { font-size: 3rem; color: #34d399; }
+
+/* Bảo mật */
+.security-badge {
+  margin-top: 3.5rem;
+  text-align: center;
+  padding: 2.5rem;
+  background: rgba(251,191,36,0.08);
+  border: 1px dashed rgba(251,191,36,0.4);
+  border-radius: 24px;
+  font-size: 1.2rem;
+  color: #e2e8f0;
+}
+.security-badge i {
+  font-size: 3.5rem;
+  color: #fbbf24;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header h1 { font-size: 3.4rem; }
+  .payment-main-card { padding: 2.5rem; }
+  .balance-box { flex-direction: column; text-align: center; }
+  .back-btn-container { text-align: center; }
+}

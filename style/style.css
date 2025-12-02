@@ -17,13 +17,10 @@ body {
 }
 
 /* Hiệu ứng nhung nhẹ */
-body::before {
+bbody:not(.profile-page)::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: radial-gradient(circle at center, rgba(15, 23, 42, 0.8), #0f172a);
   pointer-events: none;
   z-index: 0;

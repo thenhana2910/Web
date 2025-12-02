@@ -11,13 +11,14 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap&subset=vietnamese" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap&subset=vietnamese"
+    rel="stylesheet">
 </head>
 
 <body>
 
   <!-- ==================== NAVBAR ==================== -->
-    <header class="navbar">
+  <header class="navbar">
     <a href="index.html" class="logo">Flores</a>
 
     <nav class="nav-menu">
@@ -32,11 +33,10 @@
         <button class="signup-btn">Sign Up</button>
       </a>
 
-
-      <div class="cart" onclick="toggleGioHang()">
+      <a href="giohang.html" class="cart">
         <i class="fa-solid fa-bag-shopping"></i>
         <span id="cart-count" class="cart-count">0</span>
-      </div>
+      </a>
     </div>
   </header>
 
@@ -65,14 +65,28 @@
   </div>
 
   <!-- ==================== SCRIPT GIỎ HÀNG ==================== -->
-  <script>
-    function toggleGioHang() {
-      const m = document.getElementById("gio-hang-modal");
-      m.style.display = m.style.display === "block" ? "none" : "block";
-    }
-    window.onclick = e => { if (e.target.id === "gio-hang-modal") e.target.style.display = "none"; }
-  </script>
   <script src="auth.js"></script>
+  <script src="giohang.js"></script>
+
+  <script>
+    // Cập nhật số lượng giỏ hàng ở góc phải
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const countEl = document.getElementById("cart-count");
+      if (countEl) {
+        countEl.textContent = cart.length;
+        countEl.style.display = cart.length > 0 ? "flex" : "none";
+      }
+    }
+
+    // Chạy khi load trang
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+
+    // Cập nhật khi có thay đổi từ trang khác (shop thêm sản phẩm...)
+    window.addEventListener("storage", (e) => {
+      if (e.key === "cart") updateCartCount();
+    });
+  </script>
 </body>
 
 </html>

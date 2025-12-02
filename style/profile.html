@@ -4,37 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thông tin cá nhân - Flores</title>
+  <title>Thông tin cá nhân • Flores</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="profile-edit.css">
-  <link rel="stylesheet" href="profile.css">
   <link rel="stylesheet" href="components.css">
-
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="profile-edit.css">
 </head>
 
 <body class="profile-page">
 
-  <!-- HEADER FLORES -->
+  <!-- HEADER -->
   <header class="navbar">
     <a href="index.html" class="logo">Flores</a>
-
     <nav class="nav-menu">
       <a href="index.html">Trang chủ</a>
       <a href="shop.html">Cửa hàng</a>
       <a href="sukien.html">Sự kiện</a>
       <a href="khampha.html">Khám phá</a>
     </nav>
-
     <div class="nav-actions" id="navActions">
       <a href="signup.html">
         <button class="signup-btn">Sign Up</button>
       </a>
-
-
       <div class="cart" onclick="toggleGioHang()">
         <i class="fa-solid fa-bag-shopping"></i>
         <span id="cart-count" class="cart-count">0</span>
@@ -45,167 +40,144 @@
   <div class="profile-wrapper">
     <div class="profile-container">
 
-      <!-- CỘT TRÁI - MENU DỌC NHƯ CELLPHONES -->
-      <aside class="profile-menu">
-        <div class="menu-item active" data-section="overviewSection">
-          <i class="fas fa-user-circle"></i> Tổng quan
-        </div>
-        <div class="menu-item" data-section="historySection">
-          <i class="fas fa-history"></i> Lịch sử mua hàng
-        </div>
-        <div class="menu-item" onclick="location.href='phuongthucthanhtoan.html'">
-          <i class="fas fa-credit-card"></i> Phương thức thanh toán
-        </div>
-        <div class="menu-item">
-          <i class="fas fa-trophy"></i> Hạng thành viên và ưu đãi
-        </div>
-        <div class="menu-item" onclick="location.href='TheoDoiDonHang.html'">
-          <i class="fas fa-truck-fast"></i> Trạng thái vận chuyển
-        </div>
-        <div class="menu-item" onclick="location.href='dieukhoan.html'">
-          <i class="fas fa-file-alt"></i> Điều khoản sử dụng
-        </div>
-        <div class="menu-item logout">
-          <i class="fas fa-sign-out-alt"></i> Đăng xuất
-        </div>
+      <!-- MENU TRÁI -->
+      <aside class="profile-sidebar">
+        <div class="menu-item active" data-section="overview"><i class="fas fa-user-circle"></i> Tổng quan</div>
+        <div class="menu-item" data-section="orders"><i class="fas fa-history"></i> Lịch sử mua hàng</div>
+        <div class="menu-item" onclick="location.href='phuongthucthanhtoan.html'"><i class="fas fa-credit-card"></i> 
+          Phương thức thanh toán</div>
+        <div class="menu-item" onclick="location.href='hangthanhvien.html'"><i class="fas fa-trophy"></i> Hạng thành
+          viên</div>
+        <div class="menu-item" onclick="location.href='TheoDoiDonHang.html'"><i class="fas fa-truck-fast"></i> Theo dõi
+          đơn hàng</div>
+        <div class="menu-item logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</div>
       </aside>
 
-      <!-- CỘT PHẢI - NỘI DUNG CHÍNH -->
-      <main class="profile-content">
+      <!-- NỘI DUNG CHÍNH -->
+      <main class="profile-main">
 
-        <!-- PHẦN TỔNG QUAN -->
-        <div id="overviewSection">
-          <div class="profile-header">
+        <!-- TỔNG QUAN -->
+        <section id="overview" class="profile-section active">
+          <div class="section-header">
             <h1>Thông tin tài khoản</h1>
-            <button class="btn-edit-profile" onclick="openEditModal()">
-              Chỉnh sửa thông tin
-            </button>
+            <button class="btn-edit" onclick="openEditModal()">Chỉnh sửa</button>
           </div>
 
-          <div class="info-grid">
-            <div><strong>Họ tên:</strong> <span id="fullName">-</span></div>
-            <div><strong>Email:</strong> <span id="email">-</span></div>
-            <div><strong>Số điện thoại:</strong> <span id="phone">-</span></div>
-            <div><strong>Địa chỉ:</strong> <span id="address">-</span></div>
-            <div><strong>Loại tài khoản:</strong> <span id="role">-</span></div>
-            <div><strong>Ngày tham gia:</strong> <span id="joined">-</span></div>
+          <div class="info-card">
+            <div class="info-row"><strong>Họ tên:</strong> <span id="fullName">-</span></div>
+            <div class="info-row"><strong>Email:</strong> <span id="email">-</span></div>
+            <div class="info-row"><strong>Số điện thoại:</strong> <span id="phone">-</span></div>
+            <div class="info-row"><strong>Địa chỉ:</strong> <span id="address">-</span></div>
+            <div class="info-row"><strong>Loại tài khoản:</strong> <span id="role">-</span></div>
+            <div class="info-row"><strong>Ngày tham gia:</strong> <span id="joined">-</span></div>
           </div>
-        </div>
 
-        <!-- Các phần khác giữ nguyên -->
-        <div class="section">
-          <h2>Đơn hàng gần đây</h2>
-          <div class="empty">Bạn chưa có đơn hàng nào gần đây</div>
-        </div>
+          <!-- SỐ DƯ + HẠNG THÀNH VIÊN -->
+          <div class="vip-grid">
+            <div class="wallet-card">
+              <div class="wallet-header">
+                <i class="fas fa-wallet"></i>
+                <div>
+                  <p>Số dư tài khoản</p>
+                  <h2 id="userBalance">0đ</h2>
+                </div>
+              </div>
+              <button class="topup-btn" onclick="location.href='phuongthucthanhtoan.html'">Nạp tiền ngay</button>
+            </div>
 
-        <div class="section">
-          <h2>Ưu đãi của bạn</h2>
-          <div class="empty">Bạn chưa có ưu đãi nào</div>
-        </div>
+            <div class="rank-card">
+              <div class="rank-header">
+                <div class="crown"><i class="fas fa-crown"></i></div>
+                <div>
+                  <h3 id="currentRank">Silver</h3>
+                  <p id="rankDesc">Giảm 5% đơn từ 1 triệu</p>
+                </div>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div class="progress" id="rankProgress"></div>
+                </div>
+                <p id="progressText">0đ / 3.000.000đ để lên Gold</p>
+              </div>
+              <a href="hangthanhvien.html" class="btn-view">Xem ưu đãi →</a>
+            </div>
+          </div>
 
-        <div class="section">
-          <h2>Sản phẩm yêu thích</h2>
-          <div class="empty">Bạn chưa có sản phẩm yêu thích</div>
-        </div>
+          <!-- ĐƠN HÀNG GẦN ĐÂY - SIÊU ĐẸP -->
+          <div class="section-title">
+            <h2>Đơn hàng gần đây</h2>
+            <a href="#" class="view-all">Xem tất cả →</a>
+          </div>
+          <div class="orders-empty">
+            <i class="fas fa-shopping-bag empty-icon"></i>
+            <h3>Chưa có đơn hàng nào</h3>
+            <p>Hãy mua sắm ngay để nhận nhiều ưu đãi đặc biệt từ Flores!</p>
+            <a href="shop.html" class="btn-shop-now">Mua sắm ngay</a>
+          </div>
+
+          <!-- ƯU ĐÃI CỦA BẠN - SIÊU ĐẸP -->
+          <div class="section-title">
+            <h2>Ưu đãi dành riêng cho bạn</h2>
+          </div>
+          <div class="vouchers-empty">
+            <i class="fas fa-gift empty-icon"></i>
+            <h3>Chưa có ưu đãi nào</h3>
+            <p>Theo dõi hạng thành viên để mở khóa các ưu đãi hấp dẫn!</p>
+          </div>
+        </section>
+
       </main>
-
-     <!-- MODAL CHỈNH SỬA THÔNG TIN + ĐỔI MẬT KHẨU (gộp chung) -->
-<div id="editProfileModal" class="modal-overlay">
-  <div class="modal-content edit-modal">
-    <div class="modal-header">
-      <h3>Chỉnh sửa thông tin cá nhân</h3>
-      <span class="modal-close" onclick="closeEditModal()">×</span>
     </div>
-    <div class="modal-body">
+  </div>
 
-      <!-- PHẦN 1: Thông tin cơ bản -->
-      <div class="form-section">
-        <h4>Thông tin cá nhân</h4>
+  <!-- MODAL CHỈNH SỬA -->
+  <div id="editProfileModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-head">
+        <h3>Chỉnh sửa thông tin cá nhân</h3>
+        <span class="close" onclick="closeEditModal()">×</span>
+      </div>
+      <div class="modal-body">
         <div class="form-group">
-          <label>Họ và tên lót <span class="required">*</span></label>
-          <input type="text" id="editFirstName" required>
+          <label>Họ và tên lót *</label>
+          <input type="text" id="editFirstName">
         </div>
         <div class="form-group">
-          <label>Tên <span class="required">*</span></label>
-          <input type="text" id="editLastName" required>
+          <label>Tên *</label>
+          <input type="text" id="editLastName">
         </div>
         <div class="form-group">
-          <label>Số điện thoại <span class="required">*</span></label>
-          <input type="tel" id="editPhone" required placeholder="0xxxxxxxxx">
+          <label>Số điện thoại *</label>
+          <input type="tel" id="editPhone">
         </div>
         <div class="form-group">
           <label>Địa chỉ nhận hàng</label>
-          <input type="text" id="editAddress" placeholder="Ví dụ: 123 Đường Hoa, Quận 1, TP.HCM">
+          <input type="text" id="editAddress">
         </div>
-      </div>
-
-      <hr class="separator">
-
-      <!-- PHẦN 2: Đổi mật khẩu (có thể bỏ trống) -->
-      <div class="form-section">
-        <h4>Đổi mật khẩu <small style="color:#94a3b8;">(Để trống nếu không muốn đổi)</small></h4>
+        <hr>
+        <h4>Đổi mật khẩu (không bắt buộc)</h4>
         <div class="form-group">
           <label>Mật khẩu hiện tại</label>
-          <input type="password" id="oldPassword" placeholder="Chỉ nhập nếu muốn đổi mật khẩu">
+          <input type="password" id="oldPassword">
         </div>
         <div class="form-group">
           <label>Mật khẩu mới</label>
-          <input type="password" id="newPassword" placeholder="Tối thiểu 6 ký tự">
+          <input type="password" id="newPassword">
         </div>
         <div class="form-group">
           <label>Xác nhận mật khẩu mới</label>
-          <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu mới">
+          <input type="password" id="confirmPassword">
+        </div>
+        <div class="modal-actions">
+          <button onclick="closeEditModal()" class="btn-cancel">Hủy</button>
+          <button onclick="saveProfileChanges()" class="btn-save">Lưu thay đổi</button>
         </div>
       </div>
-
-      <div class="modal-actions">
-        <button type="button" onclick="closeEditModal()" class="btn-cancel">Hủy</button>
-        <button type="button" class="btn-save" onclick="saveProfileChanges()">
-  Lưu tất cả thay đổi
-</button>
-      </div>
-      <div id="editMessage" class="message"></div>
-    </div>
-  </div>
-</div>
     </div>
   </div>
 
-  <script src="profile.js"></script>
-  <script>
-    // Tự động load thông tin người dùng + cập nhật navbar khi vào trang
-    document.addEventListener("DOMContentLoaded", function () {
-      const user = JSON.parse(localStorage.getItem("currentUser"));
-      if (!user) {
-        alert("Vui lòng đăng nhập để xem thông tin cá nhân!");
-        location.href = "signup.html";
-        return;
-      }
-      loadUserInfo(user);
-      updateNavbar(user); // nếu bạn dùng chung hàm updateNavAfterLogin
-    });
-  </script>
-  <script src="auth.js"></script>
-  <script>
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-    if (!user) {
-      alert("Vui lòng đăng nhập!");
-      location.href = "signup.html";
-    } else {
-      document.getElementById("fullName").textContent = `${user.firstName} ${user.lastName}`;
-      document.getElementById("email").textContent = user.email;
-      document.getElementById("phone").textContent = user.phone || "Chưa cập nhật";
-      document.getElementById("address").textContent = user.address || "Chưa cập nhật";
-      document.getElementById("role").textContent = user.isAdmin ? "Quản trị viên" : "Khách hàng";
-      document.getElementById("joined").textContent = new Date(user.registeredAt).toLocaleDateString('vi-VN');
-    }
-
-    // Đăng xuất
-    document.querySelector('.logout').addEventListener('click', () => {
-      localStorage.removeItem('currentUser');
-      location.href = 'signup.html';
-    });
-  </script>
+  <!-- TOAST ẨN HOÀN TOÀN KHI KHÔNG DÙNG -->
+  <div id="toast"></div>
 
   <!-- ==================== FOOTER LUXURY ĐEN-VÀNG ==================== -->
   <footer class="luxury-footer">
@@ -275,15 +247,101 @@
     <div class="stars" id="stars-container"></div>
   </footer>
 
-  <!-- TOAST NOTIFICATION - HIỆN TRÊN CÙNG DƯỚI NAVBAR -->
-<div id="toastNotification" class="toast-hidden">
-  <div class="toast-content">
-    <i class="toast-icon"></i>
-    <span class="toast-message">Thông báo sẽ hiện ở đây</span>
-  </div>
-  <div class="toast-progress"></div>
-</div>
+  <script src="auth.js"></script>
+  <script>
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (!user) { alert("Vui lòng đăng nhập!"); location.href = "signup.html"; }
 
+    const f = n => new Intl.NumberFormat('vi-VN').format(n || 0) + 'đ';
+
+    // Load thông tin
+    document.getElementById("fullName").textContent = `${user.firstName || ''} ${user.lastName || ''}`.trim() || "Chưa cập nhật";
+    document.getElementById("email").textContent = user.email;
+    document.getElementById("phone").textContent = user.phone || "Chưa cập nhật";
+    document.getElementById("address").textContent = user.address || "Chưa cập nhật";
+    document.getElementById("role").textContent = user.isAdmin ? "Quản trị viên" : "Khách hàng";
+    document.getElementById("joined").textContent = new Date(user.registeredAt || Date.now()).toLocaleDateString('vi-VN');
+
+    // Số dư + hạng thành viên
+    const balance = user.balance || 0;
+    const totalSpend = user.totalSpend || 0;
+    document.getElementById("userBalance").textContent = f(balance);
+
+    let rank = "Silver", next = 3000000, nextName = "Gold";
+    if (totalSpend >= 15000000) { rank = "Diamond"; next = 0; nextName = "cao nhất"; }
+    else if (totalSpend >= 7000000) { rank = "Platinum"; next = 15000000; nextName = "Diamond"; }
+    else if (totalSpend >= 3000000) { rank = "Gold"; next = 7000000; nextName = "Platinum"; }
+
+    document.getElementById("currentRank").textContent = rank;
+    document.getElementById("rankDesc").textContent = { Silver: "Giảm 5% đơn từ 1 triệu", Gold: "Giảm 20% + miễn phí ship", Platinum: "Giảm 30% + quà sinh nhật", Diamond: "Giảm 40% + quà VIP" }[rank];
+    document.getElementById("rankProgress").style.width = next === 0 ? "100%" : (totalSpend / next * 100) + "%";
+    document.getElementById("progressText").innerHTML = next === 0 ? "Đã đạt hạng cao nhất!" : `${f(totalSpend)} / ${f(next)} để lên <strong>${nextName}</strong>`;
+
+    const colors = { Silver: "#94a3b8", Gold: "#fbbf24", Platinum: "#e879f9", Diamond: "#5eead4" };
+    document.querySelector(".crown i").style.color = colors[rank];
+
+    // Modal
+    function openEditModal() {
+      document.getElementById("editFirstName").value = user.firstName || "";
+      document.getElementById("editLastName").value = user.lastName || "";
+      document.getElementById("editPhone").value = user.phone || "";
+      document.getElementById("editAddress").value = user.address || "";
+      ["oldPassword", "newPassword", "confirmPassword"].forEach(id => document.getElementById(id).value = "");
+      document.getElementById("editProfileModal").classList.add("show");
+    }
+    function closeEditModal() { document.getElementById("editProfileModal").classList.remove("show"); }
+
+    function saveProfileChanges() {
+      const fn = document.getElementById("editFirstName").value.trim();
+      const ln = document.getElementById("editLastName").value.trim();
+      const ph = document.getElementById("editPhone").value.trim();
+      const ad = document.getElementById("editAddress").value.trim();
+      const op = document.getElementById("oldPassword").value;
+      const np = document.getElementById("newPassword").value;
+      const cp = document.getElementById("confirmPassword").value;
+
+      if (!fn || !ln || !ph) return toast("Vui lòng nhập đầy đủ họ tên và số điện thoại!", "error");
+
+      user.firstName = fn; user.lastName = ln; user.phone = ph; user.address = ad || "Chưa cập nhật";
+
+      if (op || np || cp) {
+        if (!op || !np || !cp) return toast("Nhập đủ 3 ô nếu muốn đổi mật khẩu!", "error");
+        if (op !== user.password) return toast("Mật khẩu hiện tại sai!", "error");
+        if (np.length < 6) return toast("Mật khẩu mới phải ≥ 6 ký tự!", "error");
+        if (np !== cp) return toast("Xác nhận mật khẩu không khớp!", "error");
+        user.password = np;
+        toast("Đổi mật khẩu thành công! Đang đăng xuất...", "success");
+        setTimeout(() => { localStorage.removeItem("currentUser"); location.href = "signup.html"; }, 2000);
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem("users") || "[]");
+      const i = users.findIndex(u => u.email === user.email);
+      if (i !== -1) users[i] = user;
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("currentUser", JSON.stringify(user));
+
+      document.getElementById("fullName").textContent = `${fn} ${ln}`;
+      document.getElementById("phone").textContent = ph;
+      document.getElementById("address").textContent = ad || "Chưa cập nhật";
+
+      toast("Cập nhật thành công!", "success");
+      closeEditModal();
+    }
+
+    function toast(msg, type = "success") {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.className = type;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 3500);
+    }
+
+    document.querySelector('.logout').onclick = () => {
+      localStorage.removeItem('currentUser');
+      location.href = 'signup.html';
+    };
+  </script>
 </body>
 
 </html>
