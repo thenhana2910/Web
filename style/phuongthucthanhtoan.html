@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phương thức thanh toán • Flores</title>
+
+  <!-- Icon + Font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="phuongthucthanhtoan.css">
+</head>
+
+<body class="tracking-vip-page">
+
+  <!-- HEADER – GIỐNG HỆT CÁC TRANG KHÁC -->
+  <header class="navbar">
+    <a href="index.html" class="logo">Flores</a>
+    <nav class="nav-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="shop.html">Cửa hàng</a>
+      <a href="sukien.html">Sự kiện</a>
+      <a href="khampha.html">Khám phá</a>
+    </nav>
+    <div class="nav-actions" id="navActions">
+      <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
+      <div class="cart" onclick="toggleGioHang()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG CHÍNH -->
+  <div class="container">
+    <div class="page-header">
+      <h1>Phương thức thanh toán</h1>
+      <p>Flores hỗ trợ mọi hình thức thanh toán phổ biến và an toàn nhất tại Việt Nam</p>
+    </div>
+
+    <!-- NÚT QUAY LẠI -->
+    <div class="back-btn-container">
+      <button onclick="history.back()" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Quay lại
+      </button>
+    </div>
+
+    <!-- CARD THANH TOÁN SIÊU VIP -->
+    <div class="payment-main-card">
+      <div class="payment-grid">
+
+        <!-- 1. Thẻ quốc tế & PayPal -->
+        <div class="payment-category">
+          <h3><i class="fas fa-credit-card"></i> Thẻ quốc tế và PayPal</h3>
+          <div class="payment-icons">
+            <img src="https://img.icons8.com/color/96/visa.png" alt="Visa">
+            <img src="https://img.icons8.com/color/96/mastercard.png" alt="Mastercard">
+            <img src="https://img.icons8.com/color/96/jcb.png" alt="JCB">
+            <img src="https://img.icons8.com/color/96/paypal.png" alt="PayPal">
+          </div>
+        </div>
+
+        <!-- 2. Ví điện tử Việt Nam -->
+        <div class="payment-category">
+          <h3><i class="fas fa-mobile-alt"></i> Ví điện tử</h3>
+          <div class="payment-icons">
+            <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-MoMo-Square.png" alt="MoMo">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.E9FXiJfW7KqAFbCchArqZwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="ZaloPay">
+            <img src="https://th.bing.com/th/id/OIP.zsHE4ELaw12_LsdfAuSZMQHaHa?w=200&h=200&c=10&o=6&pid=genserp&rm=2" alt="VNPAY" style="border-radius:8px;">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.W3ul3rXFW7cC_beaO37ncgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="ShopeePay">
+          </div>
+        </div>
+
+        <!-- 3. Internet Banking & Chuyển khoản -->
+        <div class="payment-category">
+          <h3><i class="fas fa-university"></i> Internet Banking và Chuyển khoản</h3>
+          <div class="payment-icons bank-icons">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.r1fEE75vwals6IQhm1-tsgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vietcombank">
+            <img src="https://play-lh.googleusercontent.com/g9KCglN_UhMUgccQxVg112tz3AAa0-ZqrgOkoKLtPe34-a6ZiOdzyW26hSWcqa-1sQ" alt="BIDV">
+            <img src="https://www.theofficialboard.com/img/twitterCompanyBigImages/47296.png" alt="Techcombank">
+            <img src="https://mbbank.com.vn/img/logo-mb.svg" alt="MB Bank">
+            <img src="https://viettinbank.vn/static/img/logo-viettinbank.svg" alt="VietinBank">
+            <img src="https://acb.com.vn/img/logo-acb.png" alt="ACB">
+            <img src="https://sacombank.com.vn/images/logo-sacombank.png" alt="Sacombank">
+            <span class="more-banks">+ 35 ngân hàng khác</span>
+          </div>
+        </div>
+
+        <!-- 4. Thanh toán khi nhận hàng -->
+        <div class="payment-category cod">
+          <h3><i class="fas fa-hand-holding-heart"></i> Thanh toán khi nhận hàng (COD)</h3>
+          <p>Thanh toán trực tiếp thông qua người giao hàng</p>
+        </div>
+
+      </div>
+
+      <!-- BẢO MẬT -->
+      <div class="security-badge">
+        <i class="fas fa-shield-alt"></i>
+        <div>
+          <strong>An toàn tuyệt đối</strong><br>
+          Mọi giao dịch được mã hóa SSL 256-bit • Xác thực 3D-Secure • Không lưu thông tin thẻ
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER – GIỐNG HỆT 100% -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h2 class="footer-logo">Flores</h2>
+        <p class="footer-desc">
+          Nơi nghệ thuật hoa cỏ hòa quyện cùng cảm xúc. Mỗi bó hoa là một câu chuyện, mỗi cánh hoa là một lời thì thầm của thiên nhiên.
+        </p>
+        <div class="footer-links">
+          <a href="dieukhoan.html">Điều khoản sử dụng</a>
+          <span class="separator">•</span>
+          <a href="#">Chính sách bảo mật</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Thông tin liên hệ</h4>
+        <p class="contact-item"><i class="fas fa-envelope"></i> Flores@stgmail.com</p>
+        <p class="contact-item"><i class="fas fa-phone-alt"></i> +84 909 888 777</p>
+        <div class="social-links">
+          <p>Theo dõi chúng tôi</p>
+          <div class="social-icons-modern">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Gia nhập hội viên</h4>
+        <p>Đăng ký thành viên để nhận ưu đãi độc quyền & bộ sưu tập mới nhất</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Nhập email" required>
+          <button type="submit">ĐĂNG KÝ</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm.</p>
+    </div>
+    <div class="stars" id="stars-container"></div>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toastNotification" class="toast-hidden">
+    <div class="toast-content">
+      <i class="toast-icon"></i>
+      <span class="toast-message">Thông báo sẽ hiện ở đây</span>
+    </div>
+    <div class="toast-progress"></div>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>

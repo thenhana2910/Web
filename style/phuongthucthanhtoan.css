@@ -1,0 +1,152 @@
+/* phuongthucthanhtoan.css – giống hệt theodoidonhang.css */
+
+.tracking-vip-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e17 0%, #111827 40%, #1e293b 100%);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 4%;
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  padding: 5rem 0 3rem;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.8rem;
+  color: #fbbf24;
+  text-shadow: 0 0 50px rgba(251,191,36,0.4);
+  margin: 0;
+  letter-spacing: -1px;
+}
+.page-header p {
+  color: #94a3b8;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Nút quay lại */
+.back-btn-container { text-align: left; margin: 2rem 0 3rem; }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: transparent; border: 2px solid rgba(251,191,36,0.4);
+  color: #fbbf24; padding: 0.9rem 2rem; border-radius: 50px;
+  font-family: 'Libre Baskerville', serif; font-weight: 600; font-size: 1.05rem;
+  cursor: pointer; transition: all 0.5s;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+.back-btn:hover {
+  background: rgba(251,191,36,0.15); border-color: #fbbf24;
+  transform: translateX(-8px); box-shadow: 0 15px 40px rgba(251,191,36,0.25);
+}
+
+/* Card chính */
+.payment-main-card {
+  background: linear-gradient(145deg, rgba(20,25,40,0.98), rgba(15,20,35,0.98));
+  border: 1px solid rgba(251,191,36,0.2);
+  border-radius: 28px;
+  padding: 4rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.7), 0 0 60px rgba(251,191,36,0.12);
+  position: relative;
+  overflow: hidden;
+}
+.payment-main-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(251,191,36,0.08) 50%, transparent 70%);
+  transform: translateX(-100%); transition: transform 1.4s;
+}
+.payment-main-card:hover::before { transform: translateX(100%); }
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.payment-category {
+  background: rgba(251,191,36,0.05);
+  border: 1px solid rgba(251,191,36,0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.6s;
+  text-align: center;
+}
+.payment-category:hover {
+  transform: translateY(-15px);
+  border-color: #fbbf24;
+  background: rgba(251,191,36,0.12);
+  box-shadow: 0 20px 50px rgba(251,191,36,0.2);
+}
+
+.payment-category h3 {
+  color: #fbbf24;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+.payment-icons img {
+  height: 56px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.payment-icons img:hover { transform: scale(1.2); }
+
+.bank-icons img { height: 48px; }
+.more-banks {
+  background: rgba(251,191,36,0.2);
+  color: #fbbf24;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.payment-category.cod {
+  background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(20,184,166,0.06));
+  border-color: #34d399;
+}
+.payment-category.cod h3 { color: #34d399; }
+
+/* Bảo mật */
+.security-badge {
+  margin-top: 3.5rem;
+  text-align: center;
+  padding: 2.5rem;
+  background: rgba(251,191,36,0.08);
+  border: 1px dashed rgba(251,191,36,0.4);
+  border-radius: 24px;
+  font-size: 1.2rem;
+  color: #e2e8f0;
+}
+.security-badge i {
+  font-size: 3.5rem;
+  color: #fbbf24;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header h1 { font-size: 3.4rem; }
+  .payment-main-card { padding: 2.5rem; }
+  .payment-grid { grid-template-columns: 1fr; }
+  .back-btn-container { text-align: center; }
+}
