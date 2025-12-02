@@ -46,7 +46,7 @@
       <h1 class="title">Flores et Picturae</h1>
       <p class="subtitle">BOSTON</p>
       <a href="shop.html">
-        <button class="cta-button">Mua bó hoa</button>
+        <button class="cta-button">Mua hoa</button>
       </a>
     </div>
     <!-- Ảnh nền hoa đỏ đen huyền bí -->
@@ -73,6 +73,18 @@
     window.onclick = e => { if (e.target.id === "gio-hang-modal") e.target.style.display = "none"; }
   </script>
   <script src="auth.js"></script>
+  <script>
+    // Tự động thêm class "scrolled" khi cuộn để kích hoạt hiệu ứng navbar + overlay
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 100) {
+        document.body.classList.add('scrolled');
+        document.querySelector('.navbar')?.classList.add('scrolled');
+      } else {
+        document.body.classList.remove('scrolled');
+        document.querySelector('.navbar')?.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 
 </html>

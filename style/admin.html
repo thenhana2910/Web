@@ -150,5 +150,17 @@
     </div>
     <div class="stars" id="stars-container"></div>
   </footer>
+  <script>
+    // Tự động thêm class "scrolled" khi cuộn để kích hoạt hiệu ứng navbar + overlay
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 100) {
+        document.body.classList.add('scrolled');
+        document.querySelector('.navbar')?.classList.add('scrolled');
+      } else {
+        document.body.classList.remove('scrolled');
+        document.querySelector('.navbar')?.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>

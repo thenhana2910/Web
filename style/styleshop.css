@@ -1,0 +1,178 @@
+/* === CSS BỔ SUNG CHO SHOP MỚI - 3 CỘT + YÊU THÍCH + TOAST === */
+.shop-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 3%;
+    text-align: center;
+}
+
+.shop-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.shop-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 5rem;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.shop-item {
+    background: rgba(251, 191, 36, 0.03);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    transition: all 0.6s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 60px rgba(251, 191, 36, 0.2);
+}
+
+.shop-image {
+    height: 420px;
+    overflow: hidden;
+}
+
+.shop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.shop-item:hover .shop-image img {
+    transform: scale(1.06);
+}
+
+.shop-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin: 1.8rem 1.5rem 0.6rem;
+}
+
+.shop-price {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.shop-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem 2rem;
+    margin-top: auto;
+}
+
+.shop-add-btn {
+    padding: 0.9rem 2rem;
+    border: 1.5px solid #fbbf24;
+    background: transparent;
+    color: #fbbf24;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.4s;
+    font-weight: 600;
+}
+
+.shop-add-btn:hover {
+    background: #fbbf24;
+    color: #0f172a;
+}
+
+.fav-btn {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #fbbf24;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.fav-btn:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.fav-btn.liked {
+    color: #e91e63;
+    opacity: 1;
+}
+
+.fav-btn.liked i {
+    animation: heartbeat 0.6s ease;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.4);
+    }
+}
+
+/* Toast thông báo */
+.toast {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: #fbbf24;
+    color: #0f172a;
+    padding: 16px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    z-index: 99999;
+    box-shadow: 0 10px 30px rgba(251, 191, 36, 0.5);
+    animation: slideIn 0.5s ease-out;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .shop-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .shop-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .shop-heading {
+        font-size: 3rem;
+    }
+}
