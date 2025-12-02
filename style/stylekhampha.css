@@ -1,77 +1,408 @@
-/* ===== PHONG TRƯNG BÀY – HOÀN CHỈNH & CHỐNG VỠ LAYOUT 100% ===== */
+/* ==================== NÂNG CẤP MỚI – CHỈ CẦN DÁN VÀO ĐÂY ==================== */
+:root {
+    --gold: #d4af37;
+    --dark: #030a20;
+}
+
+/* 1. HERO BANNER CỰC LỚN */
+.hero-explore {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hero-explore::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(15, 15, 15, 0.95)),
+        url('https://images.unsplash.com/photo-1603366447795-2cb37e7f3d9f?w=2400&q=90') center/cover no-repeat;
+    filter: brightness(0.55);
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    letter-spacing: 8px;
+    margin-bottom: 1rem;
+    color: var(--gold);
+}
+
+.hero-subtitle {
+    font-size: 1.6rem;
+    letter-spacing: 5px;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.hero-cta {
+    padding: 1.2rem 4rem;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 4px;
+    font-weight: 500;
+    transition: all 0.6s ease;
+    display: inline-block;
+}
+
+.hero-cta:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+/* 2. TRIẾT LÝ FLORES */
+.philosophy {
+    padding: 12rem 2rem;
+    background: var(--dark);
+    color: #eee;
+}
+
+.philosophy-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+}
+
+.philosophy-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8rem;
+    color: var(--gold);
+    margin-bottom: 2rem;
+}
+
+.philosophy-text p.large-text {
+    font-size: 1.5rem;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+}
+
+.signature {
+    font-family: 'Libre Baskerville', italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+    opacity: 0.8;
+}
+
+.philosophy-image img {
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+    border-radius: 32px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+}
+
+/* 3. BỘ SƯU TẬP THEO CẢM XÚC */
+.collections-preview {
+    padding: 10rem 2rem;
+    background: var(--dark);
+    text-align: center;
+}
+
+.section-title-gold {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.6rem;
+    color: var(--gold);
+    margin-bottom: 6rem;
+}
+
+.collections-grid {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 3rem;
+}
+
+.collection-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    height: 580px;
+}
+
+.collection-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease;
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.85));
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 3rem;
+    color: white;
+}
+
+.card-overlay h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+}
+
+.collection-card:hover img {
+    transform: scale(1.08);
+}
+
+/* 4. PRESS & SOCIAL PROOF */
+.press {
+    padding: 8rem 2rem;
+    background: var(--dark);
+    text-align: center;
+    color: #aaa;
+    font-size: 1.1rem;
+}
+
+.press-logos {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.press-logos img {
+    height: 40px;
+    filter: grayscale(100%) brightness(0.7);
+    opacity: 0.6;
+    transition: all 0.4s;
+}
+
+.press-logos img:hover {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+/* 5. FINAL CTA */
+.final-cta {
+    padding: 12rem 2rem;
+    background: var(--dark);
+    text-align: center;
+}
+
+.final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.4rem;
+    color: var(--gold);
+    margin-bottom: 3rem;
+}
+
+.btn-gold {
+    padding: 1.2rem 4rem;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn-outline {
+    padding: 1.2rem 4rem;
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.btn-gold:hover {
+    background: white;
+}
+
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+@media (max-width: 968px) {
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .philosophy-image img {
+        height: 500px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 4.5rem;
+    }
+
+    .collections-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ====================== PHÒNG TRƯNG BÀY PHIÊN BẢN LUXURY MUSEUM 2025 ====================== */
 .exhibition-section {
-    margin: 8rem 0 12rem;
+    margin: 10rem 0 15rem;
     padding: 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background tối với hiệu ứng gradient + hạt bụi vàng nhẹ */
+.exhibition-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+        #0f0f0f;
+    z-index: -2;
+}
+
+/* Hiệu ứng hạt ánh sáng vàng lấp lánh nhẹ (như bụi vàng trong bảo tàng) */
+.exhibition-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23d4af37" opacity="0.4"><animate attributeName="opacity" values="0.4;0.8;0.4" dur="4s" repeatCount="indefinite"/></circle></svg>') repeat;
+    background-size: 80px 80px;
+    opacity: 0.15;
+    animation: floatDust 25s linear infinite;
+    z-index: -1;
+}
+
+@keyframes floatDust {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(30px, -30px);
+    }
 }
 
 .exhibition-title {
     font-family: 'Playfair Display', serif;
-    font-size: 3.4rem;
+    font-size: 4.2rem;
     color: #d4af37;
     text-align: center;
-    margin-bottom: 7rem;
-    letter-spacing: 1.8px;
-    opacity: 0.95;
+    margin-bottom: 9rem;
+    letter-spacing: 3px;
+    position: relative;
+    font-weight: 600;
 }
 
+.exhibition-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+/* Container chính */
 .exhibition-container {
-    max-width: 1700px;
+    max-width: 1800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 12rem;
+    gap: 18rem;
+    padding: 0 2rem;
 }
 
 .exhibition-block {
     display: grid;
-    grid-template-columns: 1fr 1.6fr 1fr;
+    grid-template-columns: 1fr 1.7fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 3rem;
-    height: 84vh;
-    overflow: hidden;
-    /* ← Ngăn khối bị kéo giãn quá mức */
+    gap: 3.5rem;
+    height: 90vh;
+    position: relative;
 }
 
-/* Vị trí chính xác như hình mẫu */
+/* Ảnh chính xác vị trí như cũ */
 .exhibition-block img:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1 / 3;
+    grid-area: 1 / 1 / 3 / 2;
 }
 
 .exhibition-block img:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
+    grid-area: 1 / 2 / 2 / 3;
 }
 
 .exhibition-block img:nth-child(3) {
-    grid-column: 3;
-    grid-row: 1 / 3;
+    grid-area: 1 / 3 / 3 / 4;
 }
 
 .exhibition-block img:nth-child(4) {
-    grid-column: 2;
-    grid-row: 2;
+    grid-area: 2 / 2 / 3 / 3;
 }
 
+/* Hiệu ứng ảnh – SIÊU SANG */
 .exhibition-block img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 28px;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
-    transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-
-    /* ←←← 2 DÒNG QUAN TRỌNG NHẤT – KHÓA TỶ LỆ & CẮT CỨNG */
-    aspect-ratio: 4 / 5;
-    /* Tỷ lệ đẹp nhất cho cả ảnh dọc và ngang */
+    border-radius: 32px;
+    position: relative;
     overflow: hidden;
-    display: block;
+    aspect-ratio: 4 / 5;
+
+    /* Viền vàng mỏng + bóng đổ sang trọng */
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, 0.15),
+        0 40px 80px rgba(0, 0, 0, 0.9),
+        inset 0 0 60px rgba(0, 0, 0, 0.4);
+
+    /* Hiệu ứng ánh sáng vàng nhẹ khi hover */
+    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(0);
 }
 
+/* Hover: KHÔNG nảy lên nữa, chỉ sáng nhẹ + viền vàng đậm hơn */
 .exhibition-block img:hover {
-    transform: translateY(-20px) scale(1.04);
-    box-shadow: 0 50px 100px rgba(212, 175, 55, 0.35);
-    z-index: 10;
+    box-shadow:
+        0 0 0 2px #d4af37,
+        0 60px 120px rgba(212, 175, 55, 0.25),
+        inset 0 0 80px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px);
+    filter: brightness(1.08);
+}
+
+/* Thêm lớp overlay đen nhẹ để ảnh "chìm" vào background */
+.exhibition-block img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(15, 15, 15, 0.2) 0%,
+            rgba(15, 15, 15, 0.4) 100%);
+    z-index: 1;
+    border-radius: 32px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.exhibition-block img:hover::before {
+    opacity: 1;
 }
 
 /* Tablet */
@@ -80,64 +411,61 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
         height: auto;
-        gap: 2.5rem;
+        gap: 3rem;
     }
 
     .exhibition-block img:nth-child(1) {
-        grid-column: 1;
-        grid-row: 1;
-        height: 65vh;
+        grid-area: 1 / 1 / 2 / 2;
+        height: 70vh;
     }
 
     .exhibition-block img:nth-child(2) {
-        grid-column: 2;
-        grid-row: 1;
-        height: 65vh;
+        grid-area: 1 / 2 / 2 / 3;
+        height: 70vh;
     }
 
     .exhibition-block img:nth-child(3) {
-        grid-column: 1 / 3;
-        grid-row: 2;
-        height: 55vh;
+        grid-area: 2 / 1 / 3 / 3;
+        height: 60vh;
     }
 
     .exhibition-block img:nth-child(4) {
-        grid-column: 1 / 3;
-        grid-row: 3;
-        height: 55vh;
+        grid-area: 3 / 1 / 4 / 3;
+        height: 60vh;
     }
 
-    .exhibition-block img {
-        aspect-ratio: 4 / 5;
-        /* Vẫn giữ tỷ lệ cố định trên tablet */
+    .exhibition-container {
+        gap: 12rem;
     }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
     .exhibition-section {
-        margin: 5rem 0 8rem;
-        padding: 0 1.5rem;
+        margin: 6rem 0 10rem;
+        padding: 0 1rem;
     }
 
     .exhibition-title {
-        font-size: 2.6rem;
-        margin-bottom: 4rem;
+        font-size: 2.8rem;
+        margin-bottom: 5rem;
     }
 
     .exhibition-container {
-        gap: 9rem;
+        gap: 10rem;
     }
 
     .exhibition-block {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 3.5rem;
     }
 
     .exhibition-block img {
-        height: 68vh !important;
-        border-radius: 20px;
-        aspect-ratio: 4 / 5;
-        /* Vẫn cố định tỷ lệ trên mobile */
+        height: 70vh !important;
+        border-radius: 24px;
+    }
+
+    .exhibition-block img:hover {
+        transform: translateY(-4px);
     }
 }

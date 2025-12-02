@@ -177,3 +177,103 @@
   transform: translateY(-10px);
   box-shadow: 0 30px 60px rgba(251,191,36,0.5);
 }
+
+#toastNotification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 50px;
+  box-shadow: 0 10px 40px rgba(251,191,36,0.4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 99999;
+  font-weight: 600;
+  border: 2px solid #fbbf24;
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+#toastNotification.toast-show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.toast-icon { font-size: 1.5rem; }
+.toast-success { border-color: #10b981; }
+.toast-success .toast-icon { color: #10b981; }
+.toast-error { border-color: #ef4444; }
+.toast-error .toast-icon { color: #ef4444; }
+
+.toast-progress {
+  position: absolute;
+  bottom: 0; left: 0; height: 4px;
+  background: #fbbf24;
+  width: 100%;
+  animation: progress 3s linear forwards;
+}
+@keyframes progress { to { width: 0; } }
+
+
+/* ================== FIX SỐ GIỎ HÀNG ĐẸP + KHÔNG LỆCH – GIỮ NGUYÊN NAVBAR ================== */
+#cart-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+#cart-icon:hover {
+  transform: translateY(-3px);
+}
+
+#cart-icon:hover i {
+  color: white !important;
+}
+
+#cart-icon i {
+  font-size: 1.6rem;
+  color: #fbbf24;
+  transition: color 0.3s;
+}
+
+/* SỐ ĐỎ TRÒN ĐẸP – KHÔNG LỆCH NỮA */
+.cart-count-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.7);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Hover thì số nhảy nhẹ */
+#cart-icon:hover .cart-count-badge {
+  transform: scale(1.2);
+  background: #dc2626;
+}
+
+/* Ẩn khi bằng 0 */
+.cart-count-badge:empty,
+.cart-count-badge[data-count="0"],
+.cart-count-badge[style*="display: none"] {
+  display: none !important;
+}

@@ -292,3 +292,97 @@ function showToast(message, type = "success") {
     toast.classList.remove("show");
   }, 4000);
 }
+
+
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (!user) { alert("Vui lòng đăng nhập!"); location.href = "signup.html"; }
+
+    const f = n => new Intl.NumberFormat('vi-VN').format(n || 0) + 'đ';
+
+    // Load thông tin
+    document.getElementById("fullName").textContent = `${user.firstName || ''} ${user.lastName || ''}`.trim() || "Chưa cập nhật";
+    document.getElementById("email").textContent = user.email;
+    document.getElementById("phone").textContent = user.phone || "Chưa cập nhật";
+    document.getElementById("address").textContent = user.address || "Chưa cập nhật";
+    document.getElementById("role").textContent = user.isAdmin ? "Quản trị viên" : "Khách hàng";
+    document.getElementById("joined").textContent = new Date(user.registeredAt || Date.now()).toLocaleDateString('vi-VN');
+
+    // Số dư + hạng thành viên
+    const balance = user.balance || 0;
+    const totalSpend = user.totalSpend || 0;
+    document.getElementById("userBalance").textContent = f(balance);
+
+    let rank = "Silver", next = 3000000, nextName = "Gold";
+    if (totalSpend >= 15000000) { rank = "Diamond"; next = 0; nextName = "cao nhất"; }
+    else if (totalSpend >= 7000000) { rank = "Platinum"; next = 15000000; nextName = "Diamond"; }
+    else if (totalSpend >= 3000000) { rank = "Gold"; next = 7000000; nextName = "Platinum"; }
+
+    document.getElementById("currentRank").textContent = rank;
+    document.getElementById("rankDesc").textContent = { Silver: "Giảm 5% đơn từ 1 triệu", Gold: "Giảm 20% + miễn phí ship", Platinum: "Giảm 30% + quà sinh nhật", Diamond: "Giảm 40% + quà VIP" }[rank];
+    document.getElementById("rankProgress").style.width = next === 0 ? "100%" : (totalSpend / next * 100) + "%";
+    document.getElementById("progressText").innerHTML = next === 0 ? "Đã đạt hạng cao nhất!" : `${f(totalSpend)} / ${f(next)} để lên <strong>${nextName}</strong>`;
+
+    const colors = { Silver: "#94a3b8", Gold: "#fbbf24", Platinum: "#e879f9", Diamond: "#5eead4" };
+    document.querySelector(".crown i").style.color = colors[rank];
+
+    // Modal
+    function openEditModal() {
+      document.getElementById("editFirstName").value = user.firstName || "";
+      document.getElementById("editLastName").value = user.lastName || "";
+      document.getElementById("editPhone").value = user.phone || "";
+      document.getElementById("editAddress").value = user.address || "";
+      ["oldPassword", "newPassword", "confirmPassword"].forEach(id => document.getElementById(id).value = "");
+      document.getElementById("editProfileModal").classList.add("show");
+    }
+    function closeEditModal() { document.getElementById("editProfileModal").classList.remove("show"); }
+
+    function saveProfileChanges() {
+      const fn = document.getElementById("editFirstName").value.trim();
+      const ln = document.getElementById("editLastName").value.trim();
+      const ph = document.getElementById("editPhone").value.trim();
+      const ad = document.getElementById("editAddress").value.trim();
+      const op = document.getElementById("oldPassword").value;
+      const np = document.getElementById("newPassword").value;
+      const cp = document.getElementById("confirmPassword").value;
+
+      if (!fn || !ln || !ph) return toast("Vui lòng nhập đầy đủ họ tên và số điện thoại!", "error");
+
+      user.firstName = fn; user.lastName = ln; user.phone = ph; user.address = ad || "Chưa cập nhật";
+
+      if (op || np || cp) {
+        if (!op || !np || !cp) return toast("Nhập đủ 3 ô nếu muốn đổi mật khẩu!", "error");
+        if (op !== user.password) return toast("Mật khẩu hiện tại sai!", "error");
+        if (np.length < 6) return toast("Mật khẩu mới phải ≥ 6 ký tự!", "error");
+        if (np !== cp) return toast("Xác nhận mật khẩu không khớp!", "error");
+        user.password = np;
+        toast("Đổi mật khẩu thành công! Đang đăng xuất...", "success");
+        setTimeout(() => { localStorage.removeItem("currentUser"); location.href = "signup.html"; }, 2000);
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem("users") || "[]");
+      const i = users.findIndex(u => u.email === user.email);
+      if (i !== -1) users[i] = user;
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("currentUser", JSON.stringify(user));
+
+      document.getElementById("fullName").textContent = `${fn} ${ln}`;
+      document.getElementById("phone").textContent = ph;
+      document.getElementById("address").textContent = ad || "Chưa cập nhật";
+
+      toast("Cập nhật thành công!", "success");
+      closeEditModal();
+    }
+
+    function toast(msg, type = "success") {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.className = type;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 3500);
+    }
+
+    document.querySelector('.logout').onclick = () => {
+      localStorage.removeItem('currentUser');
+      location.href = 'signup.html';
+    };

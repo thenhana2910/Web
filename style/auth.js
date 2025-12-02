@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   } else {
     navActions.innerHTML = `
-      <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
+      <a href="signup.html"><button class="signup-btn">Đăng nhập</button></a>
       <div class="cart" onclick="toggleGioHang()">
         <i class="fa-solid fa-bag-shopping"></i>
         <span id="cart-count" class="cart-count">0</span>

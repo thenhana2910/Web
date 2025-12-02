@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phương thức thanh toán • Flores</title>
-
-  <!-- Icon + Font -->
+  <title>Lịch sử mua hàng • Flores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap"
-    rel="stylesheet">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="components.css">
-  <link rel="stylesheet" href="hangthanhvien.css">
+  <link rel="stylesheet" href="lichsumuahang.css">
 </head>
+<body class="profile-page">
 
-<body class="tracking-vip-page">
-
-  <!-- HEADER – GIỐNG HỆT CÁC TRANG KHÁC -->
-   <header class="navbar">
+  <!-- NAVBAR -->
+  <header class="navbar">
         <a href="index.html" class="logo">Flores</a>
 
         <nav class="nav-menu">
@@ -44,89 +36,27 @@
         </div>
     </header>
 
-  <!-- NỘI DUNG CHÍNH -->
-  <div class="container">
-    <div class="page-header">
-      <h1>Phương thức thanh toán</h1>
-      <p>Nạp tiền vào thẻ hội viên VIP để mua sắm không giới hạn</p>
+  <div class="orders-container">
+    <div class="orders-header">
+      <h1>Lịch sử mua hàng</h1>
+      <p>Xem lại các đơn hàng đã đặt tại Flores</p>
     </div>
 
-    <!-- NÚT QUAY LẠI -->
-    <div class="back-btn-container">
-      <button onclick="history.back()" class="back-btn">
-        <i class="fas fa-arrow-left"></i> Quay lại
-      </button>
+    <div id="orders-list" class="orders-list">
+      <!-- Đơn hàng sẽ được render bằng JS -->
     </div>
 
-    <!-- CARD THANH TOÁN VIP -->
-    <div class="payment-main-card">
-
-      <h2 class="section-title">Chọn gói hội viên của bạn</h2>
-
-      <div class="vip-cards-grid">
-        <!-- Silver -->
-        <div class="vip-card silver">
-          <div class="card-header">
-            <h3>Silver</h3>
-            <p class="price">290.000đ <span>/tháng</span></p>
-          </div>
-          <ul class="benefits">
-            <li>Giảm 10% mọi đơn hàng</li>
-            <li>Miễn phí giao nội thành</li>
-            <li>Quà sinh nhật 200.000đ</li>
-          </ul>
-          <button class="nap-btn" onclick="napTien('Silver')">Nạp ngay</button>
-        </div>
-
-        <!-- Gold – Phổ biến nhất -->
-        <div class="vip-card gold">
-          <div class="card-header">
-            <h3>Gold</h3>
-            <p class="price">590.000đ <span>/tháng</span></p>
-            <div class="popular-badge">Phổ biến nhất</div>
-          </div>
-          <ul class="benefits">
-            <li>Giảm 20% mọi đơn hàng</li>
-            <li>Miễn phí giao toàn quốc</li>
-            <li>Quà sinh nhật 500.000đ</li>
-            <li>Ưu tiên bó hoa độc quyền</li>
-          </ul>
-          <button class="nap-btn" onclick="napTien('Gold')">Nạp ngay</button>
-        </div>
-
-        <!-- Platinum -->
-        <div class="vip-card platinum">
-          <div class="card-header">
-            <h3>Platinum</h3>
-            <p class="price">1.200.000đ <span>/tháng</span></p>
-          </div>
-          <ul class="benefits">
-            <li>Giảm 30% mọi đơn hàng</li>
-            <li>Giao hoa trong 60 phút</li>
-            <li>Quà sinh nhật 1.000.000đ</li>
-            <li>Thiết kế bó hoa riêng miễn phí</li>
-            <li>Tham gia sự kiện VIP</li>
-          </ul>
-          <button class="nap-btn" onclick="napTien('Platinum')">Nạp ngay</button>
-        </div>
-      </div>
-
-      <!-- Bảo mật -->
-      <div class="security-badge">
-        <i class="fas fa-shield-alt"></i>
-        <div>
-          <strong>An toàn tuyệt đối 100%</strong><br>
-          SSL 256-bit • 3D-Secure • Không lưu thông tin thẻ
-        </div>
-      </div>
-
+    <div id="empty-orders" class="empty-state" style="display:none;">
+      <i class="fas fa-receipt empty-icon"></i>
+      <h3>Chưa có đơn hàng nào</h3>
+      <p>Hãy mua sắm ngay để nhận nhiều ưu đãi đặc biệt từ Flores!</p>
+      <a href="shop.html" class="btn-shop-now">Mua sắm ngay</a>
     </div>
   </div>
 
-  <!-- ==================== FOOTER LUXURY ĐEN-VÀNG ==================== -->
+  <!-- FOOTER LUXURY ĐEN-VÀNG – GIỮ NGUYÊN ĐẸP NHƯ BẠN MUỐN -->
   <footer class="luxury-footer">
     <div class="footer-container">
-
       <!-- Cột 1: Logo + Mô tả -->
       <div class="footer-col">
         <h2 class="footer-logo">Flores</h2>
@@ -179,29 +109,21 @@
           <button type="submit">ĐĂNG KÝ</button>
         </form>
       </div>
-
     </div>
 
     <!-- Bản quyền -->
     <div class="footer-bottom">
-      <p>© 2025 Flores. Thuộc bản quyền về nhóm. </p>
+      <p>© 2025 Flores. Thuộc bản quyền về nhóm.</p>
     </div>
 
     <!-- Hiệu ứng chấm sao lấp lánh -->
     <div class="stars" id="stars-container"></div>
   </footer>
 
-  <!-- TOAST -->
-  <div id="toastNotification" class="toast-hidden">
-    <div class="toast-content">
-      <i class="toast-icon"></i>
-      <span class="toast-message">Thông báo sẽ hiện ở đây</span>
-    </div>
-    <div class="toast-progress"></div>
-  </div>
+  <div id="toast">Thông báo</div>
 
   <script src="auth.js"></script>
     <script src="shop.js"></script>
+  <script src="lichsumuahang.js"></script>
 </body>
-
 </html>

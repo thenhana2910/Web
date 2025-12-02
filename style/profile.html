@@ -10,6 +10,7 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styleshop.css">
   <link rel="stylesheet" href="components.css">
   <link rel="stylesheet" href="profile.css">
   <link rel="stylesheet" href="profile-edit.css">
@@ -17,23 +18,27 @@
 
 <body class="profile-page">
 
-  <!-- HEADER -->
+  <!-- NAVBAR -->
   <header class="navbar">
     <a href="index.html" class="logo">Flores</a>
+
     <nav class="nav-menu">
       <a href="index.html">Trang chủ</a>
       <a href="shop.html">Cửa hàng</a>
       <a href="sukien.html">Sự kiện</a>
       <a href="khampha.html">Khám phá</a>
     </nav>
+
     <div class="nav-actions" id="navActions">
       <a href="signup.html">
-        <button class="signup-btn">Sign Up</button>
+        <button class="signup-btn">Đăng nhập</button>
       </a>
+
+
       <div class="cart" id="cart-icon">
         <i class="fa-solid fa-bag-shopping"></i>
         <span id="cart-count" class="cart-count">0</span>
-      </div>s
+      </div>
     </div>
   </header>
 
@@ -42,8 +47,8 @@
 
       <!-- MENU TRÁI -->
       <aside class="profile-sidebar">
-        <div class="menu-item active" data-section="overview"><i class="fas fa-user-circle"></i> Tổng quan</div>
-        <div class="menu-item" data-section="orders"><i class="fas fa-history"></i> Lịch sử mua hàng</div>
+        <div class="menu-item active" onclick="location.href='profile.html'"><i class="fas fa-user-circle"></i> Tổng quan</div>
+        <div class="menu-item" onclick="location.href='lichsumuahang.html'"><i class="fas fa-history"></i> Lịch sử mua hàng</div>
         <div class="menu-item" onclick="location.href='phuongthucthanhtoan.html'"><i class="fas fa-credit-card"></i>
           Phương thức thanh toán</div>
         <div class="menu-item" onclick="location.href='hangthanhvien.html'"><i class="fas fa-trophy"></i> Hạng thành
@@ -247,22 +252,31 @@
     <div class="stars" id="stars-container"></div>
   </footer>
 
+  <!-- TOAST ĐẸP -->
+  <div id="toast"></div>
+
+  <!-- JS CHÍNH -->
   <script src="auth.js"></script>
+    <script src="shop.js"></script>
   <script>
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-    if (!user) { alert("Vui lòng đăng nhập!"); location.href = "signup.html"; }
+    // === PROFILE + VÍ + GIỎ HÀNG HOÀN CHỈNH ===
+    const user = JSON.parse(localStorage.getItem("currentUser") || "{}");
+    if (!user.email) {
+      alert("Vui lòng đăng nhập!");
+      location.href = "signup.html";
+    }
 
     const f = n => new Intl.NumberFormat('vi-VN').format(n || 0) + 'đ';
 
-    // Load thông tin
+    // Load thông tin cá nhân
     document.getElementById("fullName").textContent = `${user.firstName || ''} ${user.lastName || ''}`.trim() || "Chưa cập nhật";
-    document.getElementById("email").textContent = user.email;
+    document.getElementById("email").textContent = user.email || "Chưa có";
     document.getElementById("phone").textContent = user.phone || "Chưa cập nhật";
     document.getElementById("address").textContent = user.address || "Chưa cập nhật";
     document.getElementById("role").textContent = user.isAdmin ? "Quản trị viên" : "Khách hàng";
     document.getElementById("joined").textContent = new Date(user.registeredAt || Date.now()).toLocaleDateString('vi-VN');
 
-    // Số dư + hạng thành viên
+    // === VÍ FLORES + HẠNG THÀNH VIÊN ===
     const balance = user.balance || 0;
     const totalSpend = user.totalSpend || 0;
     document.getElementById("userBalance").textContent = f(balance);
@@ -273,14 +287,22 @@
     else if (totalSpend >= 3000000) { rank = "Gold"; next = 7000000; nextName = "Platinum"; }
 
     document.getElementById("currentRank").textContent = rank;
-    document.getElementById("rankDesc").textContent = { Silver: "Giảm 5% đơn từ 1 triệu", Gold: "Giảm 20% + miễn phí ship", Platinum: "Giảm 30% + quà sinh nhật", Diamond: "Giảm 40% + quà VIP" }[rank];
+    document.getElementById("rankDesc").textContent = {
+      Silver: "Giảm 5% đơn từ 1 triệu",
+      Gold: "Giảm 20% + miễn phí ship",
+      Platinum: "Giảm 30% + quà sinh nhật",
+      Diamond: "Giảm 40% + quà VIP"
+    }[rank];
+
     document.getElementById("rankProgress").style.width = next === 0 ? "100%" : (totalSpend / next * 100) + "%";
-    document.getElementById("progressText").innerHTML = next === 0 ? "Đã đạt hạng cao nhất!" : `${f(totalSpend)} / ${f(next)} để lên <strong>${nextName}</strong>`;
+    document.getElementById("progressText").innerHTML = next === 0
+      ? "Đã đạt hạng cao nhất!"
+      : `${f(totalSpend)} / ${f(next)} để lên <strong>${nextName}</strong>`;
 
     const colors = { Silver: "#94a3b8", Gold: "#fbbf24", Platinum: "#e879f9", Diamond: "#5eead4" };
     document.querySelector(".crown i").style.color = colors[rank];
 
-    // Modal
+    // === MODAL CHỈNH SỬA ===
     function openEditModal() {
       document.getElementById("editFirstName").value = user.firstName || "";
       document.getElementById("editLastName").value = user.lastName || "";
@@ -289,20 +311,29 @@
       ["oldPassword", "newPassword", "confirmPassword"].forEach(id => document.getElementById(id).value = "");
       document.getElementById("editProfileModal").classList.add("show");
     }
-    function closeEditModal() { document.getElementById("editProfileModal").classList.remove("show"); }
+
+    function closeEditModal() {
+      document.getElementById("editProfileModal").classList.remove("show");
+    }
 
     function saveProfileChanges() {
       const fn = document.getElementById("editFirstName").value.trim();
       const ln = document.getElementById("editLastName").value.trim();
       const ph = document.getElementById("editPhone").value.trim();
       const ad = document.getElementById("editAddress").value.trim();
-      const op = document.getElementById("oldPassword").value;
-      const np = document.getElementById("newPassword").value;
-      const cp = document.getElementById("confirmPassword").value;
 
       if (!fn || !ln || !ph) return toast("Vui lòng nhập đầy đủ họ tên và số điện thoại!", "error");
 
-      user.firstName = fn; user.lastName = ln; user.phone = ph; user.address = ad || "Chưa cập nhật";
+      // Cập nhật user
+      user.firstName = fn;
+      user.lastName = ln;
+      user.phone = ph;
+      user.address = ad || "Chưa cập nhật";
+
+      // Đổi mật khẩu (nếu có nhập)
+      const op = document.getElementById("oldPassword").value;
+      const np = document.getElementById("newPassword").value;
+      const cp = document.getElementById("confirmPassword").value;
 
       if (op || np || cp) {
         if (!op || !np || !cp) return toast("Nhập đủ 3 ô nếu muốn đổi mật khẩu!", "error");
@@ -311,36 +342,55 @@
         if (np !== cp) return toast("Xác nhận mật khẩu không khớp!", "error");
         user.password = np;
         toast("Đổi mật khẩu thành công! Đang đăng xuất...", "success");
-        setTimeout(() => { localStorage.removeItem("currentUser"); location.href = "signup.html"; }, 2000);
+        setTimeout(() => {
+          localStorage.removeItem("currentUser");
+          location.href = "signup.html";
+        }, 2000);
         return;
       }
 
+      // Lưu vào danh sách users + currentUser
       let users = JSON.parse(localStorage.getItem("users") || "[]");
-      const i = users.findIndex(u => u.email === user.email);
-      if (i !== -1) users[i] = user;
+      const idx = users.findIndex(u => u.email === user.email);
+      if (idx !== -1) users[idx] = user;
       localStorage.setItem("users", JSON.stringify(users));
       localStorage.setItem("currentUser", JSON.stringify(user));
 
+      // Cập nhật giao diện
       document.getElementById("fullName").textContent = `${fn} ${ln}`;
       document.getElementById("phone").textContent = ph;
       document.getElementById("address").textContent = ad || "Chưa cập nhật";
 
-      toast("Cập nhật thành công!", "success");
+      toast("Cập nhật thông tin thành công!", "success");
       closeEditModal();
     }
 
-    function toast(msg, type = "success") {
+    // Toast đẹp (dùng chung với giohang.js)
+    window.toast = function (msg, type = "success") {
       const t = document.getElementById("toast");
       t.textContent = msg;
       t.className = type;
       t.classList.add("show");
       setTimeout(() => t.classList.remove("show"), 3500);
-    }
-
-    document.querySelector('.logout').onclick = () => {
-      localStorage.removeItem('currentUser');
-      location.href = 'signup.html';
     };
+
+    // Đăng xuất
+    document.querySelector('.logout').onclick = () => {
+      if (confirm("Đăng xuất tài khoản?")) {
+        localStorage.removeItem('currentUser');
+        location.href = 'signup.html';
+      }
+    };
+
+    // Gọi hàm mở/đóng modal
+    window.openEditModal = openEditModal;
+    window.closeEditModal = closeEditModal;
+    window.saveProfileChanges = saveProfileChanges;
+
+    // === GIỎ HÀNG HOẠT ĐỘNG NGAY KHI VÀO PROFILE ===
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof updateCartCount === "function") updateCartCount();
+    });
   </script>
 </body>
 

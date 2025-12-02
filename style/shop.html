@@ -28,7 +28,7 @@
 
         <div class="nav-actions" id="navActions">
             <a href="signup.html">
-                <button class="signup-btn">Sign Up</button>
+                <button class="signup-btn">Đăng nhập</button>
             </a>
 
 
@@ -311,128 +311,7 @@
         <div class="stars" id="stars-container"></div>
     </footer>
     <script src="auth.js"></script>
-
-    <!-- TOÀN BỘ JS ĐÃ ĐƯỢC GOM LẠI VÀ FIX HOÀN HẢO -->
-    <script>
-        // === GIỎ HÀNG & YÊU THÍCH HOÀN CHỈNH ===
-        let cart = JSON.parse(localStorage.getItem("floresCart")) || [];
-        let favorites = JSON.parse(localStorage.getItem("floresFavorites")) || [];
-
-        function updateCartCount() {
-            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.querySelectorAll("#cart-count").forEach(el => {
-                el.textContent = total;
-                el.style.display = total > 0 ? "flex" : "none";
-            });
-        }
-
-        function showToast(message) {
-            const toast = document.createElement("div");
-            toast.className = "toast";
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2500);
-        }
-
-        function addToCart(name, price, image) {
-            const existing = cart.find(item => item.name === name);
-            if (existing) existing.quantity += 1;
-            else cart.push({ name, price, image, quantity: 1 });
-            localStorage.setItem("floresCart", JSON.stringify(cart));
-            updateCartCount();
-            showToast(`${name} đã thêm vào giỏ!`);
-        }
-
-        function toggleFavorite(name, image, btn) {
-            const index = favorites.findIndex(f => f.name === name);
-            if (index > -1) {
-                favorites.splice(index, 1);
-                btn.classList.remove("liked");
-                showToast(`${name} đã bỏ yêu thích`);
-            } else {
-                favorites.push({ name, image });
-                btn.classList.add("liked");
-                showToast(`${name} đã thêm vào yêu thích!`);
-            }
-            localStorage.setItem("floresFavorites", JSON.stringify(favorites));
-        }
-
-        // Khôi phục trạng thái yêu thích khi load trang
-        document.addEventListener("DOMContentLoaded", () => {
-            updateCartCount();
-            document.querySelectorAll(".shop-item").forEach(item => {
-                const title = item.querySelector(".shop-title").textContent.trim();
-                const btn = item.querySelector(".fav-btn");
-                if (favorites.some(f => f.name === title)) {
-                    btn.classList.add("liked");
-                }
-            });
-        });
-    </script>
-
-    <script>
-        /* PHƯƠNG ÁN B - Đồng bộ localStorage key và thêm toggleGioHang() */
-        (function () {
-            const STORAGE_KEY = 'cart'; // chuẩn: 'cart'. Nếu muốn khác, đổi ở đây.
-
-            // Thêm/hợp nhất item vào localStorage (gọi từ nút "Thêm vào giỏ")
-            window.addToCart = function (name, price, image, variant = '') {
-                let cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-                const found = cart.find(i => i.name === name && (i.variant || '') === variant);
-                if (found) found.quantity = (found.quantity || 1) + 1;
-                else cart.push({ name, price: Number(price), image: image || '', variant, quantity: 1 });
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
-
-                // backward-compat: update floresCart nếu có mã cũ
-                try { localStorage.setItem('floresCart', JSON.stringify(cart)); } catch (e) { }
-
-                updateCartCount();
-                // toast đơn giản — nếu bạn có hàm showToast thì dùng, else alert
-                if (typeof showToast === 'function') showToast(`${name} đã thêm vào giỏ!`);
-                else console.log(`${name} added to cart`);
-            }
-
-            // Cập nhật badge hiển thị số lượng
-            function updateCartCount() {
-                const cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-                const total = cart.reduce((s, i) => s + (i.quantity || 1), 0);
-                document.querySelectorAll('#cart-count').forEach(el => {
-                    el.textContent = total;
-                    el.style.display = total > 0 ? 'flex' : 'none';
-                });
-                const itemCountEl = document.getElementById('item-count');
-                if (itemCountEl) itemCountEl.textContent = cart.length;
-            }
-
-            // Định nghĩa toggleGioHang được gọi từ header
-            window.toggleGioHang = function (e) {
-                // Nếu có hàm openCart (sidebar inject), ưu tiên gọi
-                if (typeof openCart === 'function') {
-                    if (e && e.preventDefault) e.preventDefault();
-                    return openCart();
-                }
-                // Mặc định: chuyển tới trang giỏ hàng
-                if (e && e.preventDefault) e.preventDefault();
-                window.location.href = 'giohang.html';
-            }
-
-            // Gắn listener cho icon nếu dùng event delegation (nếu chưa gắn)
-            document.addEventListener('DOMContentLoaded', function () {
-                document.querySelectorAll('.cart, .cart-btn, [data-role="open-cart"]').forEach(el => {
-                    el.addEventListener('click', function (ev) {
-                        ev.preventDefault();
-                        toggleGioHang(ev);
-                    });
-                });
-                // cập nhật badge khi load trang
-                updateCartCount();
-            });
-
-            // Expose updateCartCount để có thể gọi thủ công sau khi load dữ liệu
-            window.updateCartCount = updateCartCount;
-        })();
-    </script>
-
+    <script src="shop.js"></script>
 </body>
 
 </html>

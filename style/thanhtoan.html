@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phương thức thanh toán • Flores</title>
-
-  <!-- Font & Icon -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <title>Thanh toán • Flores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="components.css">
-  <link rel="stylesheet" href="phuongthucthanhtoan.css">
+  <link rel="stylesheet" href="thanhtoan.css">
 </head>
-
 <body>
 
-   <!-- NAVBAR -->
+  <!-- NAVBAR -->
   <header class="navbar">
         <a href="index.html" class="logo">Flores</a>
 
@@ -46,51 +38,95 @@
 
   <div class="payment-container">
     <div class="payment-header">
-      <i class="fas fa-wallet"></i>
-      <h1>Phương thức thanh toán</h1>
-      <p class="balance-display">Số dư ví Flores: <strong id="userBalance">0 ₫</strong></p>
+      <h1>Thanh toán đơn hàng</h1>
+      <p class="order-total">Tổng tiền: <strong id="total-amount">0 ₫</strong></p>
+      <p class="balance-info">Số dư ví Flores: <strong id="user-balance">0 ₫</strong></p>
     </div>
 
-    <div class="payment-grid">
+    <div class="payment-methods">
 
-      <!-- CỘT 1: VÍ FLORES + NẠP TIỀN -->
-      <div class="payment-card wallet-card">
-        <i class="fas fa-wallet payment-icon"></i>
-        <h2>Ví Flores</h2>
-        <p class="balance-big" id="bigBalance">0 ₫</p>
-        <p>Nạp tiền để thanh toán nhanh hơn!</p>
-
-        <div class="quick-topup">
-          <button class="topup-btn" data-amount="500000">+500k</button>
-          <button class="topup-btn" data-amount="1000000">+1 triệu</button>
-          <button class="topup-btn" data-amount="2000000">+2 triệu</button>
-          <button class="topup-btn" data-amount="5000000">+5 triệu</button>
+      <!-- 1. VÍ FLORES (MỚI – TRỪ TIỀN THẬT) -->
+      <div class="method-card wallet-method">
+        <i class="fas fa-wallet"></i>
+        <h3>Ví Flores</h3>
+        <div class="wallet-balance">
+          <p>Số dư khả dụng:</p>
+          <h2 id="wallet-balance-display">0 ₫</h2>
+        </div>
+        <button id="pay-with-wallet" class="pay-wallet-btn">
+          <i class="fas fa-check-circle"></i> Thanh toán bằng ví (<span id="wallet-total">0 ₫</span>)
+        </button>
+        <div class="wallet-note">
+          <small>Thanh toán nhanh • Không mất phí • An toàn 100%</small>
         </div>
       </div>
 
-      <!-- CỘT 2: CHUYỂN KHOẢN NGÂN HÀNG -->
-      <div class="payment-card transfer-card">
-        <i class="fas fa-university payment-icon"></i>
-        <h2>Chuyển khoản ngân hàng</h2>
-        <p>Chuyển đúng nội dung để hệ thống tự động xác nhận</p>
+      <!-- 2. QUÉT QR -->
+      <div class="method-card">
+        <i class="fas fa-qrcode"></i>
+        <h3>Quét mã QR</h3>
+        <div class="qr-container">
+          <img id="qr-image" src="" alt="QR Thanh toán">
+        </div>
         <div class="bank-info">
           <p><strong>Ngân hàng:</strong> BIDV</p>
-          <p><strong>Số tài khoản:</strong> 0904708037</p>
-          <p><strong>Chủ tài khoản:</strong> NGUYỄN VĂN A</p>
-          <p><strong>Nội dung:</strong> <span id="transferCode">FL000000</span></p>
+          <p><strong>Số TK:</strong> 0904708037</p>
+          <p><strong>Chủ TK:</strong> NGUYỄN VĂN A</p>
+          <p><strong>Nội dung:</strong> <span id="noidung">Flores #0000</span></p>
         </div>
-        <button class="transfer-btn" onclick="confirmTransfer()">Tôi đã chuyển khoản</button>
+        <div class="note">Mở app ngân hàng → Quét mã → Thanh toán ngay!</div>
+      </div>
+
+      <!-- 3. THẺ ATM / VISA / MASTERCARD -->
+      <div class="method-card">
+        <i class="fas fa-credit-card"></i>
+        <h3>Thẻ ATM / Visa / MasterCard</h3>
+        <form id="card-form" class="card-form">
+          <div class="form-group">
+            <label>Số thẻ</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Hết hạn</label>
+              <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+            </div>
+            <div class="form-group">
+              <label>CVV</label>
+              <input type="text" id="card-cvv" placeholder="123" maxlength="4" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tên chủ thẻ</label>
+            <input type="text" id="card-name" placeholder="NGUYEN VAN A" required>
+          </div>
+          <button type="submit" class="pay-card-btn">
+            <i class="fas fa-lock"></i> Thanh toán <span id="card-total">0 ₫</span>
+          </button>
+        </form>
+        <div class="card-note">
+          <small>Kết nối bảo mật SSL • Thanh toán an toàn 100%</small>
+        </div>
       </div>
 
     </div>
 
-    <a href="profile.html" class="back-to-profile">Quay lại hồ sơ</a>
+    <a href="giohang.html" class="back-btn">Quay lại giỏ hàng</a>
   </div>
 
-  <!-- THÔNG BÁO ĐẸP -->
-  <div id="toast">Thông báo</div>
+  <!-- THÔNG BÁO THÀNH CÔNG -->
+  <div id="success-overlay" class="success-overlay">
+    <div class="success-box">
+      <i class="fas fa-check-circle"></i>
+      <h2>Thanh toán thành công!</h2>
+      <p>Cảm ơn quý khách đã tin tưởng <strong>Flores</strong></p>
+      <p id="success-amount">Bạn đã thanh toán <strong>0 ₫</strong></p>
+      <p>Đơn hàng sẽ được giao trong 2-3 ngày tới</p>
+      <button onclick="location.href='index.html'" class="home-btn">Về trang chủ</button>
+    </div>
+  </div>
 
-  <!-- FOOTER LUXURY ĐEN-VÀNG – GIỮ NGUYÊN ĐẸP NHƯ BẠN MUỐN -->
+ <!-- FOOTER LUXURY ĐEN-VÀNG – GIỮ NGUYÊN ĐẸP NHƯ BẠN MUỐN -->
   <footer class="luxury-footer">
     <div class="footer-container">
       <!-- Cột 1: Logo + Mô tả -->
@@ -159,9 +195,7 @@
   <!-- JS -->
   <script src="auth.js"></script>
   <script src="giohang.js"></script>
-  <script src="phuongthucthanhtoan.js"></script>
   <script src="wallet.js"></script>
-
+  <script src="thanhtoan.js"></script>
 </body>
-
 </html>
