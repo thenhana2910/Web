@@ -17,22 +17,29 @@
 
 <body class="content-page">
 
+      <!-- NAVBAR -->
   <header class="navbar">
-    <a href="index.html" class="logo">Flores</a>
-    <nav class="nav-menu">
-      <a href="index.html">Trang chủ</a>
-      <a href="shop.html">Cửa hàng</a>
-      <a href="sukien.html">Sự kiện</a>
-      <a href="khampha.html">Khám phá</a>
-    </nav>
-    <div class="nav-actions" id="navActions">
-      <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
-      <div class="cart" id="cart-icon">
-        <i class="fa-solid fa-bag-shopping"></i>
-        <span id="cart-count" class="cart-count">0</span>
-      </div>
-    </div>
-  </header>
+        <a href="index.html" class="logo">Flores</a>
+
+        <nav class="nav-menu">
+            <a href="index.html">Trang chủ</a>
+            <a href="shop.html">Cửa hàng</a>
+            <a href="sukien.html">Sự kiện</a>
+            <a href="khampha.html">Khám phá</a>
+        </nav>
+
+        <div class="nav-actions" id="navActions">
+            <a href="signup.html">
+                <button class="signup-btn">Đăng nhập</button>
+            </a>
+
+
+            <div class="cart" id="cart-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cart-count" class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
 
   <!-- 1. HERO BANNER -->
   <section class="hero-explore">
@@ -198,7 +205,8 @@
     (function () { /* ... code cart ... */ })();
     document.addEventListener("mousemove", e => { /* sparkle effect */ });
   </script>
-  
+    <script src="auth.js"></script>
+    <script src="shop.js"></script>
 </body>
 
 </html>

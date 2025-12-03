@@ -1,4 +1,3 @@
-// auth.js – Phiên bản CUỐI CÙNG, ĐẸP NHƯ WEB XỊN
 
 const ADMIN_EMAILS = ["thenhan29102006@gmail.com", "friendemail@gmail.com"]; // sửa email 2 bạn
 
