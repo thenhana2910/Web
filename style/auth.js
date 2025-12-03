@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </button>
         <div class="account-dropdown">
           <a href="profile.html"><i class="fas fa-user"></i> Thông tin cá nhân</a>
-          ${isAdmin ? '<a href="admin.html"><i class="fas fa-crown"></i> Admin Panel</a>' : ''}
+          ${isAdmin ? '<a href="admin.html"><i class="fas fa-crown"></i> Bảng điều khiển</a>' : ''}
           <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
         </div>
       </div>

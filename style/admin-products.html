@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lịch sử mua hàng • Flores</title>
+  <title>Quản lý sản phẩm - Flores Admin</title>
+
+  <!-- Font & Icon -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="components.css">
-  <link rel="stylesheet" href="lichsumuahang.css">
-</head>
-<body class="profile-page">
 
-  <!-- NAVBAR -->
-  <header class="navbar">
+  <!-- CSS chung + riêng -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleshop.css">
+    <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="admin-products.css">
+</head>
+<body class="admin-page">
+
+  <!-- HEADER – GIỐNG HỆT CÁC TRANG KHÁC -->
+   <header class="navbar">
         <a href="index.html" class="logo">Flores</a>
 
         <nav class="nav-menu">
@@ -36,25 +41,68 @@
         </div>
     </header>
 
-  <div class="orders-container">
-    <div class="orders-header">
-      <h1>Lịch sử mua hàng</h1>
-      <p>Xem lại các đơn hàng đã đặt tại Flores</p>
+  <div class="admin-container">
+
+    <div class="admin-header">
+      <h1 class="crown">Quản lý sản phẩm</h1>
+      <p>Thêm • Sửa • Xóa bó hoa trong cửa hàng Flores</p>
     </div>
 
-    <div id="orders-list" class="orders-list">
-      <!-- Đơn hàng sẽ được render bằng JS -->
+    <div class="add-btn-wrapper">
+      <button class="btn-add-new" onclick="openAddModal()">
+        <i class="fas fa-plus-circle"></i> Thêm bó hoa mới
+      </button>
     </div>
 
-    <div id="empty-orders" class="empty-state" style="display:none;">
-      <i class="fas fa-receipt empty-icon"></i>
-      <h3>Chưa có đơn hàng nào</h3>
-      <p>Hãy mua sắm ngay để nhận nhiều ưu đãi đặc biệt từ Flores!</p>
-      <a href="shop.html" class="btn-shop-now">Mua sắm ngay</a>
+    <div class="products-grid" id="productsGrid">
+      <!-- JS đổ sản phẩm vào đây -->
     </div>
+
+    <!-- Modal thêm/sửa -->
+    <div class="modal" id="productModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">×</span>
+        <h2 id="modalTitle">Thêm bó hoa mới</h2>
+
+        <form id="productForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Tên bó hoa *</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label>Giá tiền (VNĐ) *</label>
+              <input type="number" id="price" required>
+            </div>
+            <div class="form-group">
+              <label>Link ảnh chính *</label>
+              <input type="url" id="image" required placeholder="https://...">
+            </div>
+            <div class="form-group">
+              <label>Tone màu</label>
+              <input type="text" id="tone" placeholder="Vàng - hồng phấn, ấm áp">
+            </div>
+            <div class="form-group full-width">
+              <label>Thành phần hoa</label>
+              <textarea id="ingredients" rows="4" placeholder="Hoa cẩm chướng đỏ\nHoa baby trắng\nLá bạc..."></textarea>
+            </div>
+            <div class="form-group full-width">
+              <label>Cách bảo quản</label>
+              <textarea id="care" rows="4" placeholder="• Thay nước mỗi 2 ngày\n• Cắt góc 45 độ\n• Tránh nắng trực tiếp"></textarea>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="submit" class="btn-save">Lưu sản phẩm</button>
+            <button type="button" class="btn-cancel" onclick="closeModal()">Hủy</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </div>
 
-  <!-- FOOTER LUXURY ĐEN-VÀNG – GIỮ NGUYÊN ĐẸP NHƯ BẠN MUỐN -->
+<!-- FOOTER LUXURY ĐEN-VÀNG -->
   <footer class="luxury-footer">
     <div class="footer-container">
       <!-- Cột 1: Logo + Mô tả -->
@@ -120,10 +168,7 @@
     <div class="stars" id="stars-container"></div>
   </footer>
 
-  <div id="toast">Thông báo</div>
-
   <script src="auth.js"></script>
-    <script src="shop.js"></script>
-  <script src="lichsumuahang.js"></script>
+  <script src="admin-products.js"></script>
 </body>
 </html>

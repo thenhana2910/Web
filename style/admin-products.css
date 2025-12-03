@@ -1,0 +1,449 @@
+:root {
+    --gold: #fbbf24;
+    --dark: #0f172a;
+    --darker: #0a0e17;
+    --light: #e2e8f0;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0e17 0%, #0f172a 100%);
+    min-height: 100vh;
+    color: var(--light);
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==================== NAVBAR SIÊU ĐẸP ==================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 1.4rem 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(251, 191, 36, 0.15);
+    transition: all 0.5s ease;
+}
+
+.navbar.scrolled {
+    padding: 1rem 6%;
+    background: rgba(10, 14, 23, 0.98);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: var(--gold);
+    text-decoration: none !important;
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: #fbbf24;
+    text-decoration: none !important;
+    font-weight: 500;
+    font-size: 1.05rem;
+    position: relative;
+    transition: 0.4s;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: 0.5s;
+    transform: translateX(-50%);
+}
+
+.nav-menu a:hover {
+    color: var(--gold);
+    text-shadow: 0 0 12px rgba(251, 191, 36, 0.7);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+}
+
+.account-btn {
+    background: transparent;
+    border: 2.2px solid var(--gold);
+    color: var(--gold);
+    padding: 0.75rem 2.2rem;
+    border-radius: 50px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.25);
+}
+
+.account-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    transform: translateY(-4px);
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+}
+
+.cart {
+    position: relative;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.cart:hover {
+    transform: scale(1.2);
+}
+
+.cart i {
+    font-size: 1.9rem;
+    color: var(--gold);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 800;
+    font-size: 0.8rem;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.9);
+}
+
+/* Hamburger mobile */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--gold);
+    cursor: pointer;
+}
+
+/* ==================== NỘI DUNG ADMIN ==================== */
+.admin-container {
+    max-width: 1400px;
+    margin: 140px auto 100px;
+    padding: 0 5%;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.crown {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+    margin: 1rem solid var(--gold);
+    display: inline-block;
+    padding: 0 30px;
+}
+
+.admin-header p {
+    font-size: 1.4rem;
+    opacity: 0.9;
+    margin-top: 1rem;
+}
+
+.add-btn-wrapper {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.btn-add-new {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: var(--dark);
+    padding: 1.4rem 3.8rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
+    transition: 0.5s;
+}
+
+.btn-add-new:hover {
+    transform: translateY(-10px) scale(1.06);
+    box-shadow: 0 30px 70px rgba(251, 191, 36, 0.7);
+}
+
+/* Grid sản phẩm & Modal giữ nguyên đẹp như cũ */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 3rem;
+}
+
+.product-card {
+    background: rgba(251, 191, 36, 0.06);
+    border: 1.5px solid rgba(251, 191, 36, 0.3);
+    border-radius: 28px;
+    overflow: hidden;
+    transition: 0.6s;
+}
+
+.product-card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 35px 70px rgba(251, 191, 36, 0.35);
+    border-color: var(--gold);
+}
+
+.product-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.8rem;
+}
+
+.product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: var(--gold);
+}
+
+.product-info .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.product-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-edit,
+.btn-delete {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn-edit {
+    background: rgba(251, 191, 36, 0.15);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+
+.btn-edit:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+.btn-delete {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    border: 2px solid #fca5a5;
+}
+
+.btn-delete:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--dark);
+    width: 100%;
+    max-width: 960px;
+    border-radius: 36px;
+    padding: 3.5rem;
+    border: 2px solid rgba(251, 191, 36, 0.4);
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 24px;
+    right: 34px;
+    font-size: 2.8rem;
+    color: var(--gold);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    transform: rotate(90deg);
+}
+
+#modalTitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1.1rem 1.5rem;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1.5px solid rgba(251, 191, 36, 0.3);
+    border-radius: 18px;
+    color: white;
+    font-size: 1.05rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.35);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.btn-save {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 1.2rem 4rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
+}
+
+.btn-cancel {
+    background: transparent;
+    color: #94a3b8;
+    border: 2px solid #94a3b8;
+    padding: 1.2rem 4rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background: #f59e0b;
+    transform: translateY(-6px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .crown {
+        font-size: 3.6rem;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 14, 23, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .btn-save,
+    .btn-cancel {
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+
+
